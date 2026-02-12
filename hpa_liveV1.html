@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPA-Aguka | Secure Portal</title>
+    <title>HPA-Aguka | Secure Member Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -17,7 +17,7 @@
     <div id="loginPage" class="flex items-center justify-center min-h-screen p-6">
         <div class="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full border-t-[12px] border-[#008080] text-center">
             <img src="https://i.imgur.com/K1Lg5kG.png" alt="HPA-Aguka Logo" class="mx-auto mb-6 w-48">
-            <h1 class="text-2xl font-black text-slate-800 tracking-tight">Secure Member Access</h1>
+            <h1 class="text-2xl font-black text-slate-800 tracking-tight">Member Access</h1>
             <p class="text-orange-500 font-bold italic mb-8 text-xs">Live wisely, save to invest</p>
             
             <div class="space-y-4 text-left">
@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Secret Password</label>
-                    <input type="password" id="passInput" placeholder="Enter your HPA code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all">
+                    <input type="password" id="passInput" placeholder="Enter HPA Code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all">
                 </div>
                 <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all active:scale-95">Sync & Access</button>
             </div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
                         <span class="font-bold text-slate-500 uppercase">Treasurer</span>
-                        <span class="font-black text-hpa-teal">+250 7XX XXX XXX</span>
+                        <span class="font-black text-hpa-teal">+250 782 307 562</span>
                     </div>
                 </div>
             </div>
@@ -62,51 +62,51 @@
         <div class="p-8 max-w-6xl mx-auto">
             <header class="mb-12">
                 <h2 class="text-5xl font-black text-slate-900 tracking-tighter">Muraho, <span id="memberName" class="text-hpa-teal"></span></h2>
-                <p class="text-slate-400 font-medium mt-2">Personal Contribution Statement</p>
+                <p class="text-slate-400 font-medium mt-2">Member Contribution Statement</p>
             </header>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Net Savings Balance</p>
-                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2 tracking-tighter">--</p>
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest text-teal-600">Total Savings (3 Years)</p>
+                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2">--</p>
                 </div>
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Penalties</p>
-                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2 tracking-tighter">--</p>
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest text-orange-500">Total Penalties</p>
+                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2">--</p>
                 </div>
-                <div class="bg-[#008080] p-8 rounded-[2rem] shadow-xl text-white">
+                <div class="bg-hpa-teal p-8 rounded-[2rem] shadow-xl text-white">
                     <p class="text-white/60 text-[10px] uppercase font-black tracking-widest">Association Fund</p>
-                    <p class="text-4xl font-black mt-2 tracking-tighter">11,110,000 <span class="text-sm opacity-50">RWF</span></p>
+                    <p class="text-4xl font-black mt-2">11,110,000 <span class="text-sm opacity-50 font-normal">RWF</span></p>
                 </div>
             </div>
 
             <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-slate-100">
-                <div class="p-8 bg-slate-50 border-b font-black text-slate-800 uppercase text-xs tracking-widest">Account Breakdown</div>
+                <div class="p-8 bg-slate-50 border-b font-black text-slate-800 uppercase text-xs tracking-widest">Transaction History</div>
                 <table class="w-full text-left text-sm divide-y divide-slate-50" id="dataTable"></table>
             </div>
         </div>
     </div>
 
     <script>
-        // NEW UPDATED LINK FROM YOUR LAST MESSAGE
+        // LIVE SPREADSHEET LINK
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_w2HalFy3BA5umQBeE-NnSB1UxPX7LHbVtt5Rq2o-OcmwHwhYtUG0k9Re5wv3Y1PgLBCD_uPdNJkr/pub?gid=2131416243&single=true&output=csv';
 
         async function fetchAndLogin() {
             const nameInput = document.getElementById('userInput').value.trim().toLowerCase();
             const passInput = document.getElementById('passInput').value.trim();
-            const error = document.getElementById('errorMsg');
             const btn = document.getElementById('loginBtn');
+            const error = document.getElementById('errorMsg');
 
-            if (!nameInput || !passInput) return alert("Please enter both Name and Password");
+            if (!nameInput || !passInput) return alert("Please enter Name and Password");
 
-            btn.innerText = "Syncing Database...";
+            btn.innerText = "Syncing Live Data...";
             
             try {
                 const response = await fetch(CSV_URL);
                 const text = await response.text();
                 const rows = text.split('\n').map(row => row.split(','));
 
-                // Name search in Column B (index 1), Password check in Column P (index 15)
+                // Name is Column B (1), Password is Column P (15)
                 const member = rows.find(r => 
                     r[1] && r[1].toLowerCase().includes(nameInput) && 
                     r[15] && r[15].trim() === passInput
@@ -125,16 +125,16 @@
                     document.getElementById('memberPenalties').innerText = (parseInt(member[13]) || 0).toLocaleString() + " RWF";
                     
                     document.getElementById('dataTable').innerHTML = `
-                        <tr><td class="p-6 text-slate-500 font-bold italic">Years 1 & 2 Historical Savings</td><td class="p-6 font-black text-right">240,000 RWF</td></tr>
-                        <tr><td class="p-6 text-slate-500 font-bold italic">Current Year 3 Savings (Live Sync)</td><td class="p-6 font-black text-right">${y3Savings.toLocaleString()} RWF</td></tr>
-                        <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Total Net Savings</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()} RWF</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="p-6 text-slate-500 font-bold">2023-2025 Savings (Years 1 & 2)</td><td class="p-6 font-black text-right">240,000 RWF</td></tr>
+                        <tr class="hover:bg-slate-50"><td class="p-6 text-slate-500 font-bold">2025-2026 Savings (Live Sync)</td><td class="p-6 font-black text-right">${y3Savings.toLocaleString()} RWF</td></tr>
+                        <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Grand Total Net Balance</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()} RWF</td></tr>
                     `;
                 } else {
                     error.innerText = "Access Denied: Incorrect Name or Password.";
                     error.classList.remove('hidden');
                 }
             } catch (e) {
-                error.innerText = "Sync Error: Ensure the sheet is published and you have internet.";
+                error.innerText = "Sync Error: Check your internet connection.";
                 error.classList.remove('hidden');
             } finally {
                 btn.innerText = "Sync & Access";
