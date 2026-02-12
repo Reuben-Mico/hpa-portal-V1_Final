@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPA-Aguka | Secure Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bg-hpa-teal { background-color: #008080; }
+        .text-hpa-teal { color: #008080; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <div id="loginPage" class="flex items-center justify-center min-h-screen p-6">
+        <div class="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full border-t-[12px] border-[#008080] text-center">
+            <img src="https://i.imgur.com/K1Lg5kG.png" alt="HPA-Aguka Logo" class="mx-auto mb-6 w-48">
+            <h1 class="text-2xl font-black text-slate-800 tracking-tight">Secure Member Access</h1>
+            <p class="text-orange-500 font-bold italic mb-8 text-xs">Live wisely, save to invest</p>
+            
+            <div class="space-y-4 text-left">
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-1">First Name</label>
+                    <input type="text" id="userInput" placeholder="e.g. Innocent" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Secret Password</label>
+                    <input type="password" id="passInput" placeholder="Enter your HPA code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all active:scale-95">Sync & Access</button>
+            </div>
+            
+            <p id="errorMsg" class="text-red-500 text-xs mt-4 hidden font-bold"></p>
+
+            <div class="mt-10 pt-8 border-t border-slate-100 text-left">
+                <p class="text-[10px] text-slate-400 mb-4 font-black uppercase tracking-widest text-center">Leadership Support</p>
+                <div class="grid grid-cols-1 gap-2">
+                    <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
+                        <span class="font-bold text-slate-500 uppercase">President</span>
+                        <span class="font-black text-hpa-teal">+250 782 685 476</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
+                        <span class="font-bold text-slate-500 uppercase">Treasurer</span>
+                        <span class="font-black text-hpa-teal">+250 782307562</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard" class="hidden">
+        <nav class="bg-white p-4 shadow-sm flex justify-between items-center px-8 border-b sticky top-0 z-50">
+            <div class="flex items-center gap-3">
+                <img src="https://i.imgur.com/K1Lg5kG.png" alt="Logo" class="w-10">
+                <span class="font-black text-hpa-teal text-xl tracking-tighter">HPA-Aguka Live</span>
+            </div>
+            <button onclick="location.reload()" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl font-bold text-xs">Logout</button>
+        </nav>
+        
+        <div class="p-8 max-w-6xl mx-auto">
+            <header class="mb-12">
+                <h2 class="text-5xl font-black text-slate-900 tracking-tighter">Muraho, <span id="memberName" class="text-hpa-teal"></span></h2>
+                <p class="text-slate-400 font-medium mt-2">Personal Contribution Statement</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Net Savings Balance</p>
+                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2">--</p>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Penalties</p>
+                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2">--</p>
+                </div>
+                <div class="bg-hpa-teal p-8 rounded-[2rem] shadow-xl text-white">
+                    <p class="text-white/60 text-[10px] uppercase font-black tracking-widest text-orange-200">Association Fund</p>
+                    <p class="text-4xl font-black mt-2">11,110,000 <span class="text-sm opacity-50">RWF</span></p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-slate-100">
+                <div class="p-8 bg-slate-50 border-b font-black text-slate-800 uppercase text-xs tracking-widest">Account Breakdown</div>
+                <table class="w-full text-left text-sm divide-y divide-slate-50" id="dataTable"></table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_w2HalFy3BA5umQBeE-NnSB1UxPX7LHbVtt5Rq2o-OcmwHwhYtUG0k9Re5wv3Y1PgLBCD_uPdNJkr/pub?gid=2131416243&single=true&output=csv';
+
+        async function fetchAndLogin() {
+            const nameInput = document.getElementById('userInput').value.trim().toLowerCase();
+            const passInput = document.getElementById('passInput').value.trim();
+            const error = document.getElementById('errorMsg');
+            const btn = document.getElementById('loginBtn');
+
+            if (!nameInput || !passInput) return alert("Please enter both Name and Password");
+
+            btn.innerText = "Syncing Database...";
+            
+            try {
+                const response = await fetch(CSV_URL);
+                const text = await response.text();
+                const rows = text.split('\n').map(row => row.split(','));
+
+                // Name is Column B (index 1), Password is Column P (index 15)
+                const member = rows.find(r => 
+                    r[1] && r[1].toLowerCase().includes(nameInput) && 
+                    r[15] && r[15].trim() === passInput
+                );
+
+                if (member) {
+                    document.getElementById('loginPage').classList.add('hidden');
+                    document.getElementById('dashboard').classList.remove('hidden');
+                    
+                    const name = member[1].replace(/^\d+\.\s*/, '');
+                    const y3Savings = parseInt(member[14]) || 0;
+                    const grandTotal = 240000 + y3Savings;
+
+                    document.getElementById('memberName').innerText = name;
+                    document.getElementById('memberTotal').innerText = grandTotal.toLocaleString() + " RWF";
+                    document.getElementById('memberPenalties').innerText = (parseInt(member[13]) || 0).toLocaleString() + " RWF";
+                    
+                    document.getElementById('dataTable').innerHTML = `
+                        <tr><td class="p-6 text-slate-500 font-bold">Years 1 & 2 (Historical)</td><td class="p-6 font-black text-right">240,000</td></tr>
+                        <tr><td class="p-6 text-slate-500 font-bold">Current Year 3 (Live)</td><td class="p-6 font-black text-right">${y3Savings.toLocaleString()}</td></tr>
+                        <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Total Net Assets</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()}</td></tr>
+                    `;
+                } else {
+                    error.innerText = "Incorrect Name or Password. Please try again.";
+                    error.classList.remove('hidden');
+                }
+            } catch (e) {
+                alert("Security block: This file must be hosted on GitHub to access Google data.");
+            } finally {
+                btn.innerText = "Sync & Access";
+            }
+        }
+    </script>
+</body>
+</html>
