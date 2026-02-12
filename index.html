@@ -21,46 +21,67 @@
             <p class="text-orange-500 font-bold italic mb-8 text-xs uppercase tracking-widest">Live wisely, save to invest</p>
             
             <div class="space-y-4 text-left">
-                <input type="text" id="userInput" placeholder="First Name (e.g. Innocent)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
-                <input type="password" id="passInput" placeholder="Secret HPA Code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
-                <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all">Sync & Access</button>
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-1">First Name</label>
+                    <input type="text" id="userInput" placeholder="e.g. Innocent" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div>
+                    <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Secret Password</label>
+                    <input type="password" id="passInput" placeholder="Enter HPA Code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all active:scale-95">Sync & Access</button>
             </div>
             
             <p id="errorMsg" class="text-red-500 text-xs mt-4 hidden font-bold"></p>
 
-            <div class="mt-10 pt-8 border-t border-slate-100 text-left text-[11px]">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="font-bold text-slate-500">President: Eliab</span>
-                    <span class="font-black text-hpa-teal">+250 782 685 476</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="font-bold text-slate-500">Treasurer: Reuben</span>
-                    <span class="font-black text-hpa-teal">+250 782 307 562</span>
+            <div class="mt-10 pt-8 border-t border-slate-100 text-left">
+                <p class="text-[10px] text-slate-400 mb-4 font-black uppercase tracking-widest text-center text-teal-600">Leadership Support</p>
+                <div class="grid grid-cols-1 gap-2">
+                    <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
+                        <span class="font-bold text-slate-500 uppercase">President (Eliab)</span>
+                        <span class="font-black text-hpa-teal">+250 782 685 476</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
+                        <span class="font-bold text-slate-500 uppercase">Treasurer (Reuben)</span>
+                        <span class="font-black text-hpa-teal">+250 782 307 562</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="dashboard" class="hidden">
+    <div id="dashboard" class="hidden animate-in fade-in duration-500">
         <nav class="bg-white p-4 shadow-sm flex justify-between items-center px-8 border-b sticky top-0 z-50">
-            <span class="font-black text-hpa-teal text-xl tracking-tighter">HPA-Aguka Live</span>
+            <div class="flex items-center gap-3">
+                <img src="https://i.imgur.com/K1Lg5kG.png" alt="Logo" class="w-10">
+                <span class="font-black text-hpa-teal text-xl tracking-tighter">HPA-Aguka Live</span>
+            </div>
             <button onclick="location.reload()" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl font-bold text-xs">Logout</button>
         </nav>
         
         <div class="p-8 max-w-6xl mx-auto">
-            <h2 class="text-5xl font-black text-slate-900 tracking-tighter mb-12">Muraho, <span id="memberName" class="text-hpa-teal"></span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-teal-600 text-center md:text-left">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Savings</p>
+            <header class="mb-12">
+                <h2 class="text-5xl font-black text-slate-900 tracking-tighter">Muraho, <span id="memberName" class="text-hpa-teal"></span></h2>
+                <p class="text-slate-400 font-medium mt-2 italic">Contribution Statement (2023 - 2026)</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-teal-600">
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Savings Balance</p>
                     <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2">--</p>
                 </div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-orange-500 text-center md:text-left">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Penalties Paid</p>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-orange-500">
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest text-orange-500">Total Penalties</p>
                     <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2">--</p>
                 </div>
+                <div class="bg-hpa-teal p-8 rounded-[2rem] shadow-xl text-white">
+                    <p class="text-white/60 text-[10px] uppercase font-black tracking-widest">Association Fund</p>
+                    <p class="text-4xl font-black mt-2 tracking-tighter">11,110,000 <span class="text-xs font-normal opacity-60 italic">RWF</span></p>
+                </div>
             </div>
-            <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-slate-100 p-8 text-center text-slate-500 text-sm">
-                Live sync active with HPA-Aguka Database.
+
+            <div class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-slate-100">
+                <table class="w-full text-left text-sm divide-y divide-slate-50" id="dataTable"></table>
             </div>
         </div>
     </div>
@@ -69,59 +90,79 @@
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_w2HalFy3BA5umQBeE-NnSB1UxPX7LHbVtt5Rq2o-OcmwHwhYtUG0k9Re5wv3Y1PgLBCD_uPdNJkr/pub?output=csv';
 
         async function fetchAndLogin() {
-            const nameIn = document.getElementById('userInput').value.trim().toLowerCase();
-            const passIn = document.getElementById('passInput').value.trim();
+            const nameInput = document.getElementById('userInput').value.trim().toLowerCase();
+            const passInput = document.getElementById('passInput').value.trim();
             const btn = document.getElementById('loginBtn');
             const error = document.getElementById('errorMsg');
 
-            if (!nameIn || !passIn) return;
-            btn.innerText = "Syncing...";
+            if (!nameInput || !passInput) {
+                alert("Please fill in both Name and Password");
+                return;
+            }
+
+            btn.innerText = "Syncing Data...";
+            error.classList.add('hidden');
 
             try {
                 const response = await fetch(CSV_URL);
                 const text = await response.text();
                 const lines = text.split('\n');
-                
-                // 1. Find the Header Row (usually Row 5 or 6)
-                let headerRowIndex = lines.findIndex(l => l.includes("NAMES") && l.includes("Password"));
-                if (headerRowIndex === -1) headerRowIndex = 4; // Fallback to index 4 (Row 5)
+                const rows = lines.map(line => line.split(','));
 
-                const headers = lines[headerRowIndex].split(',');
-                const nameCol = headers.findIndex(h => h.includes("NAMES"));
-                const passCol = headers.findIndex(h => h.includes("Password"));
-                const totalCol = headers.findIndex(h => h.includes("TOTAL / MEMBER"));
-                const penCol = headers.findIndex(h => h.includes("Penalties"));
+                // SMART SEARCH FOR COLUMNS
+                // We scan the rows to find where "NAMES" and "Password" are
+                let headerIndex = rows.findIndex(r => r.includes("NAMES") && r.includes("Password"));
+                if (headerIndex === -1) headerIndex = 4; // Default to Row 5 if not found
 
-                // 2. Search all rows below the header
-                let found = null;
-                for (let i = headerRowIndex + 1; i < lines.length; i++) {
-                    let cols = lines[i].split(',');
-                    if (cols[nameCol] && cols[nameCol].toLowerCase().includes(nameIn) && cols[passCol] && cols[passCol].trim() === passIn) {
-                        found = cols;
+                const headers = rows[headerIndex];
+                const nameCol = headers.indexOf("NAMES");
+                const passCol = headers.indexOf("Password");
+                const totalCol = headers.indexOf("TOTAL / MEMBER");
+                const penaltyCol = headers.indexOf("Penalties");
+
+                let foundMember = null;
+                // Start looking for names from the row after headers
+                for (let i = headerIndex + 1; i < rows.length; i++) {
+                    let row = rows[i];
+                    if (row[nameCol] && row[nameCol].toLowerCase().includes(nameInput) && row[passCol] && row[passCol].trim() === passInput) {
+                        foundMember = row;
                         break;
                     }
                 }
 
-                if (found) {
-                    document.getElementById('loginPage').classList.add('hidden');
-                    document.getElementById('dashboard').classList.remove('hidden');
-                    document.getElementById('memberName').innerText = found[nameCol].replace(/^\d+\.\s*/, '');
-                    
-                    const y3Savings = parseInt(found[totalCol].replace(/[^0-9]/g, '')) || 0;
-                    const penVal = parseInt(found[penCol].replace(/[^0-9]/g, '')) || 0;
-                    
-                    document.getElementById('memberTotal').innerText = (240000 + y3Savings).toLocaleString() + " RWF";
-                    document.getElementById('memberPenalties').innerText = penVal.toLocaleString() + " RWF";
+                if (foundMember) {
+                    showDashboard(foundMember, nameCol, totalCol, penaltyCol);
                 } else {
-                    error.innerText = "Access Denied: Incorrect Details.";
+                    error.innerText = "Invalid Name or Password. Check your HPA Code.";
                     error.classList.remove('hidden');
                 }
             } catch (e) {
-                error.innerText = "Sync Error. Please check your internet.";
+                error.innerText = "Sync Error. Check your internet connection.";
                 error.classList.remove('hidden');
             } finally {
                 btn.innerText = "Sync & Access";
             }
+        }
+
+        function showDashboard(member, nameCol, totalCol, penaltyCol) {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            
+            const cleanName = member[nameCol].replace(/^\d+\.\s*/, '');
+            document.getElementById('memberName').innerText = cleanName;
+
+            const y3Total = parseInt(member[totalCol].replace(/[^0-9]/g, '')) || 0;
+            const penalty = parseInt(member[penaltyCol].replace(/[^0-9]/g, '')) || 0;
+            const grandTotal = 240000 + y3Total;
+
+            document.getElementById('memberTotal').innerText = grandTotal.toLocaleString() + " RWF";
+            document.getElementById('memberPenalties').innerText = penalty.toLocaleString() + " RWF";
+            
+            document.getElementById('dataTable').innerHTML = `
+                <tr><td class="p-6 text-slate-500 font-bold italic">Previous Savings (Years 1 & 2)</td><td class="p-6 font-black text-right">240,000 RWF</td></tr>
+                <tr><td class="p-6 text-slate-500 font-bold italic">Current Year 3 Savings</td><td class="p-6 font-black text-right">${y3Total.toLocaleString()} RWF</td></tr>
+                <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Net Account Total</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()} RWF</td></tr>
+            `;
         }
     </script>
 </body>
