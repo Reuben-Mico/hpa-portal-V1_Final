@@ -29,13 +29,13 @@
                     <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Secret Password</label>
                     <input type="password" id="passInput" placeholder="Enter HPA Code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
                 </div>
-                <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all active:scale-95">Sync & Access</button>
+                <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all">Sync & Access</button>
             </div>
             
             <p id="errorMsg" class="text-red-500 text-xs mt-4 hidden font-bold"></p>
 
             <div class="mt-10 pt-8 border-t border-slate-100 text-left">
-                <p class="text-[10px] text-slate-400 mb-4 font-black uppercase tracking-widest text-center text-teal-600 font-bold">Leadership Support</p>
+                <p class="text-[10px] text-slate-400 mb-4 font-black uppercase tracking-widest text-center text-teal-600">Leadership Support</p>
                 <div class="grid grid-cols-1 gap-2">
                     <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
                         <span class="font-bold text-slate-500 uppercase">President (Eliab)</span>
@@ -60,7 +60,7 @@
         </nav>
         
         <div class="p-8 max-w-6xl mx-auto">
-            <header class="mb-12 text-center md:text-left">
+            <header class="mb-12">
                 <h2 class="text-5xl font-black text-slate-900 tracking-tighter">Muraho, <span id="memberName" class="text-hpa-teal"></span></h2>
                 <p class="text-slate-400 font-medium mt-2 italic">Contribution Statement (May 2023 - April 2026)</p>
             </header>
@@ -71,11 +71,11 @@
                     <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2">--</p>
                 </div>
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-orange-500">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Penalties</p>
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest text-orange-500">Total Penalties</p>
                     <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2">--</p>
                 </div>
                 <div class="bg-hpa-teal p-8 rounded-[2rem] shadow-xl text-white">
-                    <p class="text-white/60 text-[10px] uppercase font-black tracking-widest">Group Fund Fund</p>
+                    <p class="text-white/60 text-[10px] uppercase font-black tracking-widest">Association Fund</p>
                     <p class="text-4xl font-black mt-2 tracking-tighter">11,110,000 <span class="text-xs font-normal opacity-60">RWF</span></p>
                 </div>
             </div>
@@ -95,46 +95,36 @@
             const btn = document.getElementById('loginBtn');
             const error = document.getElementById('errorMsg');
 
-            if (!nameInput || !passInput) {
-                alert("Please fill in both fields.");
-                return;
-            }
-
-            btn.innerText = "Syncing Data...";
+            if (!nameInput || !passInput) return;
+            btn.innerText = "Processing...";
             error.classList.add('hidden');
 
             try {
                 const response = await fetch(CSV_URL);
                 const text = await response.text();
-                
-                // Splitting CSV correctly handling commas inside quotes
                 const rows = text.split('\n').map(row => row.split(','));
 
-                // SEARCHING: 
-                // We check row[1] (Names) and row[15] (Passwords)
-                let foundMember = null;
-                
-                for(let i=1; i < rows.length; i++) {
+                let foundRow = null;
+                for (let i = 5; i < rows.length; i++) { // Starts from Row 6 (index 5)
                     let row = rows[i];
-                    let sheetName = row[1] ? row[1].toLowerCase() : "";
-                    let sheetPass = row[15] ? row[15].trim() : "";
+                    let nameInSheet = row[1] ? row[1].toLowerCase() : ""; // Column B
+                    let passInSheet = row[18] ? row[18].trim() : ""; // Column S
 
-                    if (sheetName.includes(nameInput) && sheetPass === passInput) {
-                        foundMember = row;
+                    if (nameInSheet.includes(nameInput) && passInSheet === passInput) {
+                        foundRow = row;
                         break;
                     }
                 }
 
-                if (foundMember) {
-                    loginSuccess(foundMember);
+                if (foundRow) {
+                    loginSuccess(foundRow);
                 } else {
-                    error.innerText = "Invalid Name or Password. Check spelling or HPA Code.";
+                    error.innerText = "Invalid Name or Password. Please check your credentials.";
                     error.classList.remove('hidden');
                 }
             } catch (e) {
-                error.innerText = "Database Connection Error. Ensure your internet is active.";
+                error.innerText = "Connection Error. Please try again.";
                 error.classList.remove('hidden');
-                console.error(e);
             } finally {
                 btn.innerText = "Sync & Access";
             }
@@ -144,22 +134,21 @@
             document.getElementById('loginPage').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
             
-            // Removing the "1. " from the name display
             const cleanName = member[1].replace(/^\d+\.\s*/, '');
             document.getElementById('memberName').innerText = cleanName;
 
-            // Calculations
-            const y3Savings = parseInt(member[14].replace(/[^0-9]/g, '')) || 0;
-            const penalty = parseInt(member[13].replace(/[^0-9]/g, '')) || 0;
-            const grandTotal = 240000 + y3Savings;
+            // Mapping: P (15) is Penalties, Q (16) is Year 3 Total
+            const penalty = parseInt(member[15].replace(/[^0-9]/g, '')) || 0;
+            const y3Total = parseInt(member[16].replace(/[^0-9]/g, '')) || 0;
+            const grandTotal = 240000 + y3Total;
 
             document.getElementById('memberTotal').innerText = grandTotal.toLocaleString() + " RWF";
             document.getElementById('memberPenalties').innerText = penalty.toLocaleString() + " RWF";
             
             document.getElementById('dataTable').innerHTML = `
-                <tr><td class="p-6 text-slate-500 font-bold">Years 1 & 2 Historical Savings</td><td class="p-6 font-black text-right">240,000 RWF</td></tr>
-                <tr><td class="p-6 text-slate-500 font-bold">Year 3 Savings (Current)</td><td class="p-6 font-black text-right">${y3Savings.toLocaleString()} RWF</td></tr>
-                <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Total Assets Verified</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()} RWF</td></tr>
+                <tr><td class="p-6 text-slate-500 font-bold italic">Previous Savings (Years 1 & 2)</td><td class="p-6 font-black text-right">240,000 RWF</td></tr>
+                <tr><td class="p-6 text-slate-500 font-bold italic">Current Year 3 Savings</td><td class="p-6 font-black text-right">${y3Total.toLocaleString()} RWF</td></tr>
+                <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Net Verified Assets</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()} RWF</td></tr>
             `;
         }
     </script>
