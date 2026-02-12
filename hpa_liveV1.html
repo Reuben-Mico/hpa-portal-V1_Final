@@ -23,11 +23,11 @@
             <div class="space-y-4 text-left">
                 <div>
                     <label class="text-[10px] font-black uppercase text-slate-400 ml-1">First Name</label>
-                    <input type="text" id="userInput" placeholder="e.g. Innocent" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                    <input type="text" id="userInput" placeholder="e.g. Innocent" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all">
                 </div>
                 <div>
                     <label class="text-[10px] font-black uppercase text-slate-400 ml-1">Secret Password</label>
-                    <input type="password" id="passInput" placeholder="Enter your HPA code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                    <input type="password" id="passInput" placeholder="Enter your HPA code" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all">
                 </div>
                 <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all active:scale-95">Sync & Access</button>
             </div>
@@ -39,11 +39,11 @@
                 <div class="grid grid-cols-1 gap-2">
                     <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
                         <span class="font-bold text-slate-500 uppercase">President</span>
-                        <span class="font-black text-hpa-teal">+250 782 685 476</span>
+                        <span class="font-black text-hpa-teal">+250 7XX XXX XXX</span>
                     </div>
                     <div class="bg-slate-50 p-3 rounded-xl flex justify-between items-center text-[11px]">
                         <span class="font-bold text-slate-500 uppercase">Treasurer</span>
-                        <span class="font-black text-hpa-teal">+250 782307562</span>
+                        <span class="font-black text-hpa-teal">+250 7XX XXX XXX</span>
                     </div>
                 </div>
             </div>
@@ -68,15 +68,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
                     <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Net Savings Balance</p>
-                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2">--</p>
+                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2 tracking-tighter">--</p>
                 </div>
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
                     <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Penalties</p>
-                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2">--</p>
+                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2 tracking-tighter">--</p>
                 </div>
-                <div class="bg-hpa-teal p-8 rounded-[2rem] shadow-xl text-white">
-                    <p class="text-white/60 text-[10px] uppercase font-black tracking-widest text-orange-200">Association Fund</p>
-                    <p class="text-4xl font-black mt-2">11,110,000 <span class="text-sm opacity-50">RWF</span></p>
+                <div class="bg-[#008080] p-8 rounded-[2rem] shadow-xl text-white">
+                    <p class="text-white/60 text-[10px] uppercase font-black tracking-widest">Association Fund</p>
+                    <p class="text-4xl font-black mt-2 tracking-tighter">11,110,000 <span class="text-sm opacity-50">RWF</span></p>
                 </div>
             </div>
 
@@ -88,6 +88,7 @@
     </div>
 
     <script>
+        // NEW UPDATED LINK FROM YOUR LAST MESSAGE
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_w2HalFy3BA5umQBeE-NnSB1UxPX7LHbVtt5Rq2o-OcmwHwhYtUG0k9Re5wv3Y1PgLBCD_uPdNJkr/pub?gid=2131416243&single=true&output=csv';
 
         async function fetchAndLogin() {
@@ -105,7 +106,7 @@
                 const text = await response.text();
                 const rows = text.split('\n').map(row => row.split(','));
 
-                // Name is Column B (index 1), Password is Column P (index 15)
+                // Name search in Column B (index 1), Password check in Column P (index 15)
                 const member = rows.find(r => 
                     r[1] && r[1].toLowerCase().includes(nameInput) && 
                     r[15] && r[15].trim() === passInput
@@ -115,25 +116,26 @@
                     document.getElementById('loginPage').classList.add('hidden');
                     document.getElementById('dashboard').classList.remove('hidden');
                     
-                    const name = member[1].replace(/^\d+\.\s*/, '');
+                    const fullName = member[1].replace(/^\d+\.\s*/, '');
                     const y3Savings = parseInt(member[14]) || 0;
                     const grandTotal = 240000 + y3Savings;
 
-                    document.getElementById('memberName').innerText = name;
+                    document.getElementById('memberName').innerText = fullName;
                     document.getElementById('memberTotal').innerText = grandTotal.toLocaleString() + " RWF";
                     document.getElementById('memberPenalties').innerText = (parseInt(member[13]) || 0).toLocaleString() + " RWF";
                     
                     document.getElementById('dataTable').innerHTML = `
-                        <tr><td class="p-6 text-slate-500 font-bold">Years 1 & 2 (Historical)</td><td class="p-6 font-black text-right">240,000</td></tr>
-                        <tr><td class="p-6 text-slate-500 font-bold">Current Year 3 (Live)</td><td class="p-6 font-black text-right">${y3Savings.toLocaleString()}</td></tr>
-                        <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Total Net Assets</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()}</td></tr>
+                        <tr><td class="p-6 text-slate-500 font-bold italic">Years 1 & 2 Historical Savings</td><td class="p-6 font-black text-right">240,000 RWF</td></tr>
+                        <tr><td class="p-6 text-slate-500 font-bold italic">Current Year 3 Savings (Live Sync)</td><td class="p-6 font-black text-right">${y3Savings.toLocaleString()} RWF</td></tr>
+                        <tr class="bg-teal-50"><td class="p-6 font-black text-hpa-teal uppercase text-xs tracking-widest">Total Net Savings</td><td class="p-6 font-black text-hpa-teal text-right text-xl">${grandTotal.toLocaleString()} RWF</td></tr>
                     `;
                 } else {
-                    error.innerText = "Incorrect Name or Password. Please try again.";
+                    error.innerText = "Access Denied: Incorrect Name or Password.";
                     error.classList.remove('hidden');
                 }
             } catch (e) {
-                alert("Security block: This file must be hosted on GitHub to access Google data.");
+                error.innerText = "Sync Error: Ensure the sheet is published and you have internet.";
+                error.classList.remove('hidden');
             } finally {
                 btn.innerText = "Sync & Access";
             }
