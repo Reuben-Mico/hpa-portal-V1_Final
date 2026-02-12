@@ -8,47 +8,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bg-hpa-teal { background-color: #008080; }
+        .text-hpa-teal { color: #008080; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
     <div id="loginPage" class="flex items-center justify-center min-h-screen p-6">
         <div class="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full border-t-[12px] border-[#008080] text-center">
-            <img src="https://i.imgur.com/K1Lg5kG.png" alt="HPA Logo" class="mx-auto mb-6 w-48">
+            <img src="https://i.ibb.co/LzqXN7k/hpa-logo.png" alt="HPA Logo" class="mx-auto mb-6 w-48">
             <h1 class="text-2xl font-black text-slate-800 tracking-tight">Member Access</h1>
-            <p class="text-orange-500 font-bold italic mb-8 text-xs uppercase tracking-widest">Live wisely, save to invest</p>
+            <p class="text-orange-500 font-bold italic mb-8 text-xs uppercase">Live wisely, save to invest</p>
             
             <div class="space-y-4 text-left">
-                <input type="text" id="userInput" placeholder="Name (e.g. Innocent)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
-                <input type="password" id="passInput" placeholder="HPA Code (e.g. HPA001)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                <input type="text" id="userInput" placeholder="First Name (Innocent)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
+                <input type="password" id="passInput" placeholder="HPA Code (HPA001)" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-teal-500">
                 <button onclick="fetchAndLogin()" id="loginBtn" class="w-full bg-[#008080] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-teal-800 transition-all">Sync & Access</button>
             </div>
-            <p id="errorMsg" class="text-red-500 text-[11px] mt-4 hidden font-bold bg-red-50 p-2 rounded-lg border border-red-100"></p>
+            <p id="errorMsg" class="text-red-500 text-xs mt-4 hidden font-bold bg-red-50 p-2 rounded-lg"></p>
+
+            <div class="mt-10 pt-8 border-t border-slate-100 text-[11px] text-left">
+                <div class="flex justify-between mb-2"><span>President: Eliab</span><span class="font-bold text-hpa-teal">+250 782 685 476</span></div>
+                <div class="flex justify-between"><span>Treasurer: Reuben</span><span class="font-bold text-hpa-teal">+250 782 307 562</span></div>
+            </div>
         </div>
     </div>
 
     <div id="dashboard" class="hidden">
-        <nav class="bg-white p-4 shadow-sm flex justify-between items-center px-8 border-b">
-            <span class="font-black text-[#008080] text-xl">HPA-Aguka Live</span>
-            <button onclick="location.reload()" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl font-bold text-xs uppercase">Logout</button>
+        <nav class="bg-white p-4 shadow-sm flex justify-between items-center px-8 border-b sticky top-0 z-50">
+            <span class="font-black text-hpa-teal text-xl">HPA-Aguka Live</span>
+            <button onclick="location.reload()" class="bg-rose-50 text-rose-600 px-4 py-2 rounded-xl font-bold text-xs">Logout</button>
         </nav>
         <div class="p-8 max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black text-slate-900 tracking-tighter mb-12">Muraho, <span id="memberName" class="text-[#008080]"></span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-[#008080]">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Total Savings Balance</p>
-                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2 tracking-tighter">--</p>
+            <h2 class="text-5xl font-black text-slate-900 tracking-tighter mb-12 uppercase">Muraho, <span id="memberName" class="text-hpa-teal"></span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-teal-600">
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Net Savings Balance</p>
+                    <p id="memberTotal" class="text-4xl font-black text-slate-900 mt-2">--</p>
                 </div>
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 border-l-8 border-orange-500">
-                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest text-orange-500">Total Penalties</p>
-                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2 tracking-tighter">--</p>
+                    <p class="text-slate-400 text-[10px] uppercase font-black tracking-widest">Penalties Total</p>
+                    <p id="memberPenalties" class="text-4xl font-black text-orange-500 mt-2">--</p>
                 </div>
+            </div>
+            <div class="bg-hpa-teal p-8 rounded-[2rem] text-white shadow-xl mb-12">
+                <p class="text-white/60 text-[10px] uppercase font-black tracking-widest">Global Group Fund</p>
+                <p class="text-4xl font-black mt-2 tracking-tighter">11,110,000 <span class="text-xs font-normal opacity-50 italic">RWF</span></p>
             </div>
         </div>
     </div>
 
     <script>
-        // FORCING THE RAW CSV DATA
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR_w2HalFy3BA5umQBeE-NnSB1UxPX7LHbVtt5Rq2o-OcmwHwhYtUG0k9Re5wv3Y1PgLBCD_uPdNJkr/pub?output=csv';
 
         async function fetchAndLogin() {
@@ -58,27 +68,19 @@
             const error = document.getElementById('errorMsg');
 
             if (!nameIn || !passIn) return alert("Please fill in both fields");
-            btn.innerText = "Syncing...";
+            btn.innerText = "Syncing Data...";
 
             try {
                 const response = await fetch(CSV_URL);
                 const text = await response.text();
-                
-                // Breaking the CSV into rows and columns more carefully
-                const rows = text.split(/\r?\n/).map(row => row.split(','));
+                const rows = text.split('\n').map(row => row.split(','));
 
+                // Column B (1) = NAMES, Column P (15) = Penalties, Column Q (16) = Total, Column S (18) = Password
                 let found = null;
-                // We start from Row 6 (index 5)
-                for (let i = 5; i < rows.length; i++) {
-                    const row = rows[i];
-                    
-                    // Column B (Names) = index 1
-                    // Column S (Password) = index 18
-                    const sheetName = (row[1] || "").toLowerCase();
-                    const sheetPass = (row[18] || "").trim();
-
-                    if (sheetName.includes(nameIn) && sheetPass === passIn) {
-                        found = row;
+                for (let i = 5; i < rows.length; i++) { // Starts from Row 6
+                    let r = rows[i];
+                    if (r[1] && r[1].toLowerCase().includes(nameIn) && r[18] && r[18].trim() === passIn) {
+                        found = r;
                         break;
                     }
                 }
@@ -87,25 +89,21 @@
                     document.getElementById('loginPage').classList.add('hidden');
                     document.getElementById('dashboard').classList.remove('hidden');
                     
-                    // Column Q (Total) = index 16
-                    // Column P (Penalty) = index 15
                     const name = found[1].replace(/^\d+\.\s*/, '');
                     const currentTotal = parseInt(found[16].replace(/[^0-9]/g, '')) || 0;
-                    const penalties = parseInt(found[15].replace(/[^0-9]/g, '')) || 0;
+                    const pens = parseInt(found[15].replace(/[^0-9]/g, '')) || 0;
 
                     document.getElementById('memberName').innerText = name;
                     document.getElementById('memberTotal').innerText = (240000 + currentTotal).toLocaleString() + " RWF";
-                    document.getElementById('memberPenalties').innerText = penalties.toLocaleString() + " RWF";
+                    document.getElementById('memberPenalties').innerText = pens.toLocaleString() + " RWF";
                 } else {
-                    error.innerText = "Access Denied: Incorrect Details. Check spelling of name or HPA code.";
+                    error.innerText = "Access Denied: Spelling or Code Mismatch.";
                     error.classList.remove('hidden');
                 }
             } catch (e) {
-                error.innerText = "Sync Error: Database connection failed.";
+                error.innerText = "Sync Error: Check Connection.";
                 error.classList.remove('hidden');
-            } finally {
-                btn.innerText = "Sync & Access";
-            }
+            } finally { btn.innerText = "Sync & Access"; }
         }
     </script>
 </body>
