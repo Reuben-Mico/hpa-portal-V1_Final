@@ -39,11 +39,17 @@
     <nav id="publicNav" class="bg-white/90 backdrop-blur-md h-20 flex items-center px-8 sticky top-0 z-40 border-b border-green-100">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-green-900 p-2 rounded-xl"><i data-lucide="trees" class="text-amber-400 h-6 w-6"></i></div>
+                <div class="bg-green-900 p-2 rounded-xl shadow-lg shadow-green-900/20"><i data-lucide="trees" class="text-amber-400 h-6 w-6"></i></div>
                 <div>
                     <h1 class="text-2xl font-black text-green-900 tracking-tighter leading-none uppercase">HPA-Aguka</h1>
                     <p class="text-[9px] font-bold text-amber-600 uppercase tracking-widest mt-1">Live Wisely, Save to Invest</p>
                 </div>
+            </div>
+            <div class="hidden md:flex gap-8 font-bold text-sm text-gray-500 mr-8">
+                <a href="#mission" class="hover:text-green-800 transition">Mission</a>
+                <a href="#how-it-works" class="hover:text-green-800 transition">Process</a>
+                <a href="#leadership" class="hover:text-green-800 transition">Leadership</a>
+                <a href="#contact" class="hover:text-green-800 transition">Contact</a>
             </div>
             <button onclick="showLogin()" class="btn-primary px-8 py-3 rounded-full font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">Member Access</button>
         </div>
@@ -57,10 +63,8 @@
                     <span class="text-[10px] font-bold uppercase tracking-widest text-amber-100">Official Member Portal</span>
                 </div>
                 <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter">Build Wealth.<br/><span class="text-amber-400 italic">Thrive Together.</span></h1>
-                <p class="text-lg md:text-2xl mb-12 max-w-2xl mx-auto text-green-100/60 font-medium leading-relaxed">Securing a legacy for 20 visionaries in Kigali through disciplined savings and collective investment.</p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <button onclick="showLogin()" class="btn-gold px-12 py-5 rounded-2xl font-black text-xl shadow-2xl">Enter Portal</button>
-                </div>
+                <p class="text-lg md:text-2xl mb-12 max-w-2xl mx-auto text-green-100/60 font-medium leading-relaxed">Securing a legacy for Kigali's most committed savings group through disciplined contributions.</p>
+                <button onclick="showLogin()" class="btn-gold px-12 py-5 rounded-2xl font-black text-xl shadow-2xl">Enter Portal</button>
             </div>
         </section>
         
@@ -72,27 +76,74 @@
                 </div>
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-green-50 flex items-center gap-6">
                     <div class="bg-amber-100 p-4 rounded-2xl"><i data-lucide="percent" class="text-amber-600"></i></div>
-                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Interest Rate</p><p class="text-2xl font-black text-green-900">2% Monthly</p></div>
+                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Interest</p><p class="text-2xl font-black text-green-900">2% Monthly</p></div>
                 </div>
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-green-50 flex items-center gap-6">
                     <div class="bg-blue-100 p-4 rounded-2xl"><i data-lucide="users" class="text-blue-600"></i></div>
-                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Active Group</p><p class="text-2xl font-black text-green-900">20 Members</p></div>
+                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Active Members</p><p class="text-2xl font-black text-green-900">20 Visionaries</p></div>
                 </div>
             </div>
         </div>
+
+        <section id="mission" class="py-24 px-8 bg-[#FEF3C7] mt-10">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl font-black text-green-900 mb-2 uppercase">Our Mission</h2>
+                <div class="w-24 h-1 bg-amber-500 mx-auto mb-16"></div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm text-left border border-amber-100">
+                        <i data-lucide="target" class="text-green-800 mb-6 h-10 w-10"></i>
+                        <h3 class="text-xl font-bold mb-4">Cultivate Saving</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Building a culture of financial responsibility through consistent monthly contributions from every member.</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm text-left border border-amber-100">
+                        <i data-lucide="trending-up" class="text-amber-600 mb-6 h-10 w-10"></i>
+                        <h3 class="text-xl font-bold mb-4">Strategic Growth</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Turning collective savings into opportunities via accessible 2% interest loans for business projects.</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm text-left border border-amber-100">
+                        <i data-lucide="heart" class="text-green-800 mb-6 h-10 w-10"></i>
+                        <h3 class="text-xl font-bold mb-4">Community</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Fostering mutual accountability and professional growth through our trusted guarantor system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership" class="py-24 px-8 bg-white">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl font-black text-green-900 mb-16 uppercase">Cooperative Leadership</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem] shadow-sm">
+                        <h3 class="text-xl font-black text-gray-900">Eliab MWISENEZA</h3>
+                        <p class="text-amber-600 font-bold text-xs uppercase tracking-widest mb-4">Chairperson</p>
+                        <p class="text-gray-600 text-xs">Strategic vision and cooperative governance lead.</p>
+                    </div>
+                    <div class="bg-green-900 text-white p-8 rounded-[3rem] shadow-xl">
+                        <h3 class="text-xl font-black">Reuben SINDAYIHEBA</h3>
+                        <p class="text-amber-400 font-bold text-xs uppercase tracking-widest mb-4">Treasurer</p>
+                        <p class="text-green-100/60 text-xs">Financial management and digital systems oversight.</p>
+                    </div>
+                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem] shadow-sm">
+                        <h3 class="text-xl font-black text-gray-900">Innocent TURIKUMWE</h3>
+                        <p class="text-amber-600 font-bold text-xs uppercase tracking-widest mb-4">Advisor</p>
+                        <p class="text-gray-600 text-xs">Member relations and community success coordinator.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div id="loginModal" class="modal" onclick="if(event.target == this) closeLogin()">
         <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl max-w-md w-full relative">
             <button onclick="closeLogin()" class="absolute top-10 right-10 text-gray-400"><i data-lucide="x"></i></button>
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-black text-green-950 tracking-tighter">Member Access</h2>
-                <p class="text-sm font-semibold text-gray-400 mt-2">Secure Membership Verification</p>
+                <h2 class="text-3xl font-black text-green-950">Identity Check</h2>
+                <p class="text-sm font-semibold text-gray-400 mt-2">Secure Member Authentication</p>
             </div>
             <form onsubmit="handleLogin(event)" class="space-y-4">
                 <input type="email" id="loginEmail" class="w-full px-8 py-5 bg-gray-50 border-none rounded-2xl outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Email Address" required>
                 <input type="password" id="loginPassword" class="w-full px-8 py-5 bg-gray-50 border-none rounded-2xl outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Password" required>
-                <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-black text-lg shadow-xl shadow-green-900/20">Sign In</button>
+                <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-black text-lg">Sign In</button>
             </form>
         </div>
     </div>
@@ -151,9 +202,9 @@
 
         function handleLogin(e) {
             e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const pass = document.getElementById('loginPassword').value;
-            const user = allMembers.find(u => u.email === email && u.password === pass);
+            const email = document.getElementById('loginEmail').value.toLowerCase().trim();
+            const pass = document.getElementById('loginPassword').value.trim();
+            const user = allMembers.find(u => u.email.toLowerCase() === email && u.password === pass);
 
             if (user) {
                 document.getElementById('landingPage').classList.add('hidden');
@@ -164,7 +215,10 @@
                 if (user.role === "Admin/Member") document.getElementById('adminControls').classList.remove('hidden');
                 renderAdminView();
                 renderPersonal(user);
-            } else { showToast("Identity Not Recognized", "error"); }
+                showToast("Access Granted. Welcome back.", "success");
+            } else { 
+                showToast("Login Failed. Please check email/password.", "error"); 
+            }
         }
 
         function setAdminTab(tab) {
@@ -179,13 +233,13 @@
             if (currentAdminTab === 'members') {
                 win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] text-gray-400 uppercase tracking-widest border-b"><th class="pb-5">Name</th><th class="pb-5">Savings</th><th class="pb-5 text-right">Penalties</th></tr></thead><tbody>${allMembers.map(m => `<tr class="border-b border-gray-50 hover:bg-gray-50 transition"><td class="py-5 font-black text-gray-800">${m.fullName}</td><td class="py-5 font-bold text-green-700">${m.totalBalance.toLocaleString()} RWF</td><td class="py-5 font-bold text-red-500 text-right">${m.penalties.toLocaleString()} RWF</td></tr>`).join('')}</tbody></table>`;
             } else if (currentAdminTab === 'loans') {
-                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] text-gray-400 uppercase tracking-widest border-b"><th class="pb-5">Member</th><th class="pb-5">Borrowed Total</th><th class="pb-5 text-right">Remaining Balance</th></tr></thead><tbody>${allMembers.map(m => {
+                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] text-gray-400 uppercase tracking-widest border-b"><th class="pb-5">Member</th><th class="pb-5">Total Loan</th><th class="pb-5 text-right">Balance</th></tr></thead><tbody>${allMembers.map(m => {
                     const tDue = m.loans.reduce((s, l) => s + l.totalDue, 0);
                     const tPaid = m.loans.reduce((s, l) => s + l.paid.reduce((a, b) => a + b, 0), 0);
                     return `<tr class="border-b border-gray-50"><td class="py-5 font-black text-gray-800">${m.fullName}</td><td class="py-5 font-bold">${Math.round(tDue).toLocaleString()} RWF</td><td class="py-5 text-right font-black text-red-600">${Math.round(tDue - tPaid).toLocaleString()} RWF</td></tr>`;
                 }).join('')}</tbody></table>`;
             } else {
-                win.innerHTML = `<div class="text-center py-20"><h3 class="text-7xl font-black text-green-950 tracking-tighter">6,766,153 RWF</h3><p class="text-gray-400 font-bold uppercase tracking-[0.3em] mt-4 text-xs">Verified Combined Assets</p></div>`;
+                win.innerHTML = `<div class="text-center py-20"><h3 class="text-7xl font-black text-green-950 tracking-tighter">6,766,153 RWF</h3><p class="text-gray-400 font-bold uppercase tracking-[0.3em] mt-4 text-xs italic">Verified Group Valuation 2026</p></div>`;
             }
         }
 
@@ -196,13 +250,13 @@
                 const rem = loan.totalDue - paid;
                 const prog = (paid/loan.totalDue)*100;
                 return `
-                <div class="bg-white p-10 rounded-[3rem] shadow-sm border mb-6">
+                <div class="bg-white p-10 rounded-[3rem] shadow-sm border mb-6 transition hover:shadow-lg">
                     <div class="flex justify-between items-center mb-8">
-                        <span class="text-[10px] font-black text-amber-500 bg-amber-50 px-3 py-1.5 rounded-full uppercase tracking-widest">Facility Ref: HPA-L${idx+1}</span>
+                        <span class="text-[10px] font-black text-amber-500 bg-amber-50 px-3 py-1.5 rounded-full uppercase tracking-widest tracking-widest">FACILITY ID: HPA-L${idx+1}</span>
                         <span class="text-[10px] font-black px-4 py-2 rounded-full ${rem <= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}">${rem <= 0 ? 'PAID IN FULL' : 'REPAYING'}</span>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-                        <div><p class="text-[10px] uppercase text-gray-400 font-black">Principal + Int.</p><p class="text-2xl font-black">${Math.round(loan.totalDue).toLocaleString()}</p></div>
+                        <div><p class="text-[10px] uppercase text-gray-400 font-black">Principal + Int.</p><p class="text-2xl font-black text-gray-900">${Math.round(loan.totalDue).toLocaleString()}</p></div>
                         <div><p class="text-[10px] uppercase text-green-600 font-black">Repaid</p><p class="text-2xl font-black text-green-600">${Math.round(paid).toLocaleString()}</p></div>
                         <div class="text-right"><p class="text-[10px] uppercase text-red-400 font-black">Remaining Debt</p><p class="text-2xl font-black text-red-600">${Math.round(rem).toLocaleString()}</p></div>
                     </div>
@@ -214,14 +268,15 @@
             <div class="grid lg:grid-cols-3 gap-12">
                 <div class="lg:col-span-2">
                     <div class="bg-white p-12 rounded-[4.5rem] shadow-2xl border-t-8 border-green-800 mb-10 flex justify-between items-end relative overflow-hidden">
-                        <div><p class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-4">Total Member Equity</p><h3 class="text-6xl font-black text-green-950 tracking-tighter">${user.totalBalance.toLocaleString()} RWF</h3></div>
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-green-50 rounded-full translate-x-10 -translate-y-10"></div>
+                        <div><p class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-4">Total Equity Balance</p><h3 class="text-6xl font-black text-green-950 tracking-tighter">${user.totalBalance.toLocaleString()} RWF</h3></div>
                         <div class="bg-red-50 px-8 py-5 rounded-[2.5rem] border border-red-100 text-center"><p class="text-[10px] font-black text-red-400 uppercase tracking-widest mb-1">Penalties</p><p class="text-3xl font-black text-red-600">${user.penalties.toLocaleString()}</p></div>
                     </div>
                     <h4 class="font-black text-gray-800 mb-8 uppercase text-xs tracking-[0.3em] flex items-center gap-3"><i data-lucide="scroll-text" class="text-amber-500 h-6 w-6"></i> My Borrowing Facilities</h4>
-                    ${loanHtml || '<p class="text-gray-400 italic p-16 bg-white rounded-[3.5rem] border border-dashed text-center font-bold">No active borrowing history recorded for this profile.</p>'}
+                    ${loanHtml || '<p class="text-gray-400 italic p-16 bg-white rounded-[3.5rem] border border-dashed text-center font-bold">No active borrowing history recorded.</p>'}
                 </div>
                 <div class="space-y-10">
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-xl border border-gray-100 text-center"><div class="bg-amber-400 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-amber-200"><i data-lucide="shield-check" class="text-green-950"></i></div><p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Verified Profile</p><p class="font-black text-lg text-green-950">${user.fullName}</p><p class="text-[10px] text-gray-400 mt-4 leading-relaxed font-bold tracking-tight">Accessing HPA Secure Network [v1.18]</p></div>
+                    <div class="bg-white p-12 rounded-[3.5rem] shadow-xl border border-gray-100 text-center"><div class="bg-amber-400 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-amber-200"><i data-lucide="shield-check" class="text-green-950"></i></div><p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 tracking-widest">Verified Profile</p><p class="font-black text-lg text-green-950">${user.fullName}</p><p class="text-[10px] text-gray-400 mt-4 leading-relaxed font-bold tracking-tight">Accessing HPA Secure Network [v1.20]</p></div>
                 </div>
             </div>`;
             lucide.createIcons();
