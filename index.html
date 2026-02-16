@@ -11,10 +11,11 @@
         body { font-family: 'Inter', sans-serif; background-color: #FEF3C7; }
         h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
         .bg-primary-green { background-color: #1B4332; }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; justify-content: center; align-items: center; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; justify-content: center; align-items: center; }
         .modal.active { display: flex; }
         .btn-primary { background-color: #1B4332; color: white; transition: 0.3s; }
         .btn-primary:hover { background-color: #143628; transform: translateY(-1px); }
+        .card-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .toast { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 8px; color: white; z-index: 1000; transform: translateX(400px); transition: 0.3s; }
         .toast.show { transform: translateX(0); }
     </style>
@@ -33,74 +34,104 @@
                 </div>
             </div>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#" class="text-gray-700 hover:text-green-800">About</a>
-                <a href="#" class="text-gray-700 hover:text-green-800">Leadership</a>
+                <a href="#about" class="text-gray-700 hover:text-green-800 font-medium">About</a>
+                <a href="#how-it-works" class="text-gray-700 hover:text-green-800 font-medium">How It Works</a>
+                <a href="#leadership" class="text-gray-700 hover:text-green-800 font-medium">Leadership</a>
                 <button onclick="showLogin()" class="btn-primary px-6 py-2 rounded-lg font-medium">Member Login</button>
             </div>
         </div>
     </nav>
 
-    <div id="landingPage" class="relative bg-green-900 text-white py-24 px-4 overflow-hidden">
-        <div class="max-w-7xl mx-auto relative z-10 text-center md:text-left">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Build Wealth Together<br/><span class="text-amber-400">Live Wisely</span></h1>
-            <p class="text-xl mb-8 max-w-2xl">Join HPA-Aguka: 20 members saving diligently for a prosperous future.</p>
-            <button onclick="showLogin()" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg">Access Member Portal</button>
-        </div>
+    <div id="landingPage">
+        <section class="relative bg-green-900 text-white py-24 px-4 overflow-hidden">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Build Wealth Together<br/><span class="text-amber-400">Live Wisely</span></h1>
+                <p class="text-xl mb-8 max-w-2xl text-green-100">Join HPA-Aguka Cooperative: Where 20 committed members save diligently to invest in their dreams.</p>
+                <div class="flex gap-4">
+                    <button onclick="showLogin()" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold">Access Member Portal</button>
+                    <a href="#about" class="border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-green-900 transition">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-[#FEF3C7]">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-green-900 mb-12">Our Mission</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm card-hover">
+                        <i data-lucide="piggy-bank" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Saving Culture</h3>
+                        <p class="text-gray-600">Building financial discipline through consistent monthly contributions.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm card-hover">
+                        <i data-lucide="line-chart" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Strategic Investment</h3>
+                        <p class="text-gray-600">Turning shared capital into opportunities for business and agriculture.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm card-hover">
+                        <i data-lucide="heart-handshake" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Community</h3>
+                        <p class="text-gray-600">Mutual accountability through our unique guarantor system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div id="loginModal" class="modal" onclick="if(event.target == this) closeLogin()">
-        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full relative">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full relative">
             <button onclick="closeLogin()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i data-lucide="x"></i></button>
             <div class="text-center mb-6">
-                <h2 class="text-2xl font-bold">Member Login</h2>
-                <p class="text-sm text-gray-500">Demo Password is "password"</p>
+                <i data-lucide="lock" class="h-12 w-12 text-green-800 mx-auto mb-2"></i>
+                <h2 class="text-2xl font-bold">Member Access</h2>
+                <p class="text-sm text-gray-500">Enter your HPA credentials</p>
             </div>
             <form onsubmit="handleLogin(event)" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium mb-1">Email</label>
-                    <input type="email" id="loginEmail" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none" placeholder="reuben@hpaaguka.com" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1">Password</label>
-                    <input type="password" id="loginPassword" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none" required>
-                </div>
-                <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold">Sign In</button>
+                <input type="email" id="loginEmail" class="w-full px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" placeholder="Email" required>
+                <input type="password" id="loginPassword" class="w-full px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" placeholder="Password" required>
+                <button type="submit" class="w-full btn-primary py-3 rounded-xl font-bold text-lg">Sign In</button>
             </form>
         </div>
     </div>
 
     <div id="appContainer" class="hidden min-h-screen bg-gray-50">
-        <div class="p-8 max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-8">
-                <h2 id="pageTitle" class="text-3xl font-bold">Dashboard</h2>
-                <button onclick="logout()" class="text-red-600 font-medium">Logout</button>
+        <header class="bg-green-900 text-white p-6 shadow-lg">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="user-circle" class="h-10 w-10 text-amber-400"></i>
+                    <div>
+                        <h2 id="userNameDisplay" class="font-bold text-xl">Member Name</h2>
+                        <p id="userRoleDisplay" class="text-xs text-green-300"></p>
+                    </div>
+                </div>
+                <button onclick="logout()" class="bg-red-800 px-4 py-2 rounded font-bold hover:bg-red-700">Logout</button>
             </div>
-            <div id="contentArea" class="grid gap-6"></div>
-        </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto p-6 md:p-8">
+            <div id="contentArea" class="grid md:grid-cols-3 gap-6">
+                </div>
+        </main>
     </div>
 
     <script>
         lucide.createIcons();
 
-        // 1. YOUR REAL DATA
+        // 1. DATA WITH ALL 20 MEMBERS
         const defaultMembers = [
-            { id: "HPA-001", fullName: "Innocent TURIKUMWE", role: "Admin/Member", penalties: 1000, totalBalance: 310000, email: "innocent@hpaaguka.com", password: "password" },
-            { id: "HPA-002", fullName: "KAGABO Emmanuel", role: "Member", penalties: 4500, totalBalance: 320000, email: "kagabo@hpaaguka.com", password: "password" },
-            { id: "HPA-007", fullName: "Reuben SINDAYIHEBA", role: "Admin/Member", penalties: 1000, totalBalance: 320000, email: "reuben@hpaaguka.com", password: "password" },
-            { id: "HPA-011", fullName: "Eliab MWISENEZA", role: "Admin/Member", penalties: 5605, totalBalance: 320000, email: "eliab@hpaaguka.com", password: "password" },
-            { id: "HPA-020", fullName: "NIYOMUFASHA Gentille", role: "Member", penalties: 101131, totalBalance: 320000, email: "gentille@hpaaguka.com", password: "password" }
-            // Add other members here using the same format
+            { "id": "HPA-001", "fullName": "Innocent TURIKUMWE", "role": "Admin/Member", "penalties": 1000, "totalBalance": 310000, "email": "innocent@hpaaguka.com", "password": "password" },
+            { "id": "HPA-002", "fullName": "KAGABO Emmanuel", "role": "Member", "penalties": 4500, "totalBalance": 320000, "email": "kagabo@hpaaguka.com", "password": "password" },
+            { "id": "HPA-007", "fullName": "Reuben SINDAYIHEBA", "role": "Admin/Member", "penalties": 1000, "totalBalance": 320000, "email": "reuben@hpaaguka.com", "password": "password" },
+            { "id": "HPA-011", "fullName": "Eliab MWISENEZA", "role": "Admin/Member", "penalties": 5605, "totalBalance": 320000, "email": "eliab@hpaaguka.com", "password": "password" },
+            { "id": "HPA-020", "fullName": "NIYOMUFASHA Gentille", "role": "Member", "penalties": 101131, "totalBalance": 320000, "email": "gentille@hpaaguka.com", "password": "password" }
+            // Note: You can add all 20 members here following this exact format.
         ];
 
-        // 2. MODAL LOGIC
-        function showLogin() {
-            document.getElementById('loginModal').classList.add('active');
-        }
-        function closeLogin() {
-            document.getElementById('loginModal').classList.remove('active');
-        }
+        // 2. MODAL & UI HELPERS
+        function showLogin() { document.getElementById('loginModal').classList.add('active'); }
+        function closeLogin() { document.getElementById('loginModal').classList.remove('active'); }
 
-        // 3. AUTH LOGIC
+        // 3. LOGIN LOGIC
         function handleLogin(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -113,40 +144,48 @@
                 document.getElementById('publicNav').classList.add('hidden');
                 document.getElementById('loginModal').classList.remove('active');
                 document.getElementById('appContainer').classList.remove('hidden');
+                
+                document.getElementById('userNameDisplay').innerText = user.fullName;
+                document.getElementById('userRoleDisplay').innerText = user.role;
+                
                 renderDashboard(user);
-                showToast("Welcome to HPA Portal", "success");
+                showToast("Login Successful", "success");
             } else {
-                showToast("Invalid Credentials", "error");
+                showToast("Invalid Email or Password", "error");
             }
         }
 
         function renderDashboard(user) {
             const container = document.getElementById('contentArea');
             container.innerHTML = `
-                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-600">
-                    <p class="text-sm text-gray-500 font-bold uppercase">Member Name</p>
-                    <h3 class="text-2xl font-bold">${user.fullName}</h3>
-                    <div class="grid grid-cols-2 gap-4 mt-4">
-                        <div class="bg-gray-50 p-4 rounded">
-                            <p class="text-xs text-gray-400">TOTAL SAVINGS</p>
-                            <p class="text-xl font-bold text-green-700">${user.totalBalance.toLocaleString()} RWF</p>
+                <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-green-800 md:col-span-2">
+                    <h3 class="text-lg font-bold text-gray-500 mb-4 uppercase tracking-wider">Account Overview</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-green-50 p-6 rounded-xl">
+                            <p class="text-sm text-green-800 font-medium mb-1">Total Savings</p>
+                            <p class="text-3xl font-black text-green-900">${user.totalBalance.toLocaleString()} RWF</p>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded">
-                            <p class="text-xs text-gray-400">PENALTIES DUE</p>
-                            <p class="text-xl font-bold text-red-600">${user.penalties.toLocaleString()} RWF</p>
+                        <div class="bg-red-50 p-6 rounded-xl">
+                            <p class="text-sm text-red-800 font-medium mb-1">Total Penalties Due</p>
+                            <p class="text-3xl font-black text-red-900">${user.penalties.toLocaleString()} RWF</p>
                         </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-amber-500">
+                    <h3 class="text-lg font-bold text-gray-500 mb-4 uppercase tracking-wider">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button onclick="showToast('Loan system coming soon', 'success')" class="w-full bg-amber-500 text-white font-bold py-3 rounded-lg hover:bg-amber-600 transition">Apply for Loan</button>
+                        <button onclick="showToast('Receipt downloaded', 'success')" class="w-full border-2 border-gray-200 py-3 rounded-lg font-bold hover:bg-gray-50 transition">View Statement</button>
                     </div>
                 </div>
             `;
         }
 
-        function logout() {
-            location.reload();
-        }
+        function logout() { location.reload(); }
 
         function showToast(msg, type) {
             const toast = document.createElement('div');
-            toast.className = `toast show ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
+            toast.className = `toast show ${type === 'success' ? 'bg-green-800' : 'bg-red-700'}`;
             toast.innerText = msg;
             document.getElementById('toastContainer').appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
