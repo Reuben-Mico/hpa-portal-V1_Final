@@ -6,1340 +6,151 @@
     <title>HPA-Aguka Cooperative - Live Wisely, Save to Invest</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FEF3C7;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .primary-green { color: #1B4332; }
+        body { font-family: 'Inter', sans-serif; background-color: #FEF3C7; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
         .bg-primary-green { background-color: #1B4332; }
-        .secondary-gold { color: #F59E0B; }
-        .bg-secondary-gold { background-color: #F59E0B; }
-        .cream-bg { background-color: #FEF3C7; }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .slide-in {
-            animation: slideIn 0.3s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-        
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 16px 24px;
-            border-radius: 8px;
-            color: white;
-            font-weight: 500;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-        }
-        
-        .toast.show {
-            transform: translateX(0);
-        }
-        
-        .toast.success { background-color: #10B981; }
-        .toast.error { background-color: #F43F5E; }
-        .toast.warning { background-color: #F97316; }
-        
-        .sidebar {
-            transition: transform 0.3s ease;
-        }
-        
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                position: fixed;
-                z-index: 50;
-                height: 100vh;
-            }
-            .sidebar.open {
-                transform: translateX(0);
-            }
-        }
-        
-        .progress-ring {
-            transform: rotate(-90deg);
-        }
-        
-        .progress-ring-circle {
-            transition: stroke-dashoffset 0.35s;
-            transform-origin: 50% 50%;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 24px;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #1B4332;
-            box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.1);
-        }
-        
-        .btn-primary {
-            background-color: #1B4332;
-            color: white;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            background-color: #143628;
-            transform: translateY(-1px);
-        }
-        
-        .btn-secondary {
-            background-color: #F59E0B;
-            color: white;
-            transition: all 0.3s;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #D97706;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .loading-skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-        
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; justify-content: center; align-items: center; }
+        .modal.active { display: flex; }
+        .btn-primary { background-color: #1B4332; color: white; transition: 0.3s; }
+        .btn-primary:hover { background-color: #143628; transform: translateY(-1px); }
+        .toast { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 8px; color: white; z-index: 1000; transform: translateX(400px); transition: 0.3s; }
+        .toast.show { transform: translateX(0); }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- Toast Container -->
     <div id="toastContainer"></div>
 
-    <!-- Navigation - Public -->
     <nav id="publicNav" class="bg-white shadow-md sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-2">
-                        <i data-lucide="trees" class="h-8 w-8 text-green-800"></i>
-                        <div>
-                            <h1 class="text-xl font-bold text-green-900">HPA-Aguka</h1>
-                            <p class="text-xs text-amber-600 -mt-1">Live Wisely, Save to Invest</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-700 hover:text-green-800 transition">About</a>
-                    <a href="#how-it-works" class="text-gray-700 hover:text-green-800 transition">How It Works</a>
-                    <a href="#leadership" class="text-gray-700 hover:text-green-800 transition">Leadership</a>
-                    <a href="#contact" class="text-gray-700 hover:text-green-800 transition">Contact</a>
-                    <button onclick="showLogin()" class="btn-primary px-6 py-2 rounded-lg font-medium">Member Login</button>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button onclick="toggleMobileMenu()" class="text-gray-700">
-                        <i data-lucide="menu" class="h-6 w-6"></i>
-                    </button>
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="trees" class="h-8 w-8 text-green-800"></i>
+                <div>
+                    <h1 class="text-xl font-bold text-green-900">HPA-Aguka</h1>
+                    <p class="text-xs text-amber-600 -mt-1">Live Wisely, Save to Invest</p>
                 </div>
             </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#about" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">About</a>
-                <a href="#how-it-works" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">How It Works</a>
-                <a href="#leadership" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">Leadership</a>
-                <button onclick="showLogin()" class="w-full text-left px-3 py-2 text-green-800 font-medium hover:bg-green-50 rounded">Member Login</button>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-700 hover:text-green-800">About</a>
+                <a href="#" class="text-gray-700 hover:text-green-800">Leadership</a>
+                <button onclick="showLogin()" class="btn-primary px-6 py-2 rounded-lg font-medium">Member Login</button>
             </div>
         </div>
     </nav>
 
-    <!-- App Container (Hidden until login) -->
-    <div id="appContainer" class="hidden min-h-screen bg-gray-50">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="sidebar fixed left-0 top-0 h-full w-64 bg-green-900 text-white z-50 overflow-y-auto">
-            <div class="p-6 border-b border-green-800">
-                <div class="flex items-center gap-2 mb-2">
-                    <i data-lucide="trees" class="h-8 w-8 text-amber-400"></i>
-                    <span class="text-xl font-bold">HPA-Aguka</span>
-                </div>
-                <p class="text-xs text-green-300 italic">Live Wisely, Save to Invest</p>
-            </div>
-            
-            <nav class="mt-6 px-4 space-y-2">
-                <button onclick="navigateTo('dashboard')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                    <i data-lucide="layout-dashboard" class="h-5 w-5"></i>
-                    <span>Dashboard</span>
-                </button>
-                
-                <button onclick="navigateTo('contributions')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                    <i data-lucide="wallet" class="h-5 w-5"></i>
-                    <span>My Contributions</span>
-                </button>
-                
-                <button onclick="navigateTo('loans')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                    <i data-lucide="banknote" class="h-5 w-5"></i>
-                    <span>My Loans</span>
-                </button>
-                
-                <!-- Leadership Only Items -->
-                <div id="leadershipMenu" class="hidden mt-4 pt-4 border-t border-green-800">
-                    <p class="px-4 text-xs text-green-400 uppercase tracking-wider mb-2">Leadership</p>
-                    <button onclick="navigateTo('treasurer')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                        <i data-lucide="shield" class="h-5 w-5"></i>
-                        <span>Treasury</span>
-                    </button>
-                    <button onclick="navigateTo('reports')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                        <i data-lucide="file-text" class="h-5 w-5"></i>
-                        <span>Reports</span>
-                    </button>
-                    <button onclick="navigateTo('members')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                        <i data-lucide="users" class="h-5 w-5"></i>
-                        <span>All Members</span>
-                    </button>
-                </div>
-                
-                <div class="mt-8 pt-4 border-t border-green-800">
-                    <button onclick="navigateTo('profile')" class="nav-item w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-800 transition text-left">
-                        <i data-lucide="user" class="h-5 w-5"></i>
-                        <span>Profile</span>
-                    </button>
-                    <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-red-800 transition text-left text-red-200">
-                        <i data-lucide="log-out" class="h-5 w-5"></i>
-                        <span>Logout</span>
-                    </button>
-                </div>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="md:ml-64 min-h-screen">
-            <!-- Top Header -->
-            <header class="bg-white shadow-sm sticky top-0 z-30 px-8 py-4 flex justify-between items-center">
-                <div class="flex items-center gap-4">
-                    <button onclick="toggleSidebar()" class="md:hidden text-gray-600">
-                        <i data-lucide="menu" class="h-6 w-6"></i>
-                    </button>
-                    <div>
-                        <h2 id="pageTitle" class="text-2xl font-bold text-gray-800">Dashboard</h2>
-                        <p id="currentDate" class="text-sm text-gray-500"></p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="hidden sm:block text-right">
-                        <p id="userNameDisplay" class="font-medium text-gray-800"></p>
-                        <p id="userRoleDisplay" class="text-xs text-amber-600 capitalize"></p>
-                    </div>
-                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
-                        <i data-lucide="user" class="h-5 w-5 text-green-800"></i>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Content Area -->
-            <div id="contentArea" class="p-4 md:p-8 max-w-7xl mx-auto">
-                <!-- Views will be injected here -->
-            </div>
-        </main>
+    <div id="landingPage" class="relative bg-green-900 text-white py-24 px-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10 text-center md:text-left">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Build Wealth Together<br/><span class="text-amber-400">Live Wisely</span></h1>
+            <p class="text-xl mb-8 max-w-2xl">Join HPA-Aguka: 20 members saving diligently for a prosperous future.</p>
+            <button onclick="showLogin()" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg">Access Member Portal</button>
+        </div>
     </div>
 
-    <!-- Landing Page Content -->
-    <div id="landingPage">
-        <!-- Hero Section -->
-        <section class="relative bg-gradient-to-br from-green-900 via-green-800 to-green-900 text-white overflow-hidden">
-            <div class="absolute inset-0 opacity-20">
-                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="currentColor" class="text-green-700"/>
-                </svg>
-            </div>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10">
-                <div class="md:w-2/3">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                        Build Wealth Together<br/>
-                        <span class="text-amber-400">Live Wisely</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl mb-8 text-green-100 max-w-2xl">
-                        Join HPA-Aguka Cooperative: Where 20 committed members save diligently to invest in their dreams. 
-                        <span class="font-semibold text-amber-300">"Live Wisely, Save to Invest"</span>
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="showLogin()" class="btn-secondary px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center gap-2">
-                            <span>Access Member Portal</span>
-                            <i data-lucide="arrow-right" class="h-5 w-5"></i>
-                        </button>
-                        <a href="#about" class="px-8 py-4 rounded-lg font-semibold text-lg border-2 border-white hover:bg-white hover:text-green-900 transition text-center">
-                            Learn More
-                        </a>
-                    </div>
-                    <div class="mt-12 flex items-center gap-8 text-sm text-green-200">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="users" class="h-5 w-5"></i>
-                            <span>20 Active Members</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="trending-up" class="h-5 w-5"></i>
-                            <span>8.5M RWF Saved</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="shield-check" class="h-5 w-5"></i>
-                            <span>Trusted Since 2020</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 cream-bg">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-4">Our Mission</h2>
-                    <div class="w-24 h-1 bg-amber-500 mx-auto"></div>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
-                        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="piggy-bank" class="h-7 w-7 text-green-800"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Cultivate Saving Culture</h3>
-                        <p class="text-gray-600">We believe in the power of consistent, disciplined saving. Every member commits to monthly contributions, building a culture of financial responsibility.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
-                        <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="line-chart" class="h-7 w-7 text-amber-700"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Strategic Investment</h3>
-                        <p class="text-gray-600">Savings are the foundation. We provide accessible loans for agriculture, education, and business expansion—turning savings into growth opportunities.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
-                        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="heart-handshake" class="h-7 w-7 text-green-800"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-gray-800">Community Development</h3>
-                        <p class="text-gray-600">When one member rises, we all rise. Our guarantor system ensures mutual accountability and shared success in our cooperative journey.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- How It Works -->
-        <section id="how-it-works" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-4">How HPA-Aguka Works</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">Join our cycle of wise living and strategic investment in three simple steps</p>
-                </div>
-                <div class="relative">
-                    <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
-                    <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-green-800 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg border-4 border-white">
-                                1
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-gray-800">Join & Commit</h3>
-                            <p class="text-gray-600">Become one of our 20 dedicated members. Pay your share capital and commit to monthly savings of at least 10,000 RWF.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg border-4 border-white">
-                                2
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-gray-800">Save Regularly</h3>
-                            <p class="text-gray-600">Track your contributions through our transparent portal. Watch your savings grow with visual progress trackers and annual goals.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-green-800 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg border-4 border-white">
-                                3
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-gray-800">Invest & Grow</h3>
-                            <p class="text-gray-600">Apply for loans up to 3x your savings with 2 guarantors. Use funds for agriculture, business, or education. Repay and re-invest.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leadership Section -->
-        <section id="leadership" class="py-20 cream-bg">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-4">Our Leadership</h2>
-                    <p class="text-gray-600">Committed stewards of our cooperative's growth</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
-                        <img src="http://static.photos/people/640x360/101" alt="Chairperson" class="w-full h-64 object-cover">
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-gray-800">MWISENEZA Eliab</h3>
-                            <p class="text-amber-600 font-medium mb-2">Chairperson</p>
-                            <p class="text-sm text-gray-600">Overseeing cooperative governance and strategic direction since 2020.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
-                        <img src="http://static.photos/people/640x360/102" alt="Treasurer" class="w-full h-64 object-cover">
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-gray-800">SINDAYIHEBA Reuben</h3>
-                            <p class="text-amber-600 font-medium mb-2">Treasurer</p>
-                            <p class="text-sm text-gray-600">Managing our 8.5M RWF portfolio with transparency and precision.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
-                        <img src="http://static.photos/people/640x360/103" alt="Secretary" class="w-full h-64 object-cover">
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-gray-800">TURIKUMWE Innocent</h3>
-                            <p class="text-amber-600 font-medium mb-2">Advisor</p>
-                            <p class="text-sm text-gray-600">Coordinating member relations and cooperative communications.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-6">Contact HPA-Aguka</h2>
-                        <p class="text-gray-600 mb-8">Interested in learning more about our cooperative? Reach out to our leadership team.</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i data-lucide="map-pin" class="h-6 w-6 text-green-800"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-gray-800">Location</p>
-                                    <p class="text-gray-600">Kigali, Rwanda - Nyarugenge District</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i data-lucide="phone" class="h-6 w-6 text-green-800"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-gray-800">Phone</p>
-                                    <p class="text-gray-600">+250 788 123 456</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i data-lucide="mail" class="h-6 w-6 text-green-800"></i>
-                                </div>
-                                <div>
-                                    <p class="font-medium text-gray-800">Email</p>
-                                    <p class="text-gray-600">info@hpaaguka.coop</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <form class="bg-cream-bg p-8 rounded-2xl shadow-lg" onsubmit="event.preventDefault(); showToast('Message sent successfully!', 'success'); this.reset();">
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required></textarea>
-                            </div>
-                            <button type="submit" class="w-full btn-primary py-3 rounded-lg font-medium">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-green-900 text-white py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-4 gap-8 mb-8">
-                    <div class="col-span-2">
-                        <div class="flex items-center gap-2 mb-4">
-                            <i data-lucide="trees" class="h-8 w-8 text-amber-400"></i>
-                            <span class="text-xl font-bold">HPA-Aguka</span>
-                        </div>
-                        <p class="text-green-200 mb-4 max-w-sm">Empowering 20 members to live wisely, save diligently, and invest strategically for a prosperous future.</p>
-                        <p class="text-amber-400 font-medium italic">"Live Wisely, Save to Invest"</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-4">Quick Links</h4>
-                        <ul class="space-y-2 text-green-200">
-                            <li><a href="#about" class="hover:text-white transition">About Us</a></li>
-                            <li><a href="#leadership" class="hover:text-white transition">Leadership</a></li>
-                            <li><a href="#" onclick="showLogin()" class="hover:text-white transition">Member Login</a></li>
-                            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-4">Contact Info</h4>
-                        <ul class="space-y-2 text-green-200">
-                            <li class="flex items-center gap-2"><i data-lucide="phone" class="h-4 w-4"></i> +250 788 123 456</li>
-                            <li class="flex items-center gap-2"><i data-lucide="mail" class="h-4 w-4"></i> info@hpaaguka.coop</li>
-                            <li class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4"></i> Kigali, Rwanda</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="border-t border-green-800 pt-8 text-center text-green-300 text-sm">
-                    <p>&copy; 2024 HPA-Aguka Cooperative. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content max-w-md">
+    <div id="loginModal" class="modal" onclick="if(event.target == this) closeLogin()">
+        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full relative">
+            <button onclick="closeLogin()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i data-lucide="x"></i></button>
             <div class="text-center mb-6">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i data-lucide="trees" class="h-8 w-8 text-green-800"></i>
-                </div>
-                <h2 class="text-2xl font-bold text-gray-800">Member Login</h2>
-                <p class="text-gray-600 text-sm mt-1">Access your HPA-Aguka account</p>
+                <h2 class="text-2xl font-bold">Member Login</h2>
+                <p class="text-sm text-gray-500">Demo Password is "password"</p>
             </div>
-            
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Email or Member ID</label>
-                        <input type="text" id="loginEmail" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" placeholder="member@hpaaguka.com" required>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                        <input type="password" id="loginPassword" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" required>
-                    </div>
-                    <div class="flex items-center justify-between text-sm">
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" class="rounded text-green-600 focus:ring-green-500">
-                            <span class="text-gray-600">Remember me</span>
-                        </label>
-                        <a href="#" class="text-green-700 hover:underline">Forgot password?</a>
-                    </div>
-                    <button type="submit" class="w-full btn-primary py-3 rounded-lg font-medium">Sign In</button>
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <input type="email" id="loginEmail" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none" placeholder="reuben@hpaaguka.com" required>
                 </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Password</label>
+                    <input type="password" id="loginPassword" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none" required>
+                </div>
+                <button type="submit" class="w-full btn-primary py-3 rounded-lg font-bold">Sign In</button>
             </form>
-            
-            <div class="mt-6 pt-6 border-t border-gray-200">
-                <p class="text-xs text-gray-500 text-center mb-3">Demo Credentials:</p>
-                <div class="space-y-2 text-xs text-gray-600 bg-gray-50 p-3 rounded-lg">
-                    <p><strong>Chairperson:</strong> jean@hpaaguka.com / password</p>
-                    <p><strong>Treasurer:</strong> marie@hpaaguka.com / password</p>
-                    <p><strong>Member:</strong> any member email / password</p>
-                </div>
+        </div>
+    </div>
+
+    <div id="appContainer" class="hidden min-h-screen bg-gray-50">
+        <div class="p-8 max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h2 id="pageTitle" class="text-3xl font-bold">Dashboard</h2>
+                <button onclick="logout()" class="text-red-600 font-medium">Logout</button>
             </div>
-            
-            <button onclick="closeLogin()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-                <i data-lucide="x" class="h-6 w-6"></i>
-            </button>
+            <div id="contentArea" class="grid gap-6"></div>
         </div>
     </div>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Data Management
-        const COOP_DATA_KEY = 'hpa_aguka_data';
-        const SESSION_KEY = 'hpa_aguka_session';
-        
-        // Sample Data for 20 Members
-const defaultMembers = [
-    { "id": "HPA-001", "fullName": "Innocent TURIKUMWE", "role": "Admin/Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 310000, "email": "innocent@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-002", "fullName": "KAGABO Emmanuel", "role": "Member", "previousYears": 240000, "penalties": 4500, "totalBalance": 320000, "email": "kagabo@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-003", "fullName": "KAYITESI Isabelle", "role": "Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 320000, "email": "isabelle@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-004", "fullName": "Jocelyne UWAMBAJIMANA", "role": "Member", "previousYears": 240000, "penalties": 3250, "totalBalance": 300000, "email": "jocelyne@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-005", "fullName": "Odile NTAKINANIRIMANA", "role": "Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 310000, "email": "odile@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-006", "fullName": "Gisèle UYISENGA", "role": "Member", "previousYears": 240000, "penalties": 7930, "totalBalance": 310000, "email": "gisele@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-007", "fullName": "Reuben SINDAYIHEBA", "role": "Admin/Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 320000, "email": "reuben@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-008", "fullName": "Patrick UWIDUHAYE", "role": "Member", "previousYears": 240000, "penalties": 6000, "totalBalance": 320000, "email": "patrick@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-009", "fullName": "Theonille MUKABAGORORA", "role": "Member", "previousYears": 240000, "penalties": 11275, "totalBalance": 300000, "email": "theonille@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-010", "fullName": "Mireille UMWALI", "role": "Member", "previousYears": 240000, "penalties": 4265, "totalBalance": 350000, "email": "mireille@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-011", "fullName": "Eliab MWISENEZA", "role": "Admin/Member", "previousYears": 240000, "penalties": 5605, "totalBalance": 320000, "email": "eliab@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-012", "fullName": "Gabriel ISHIMWE", "role": "Member", "previousYears": 240000, "penalties": 7688, "totalBalance": 320000, "email": "gabriel@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-013", "fullName": "IGIHOZO Chanceline", "role": "Member", "previousYears": 240000, "penalties": 22236, "totalBalance": 320000, "email": "chanceline@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-014", "fullName": "Maurice TUYISENGE", "role": "Member", "previousYears": 240000, "penalties": 6788, "totalBalance": 310000, "email": "maurice@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-015", "fullName": "Adrien TUYIZERE", "role": "Member", "previousYears": 240000, "penalties": 6525, "totalBalance": 310000, "email": "adrien@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-016", "fullName": "Stanisilas TUYISENGE", "role": "Member", "previousYears": 240000, "penalties": 0, "totalBalance": 320000, "email": "stanisilas@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-017", "fullName": "MUGABWAMBERE Jean de Dieu", "role": "Member", "previousYears": 240000, "penalties": 0, "totalBalance": 320000, "email": "jeandedieu@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-018", "fullName": "UWAMAHORO Josiane", "role": "Member", "previousYears": 240000, "penalties": 13970, "totalBalance": 320000, "email": "josiane@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-019", "fullName": "UMUHOZA Alliance", "role": "Member", "previousYears": 240000, "penalties": 10990, "totalBalance": 330000, "email": "alliance@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
-    { "id": "HPA-020", "fullName": "NIYOMUFASHA Gentille", "role": "Member", "previousYears": 240000, "penalties": 101131, "totalBalance": 320000, "email": "gentille@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] }
-];
-                loans: []
-            },
-            {
-                id: "M002",
-                fullName: "Marie Claire Uwase",
-                email: "marie@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "treasurer",
-                joinDate: "2020-01-15",
-                phoneNumber: "+250 788 222 222",
-                occupation: "Accountant",
-                profileImage: "http://static.photos/people/200x200/102",
-                totalContributions: 920000,
-                shareCapital: 100000,
-                contributions: [
-                    { date: "2024-01-03", amount: 60000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240103-004" },
-                    { date: "2024-02-03", amount: 60000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240203-005" }
-                ],
-                loans: []
-            },
-            {
-                id: "M003",
-                fullName: "Emmanuel Ndayisaba",
-                email: "emmanuel@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "secretary",
-                joinDate: "2020-02-01",
-                phoneNumber: "+250 788 333 333",
-                occupation: "Teacher",
-                profileImage: "http://static.photos/people/200x200/103",
-                totalContributions: 780000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            // Regular Members (17)
-            {
-                id: "M004",
-                fullName: "Jeanne d'Arc Mukamana",
-                email: "jeanne@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-03-15",
-                phoneNumber: "+250 788 444 444",
-                occupation: "Farmer",
-                profileImage: "http://static.photos/people/200x200/104",
-                totalContributions: 650000,
-                shareCapital: 100000,
-                contributions: [
-                    { date: "2024-01-10", amount: 40000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240110-006" },
-                    { date: "2024-02-10", amount: 40000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240210-007" }
-                ],
-                loans: [
-                    {
-                        id: "LOAN-2024-001",
-                        amount: 150000,
-                        purpose: "Agriculture inputs - Maize seeds and fertilizer",
-                        requestDate: "2024-02-15",
-                        status: "repaying",
-                        interestRate: 5,
-                        duration: "6_months",
-                        remainingBalance: 100000,
-                        nextPaymentDate: "2024-04-15",
-                        guarantors: ["M005", "M006"],
-                        monthlyInstallment: 26250
-                    }
-                ]
-            },
-            {
-                id: "M005",
-                fullName: "Innocent Karemera",
-                email: "innocent@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-04-20",
-                phoneNumber: "+250 788 555 555",
-                occupation: "Business Owner",
-                profileImage: "http://static.photos/people/200x200/105",
-                totalContributions: 720000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M006",
-                fullName: "Sandrine Umutoni",
-                email: "sandrine@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-05-10",
-                phoneNumber: "+250 788 666 666",
-                occupation: "Nurse",
-                profileImage: "http://static.photos/people/200x200/106",
-                totalContributions: 580000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: [
-                    {
-                        id: "LOAN-2024-002",
-                        amount: 200000,
-                        purpose: "Business expansion - Retail shop stock",
-                        requestDate: "2024-01-20",
-                        status: "repaying",
-                        interestRate: 5,
-                        duration: "12_months",
-                        remainingBalance: 150000,
-                        nextPaymentDate: "2024-04-20",
-                        guarantors: ["M004", "M007"],
-                        monthlyInstallment: 17500
-                    }
-                ]
-            },
-            {
-                id: "M007",
-                fullName: "Theogene Manirafasha",
-                email: "theogene@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-06-01",
-                phoneNumber: "+250 788 777 777",
-                occupation: "Driver",
-                profileImage: "http://static.photos/people/200x200/107",
-                totalContributions: 490000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M008",
-                fullName: "Claudine Ishimwe",
-                email: "claudine@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-07-15",
-                phoneNumber: "+250 788 888 888",
-                occupation: "Teacher",
-                profileImage: "http://static.photos/people/200x200/108",
-                totalContributions: 610000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: [
-                    {
-                        id: "LOAN-2024-003",
-                        amount: 300000,
-                        purpose: "Education fees - University tuition",
-                        requestDate: "2024-03-01",
-                        status: "pending",
-                        interestRate: 5,
-                        duration: "12_months",
-                        remainingBalance: 300000,
-                        nextPaymentDate: null,
-                        guarantors: ["M009", "M010"],
-                        monthlyInstallment: 26250
-                    }
-                ]
-            },
-            {
-                id: "M009",
-                fullName: "Francois Mugisha",
-                email: "francois@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-08-20",
-                phoneNumber: "+250 788 999 999",
-                occupation: "Mechanic",
-                profileImage: "http://static.photos/people/200x200/109",
-                totalContributions: 530000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M010",
-                fullName: "Diane Murekatete",
-                email: "diane@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-09-10",
-                phoneNumber: "+250 789 000 000",
-                occupation: "Tailor",
-                profileImage: "http://static.photos/people/200x200/110",
-                totalContributions: 445000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M011",
-                fullName: "Eric Nshimiyimana",
-                email: "eric@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-10-05",
-                phoneNumber: "+250 789 111 111",
-                occupation: "Construction Worker",
-                profileImage: "http://static.photos/people/200x200/111",
-                totalContributions: 380000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M012",
-                fullName: "Grace Uwingabire",
-                email: "grace@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2020-11-12",
-                phoneNumber: "+250 789 222 222",
-                occupation: "Market Vendor",
-                profileImage: "http://static.photos/people/200x200/112",
-                totalContributions: 520000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: [
-                    {
-                        id: "LOAN-2024-004",
-                        amount: 250000,
-                        purpose: "Agriculture - Vegetable farming",
-                        requestDate: "2024-02-28",
-                        status: "approved",
-                        interestRate: 5,
-                        duration: "6_months",
-                        remainingBalance: 250000,
-                        nextPaymentDate: "2024-04-01",
-                        guarantors: ["M013", "M014"],
-                        monthlyInstallment: 43750
-                    }
-                ]
-            },
-            {
-                id: "M013",
-                fullName: "Patrick Hategekimana",
-                email: "patrick@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-01-08",
-                phoneNumber: "+250 789 333 333",
-                occupation: "Security Guard",
-                profileImage: "http://static.photos/people/200x200/113",
-                totalContributions: 340000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M014",
-                fullName: "Solange Mutesi",
-                email: "solange@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-02-14",
-                phoneNumber: "+250 789 444 444",
-                occupation: "Hairdresser",
-                profileImage: "http://static.photos/people/200x200/114",
-                totalContributions: 290000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M015",
-                fullName: "Alphonse Ndayambaje",
-                email: "alphonse@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-03-22",
-                phoneNumber: "+250 789 555 555",
-                occupation: "Farmer",
-                profileImage: "http://static.photos/people/200x200/115",
-                totalContributions: 410000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M016",
-                fullName: "Beatrice Nyiramana",
-                email: "beatrice@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-04-18",
-                phoneNumber: "+250 789 666 666",
-                occupation: "Small Business Owner",
-                profileImage: "http://static.photos/people/200x200/116",
-                totalContributions: 475000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M017",
-                fullName: "Celestin Habiyaremye",
-                email: "celestin@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-05-30",
-                phoneNumber: "+250 789 777 777",
-                occupation: "Carpenter",
-                profileImage: "http://static.photos/people/200x200/117",
-                totalContributions: 320000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M018",
-                fullName: "Fanny Uwimbabazi",
-                email: "fanny@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-06-25",
-                phoneNumber: "+250 789 888 888",
-                occupation: "Student",
-                profileImage: "http://static.photos/people/200x200/118",
-                totalContributions: 180000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M019",
-                fullName: "Gilbert Niyonsaba",
-                email: "gilbert@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-07-14",
-                phoneNumber: "+250 789 999 999",
-                occupation: "Motorcycle Taxi Driver",
-                profileImage: "http://static.photos/people/200x200/119",
-                totalContributions: 260000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            },
-            {
-                id: "M020",
-                fullName: "Helene Umutoni",
-                email: "helene@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-                role: "member",
-                joinDate: "2021-08-08",
-                phoneNumber: "+250 790 000 000",
-                occupation: "Waitress",
-                profileImage: "http://static.photos/people/200x200/120",
-                totalContributions: 220000,
-                shareCapital: 100000,
-                contributions: [],
-                loans: []
-            }
+        // 1. YOUR REAL DATA
+        const defaultMembers = [
+            { id: "HPA-001", fullName: "Innocent TURIKUMWE", role: "Admin/Member", penalties: 1000, totalBalance: 310000, email: "innocent@hpaaguka.com", password: "password" },
+            { id: "HPA-002", fullName: "KAGABO Emmanuel", role: "Member", penalties: 4500, totalBalance: 320000, email: "kagabo@hpaaguka.com", password: "password" },
+            { id: "HPA-007", fullName: "Reuben SINDAYIHEBA", role: "Admin/Member", penalties: 1000, totalBalance: 320000, email: "reuben@hpaaguka.com", password: "password" },
+            { id: "HPA-011", fullName: "Eliab MWISENEZA", role: "Admin/Member", penalties: 5605, totalBalance: 320000, email: "eliab@hpaaguka.com", password: "password" },
+            { id: "HPA-020", fullName: "NIYOMUFASHA Gentille", role: "Member", penalties: 101131, totalBalance: 320000, email: "gentille@hpaaguka.com", password: "password" }
+            // Add other members here using the same format
         ];
 
-        // Initialize Data
-        function initializeData() {
-            if (!localStorage.getItem(COOP_DATA_KEY)) {
-                localStorage.setItem(COOP_DATA_KEY, JSON.stringify(defaultMembers));
-            }
-        }
-
-        // Simple hash function for demo (SHA-256 simulation)
-        async function hashPassword(password) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        // Session Management
-        let currentUser = null;
-
-        function getMembers() {
-            return JSON.parse(localStorage.getItem(COOP_DATA_KEY) || '[]');
-        }
-
-        function saveMembers(members) {
-            localStorage.setItem(COOP_DATA_KEY, JSON.stringify(members));
-        }
-
-        function setSession(user) {
-            currentUser = user;
-            const session = {
-                userId: user.id,
-                role: user.role,
-                timestamp: new Date().toISOString()
-            };
-            localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-            updateUIForUser(user);
-        }
-
-        function checkSession() {
-            const session = localStorage.getItem(SESSION_KEY);
-            if (session) {
-                const sessionData = JSON.parse(session);
-                const members = getMembers();
-                const user = members.find(m => m.id === sessionData.userId);
-                if (user) {
-                    currentUser = user;
-                    updateUIForUser(user);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem(SESSION_KEY);
-            document.getElementById('appContainer').classList.add('hidden');
-            document.getElementById('landingPage').classList.remove('hidden');
-            document.getElementById('publicNav').classList.remove('hidden');
-            showToast('Logged out successfully', 'success');
-        }
-
-        // UI Functions
+        // 2. MODAL LOGIC
         function showLogin() {
             document.getElementById('loginModal').classList.add('active');
         }
-
         function closeLogin() {
             document.getElementById('loginModal').classList.remove('active');
         }
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
-        }
-
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'alert-circle'}" class="h-5 w-5"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            container.appendChild(toast);
-            lucide.createIcons();
-            
-            setTimeout(() => toast.classList.add('show'), 100);
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
-
-        async function handleLogin(e) {
+        // 3. AUTH LOGIC
+        function handleLogin(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            const hashedPassword = await hashPassword(password);
-            const members = getMembers();
-            const user = members.find(m => m.email === email && m.password === hashedPassword);
-            
+            const pass = document.getElementById('loginPassword').value;
+
+            const user = defaultMembers.find(u => u.email === email && u.password === pass);
+
             if (user) {
-                setSession(user);
-                closeLogin();
-                showToast(`Welcome back, ${user.fullName}!`, 'success');
-                navigateTo('dashboard');
+                document.getElementById('landingPage').classList.add('hidden');
+                document.getElementById('publicNav').classList.add('hidden');
+                document.getElementById('loginModal').classList.remove('active');
+                document.getElementById('appContainer').classList.remove('hidden');
+                renderDashboard(user);
+                showToast("Welcome to HPA Portal", "success");
             } else {
-                showToast('Invalid credentials. Please try again.', 'error');
+                showToast("Invalid Credentials", "error");
             }
         }
 
-        function updateUIForUser(user) {
-            document.getElementById('landingPage').classList.add('hidden');
-            document.getElementById('publicNav').classList.add('hidden');
-            document.getElementById('appContainer').classList.remove('hidden');
-            
-            document.getElementById('userNameDisplay').textContent = user.fullName;
-            document.getElementById('userRoleDisplay').textContent = user.role;
-            
-            // Show leadership menu for leadership roles
-            if (['chairperson', 'treasurer', 'secretary'].includes(user.role)) {
-                document.getElementById('leadershipMenu').classList.remove('hidden');
-            }
-            
-            // Update date
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', options);
-        }
-
-        // Navigation and Views
-        function navigateTo(view) {
-            const contentArea = document.getElementById('contentArea');
-            const pageTitle = document.getElementById('pageTitle');
-            
-            // Close mobile sidebar if open
-            document.getElementById('sidebar').classList.remove('open');
-            
-            // Update active nav item
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('bg-green-800', 'border-l-4', 'border-amber-400');
-            });
-            event.target?.closest('.nav-item')?.classList.add('bg-green-800', 'border-l-4', 'border-amber-400');
-            
-            switch(view) {
-                case 'dashboard':
-                    pageTitle.textContent = 'Dashboard';
-                    renderDashboard(contentArea);
-                    break;
-                case 'contributions':
-                    pageTitle.textContent = 'My Contributions';
-                    renderContributions(contentArea);
-                    break;
-                case 'loans':
-                    pageTitle.textContent = 'My Loans';
-                    renderLoans(contentArea);
-                    break;
-                case 'treasurer':
-                    pageTitle.textContent = 'Treasury Management';
-                    renderTreasury(contentArea);
-                    break;
-                case 'reports':
-                    pageTitle.textContent = 'Financial Reports';
-                    renderReports(contentArea);
-                    break;
-                case 'members':
-                    pageTitle.textContent = 'Member Directory';
-                    renderMembers(contentArea);
-                    break;
-                case 'profile':
-                    pageTitle.textContent = 'My Profile';
-                    renderProfile(contentArea);
-                    break;
-            }
-            lucide.createIcons();
-        }
-
-        function renderDashboard(container) {
-            const user = currentUser;
-            const activeLoans = user.loans.filter(l => l.status === 'repaying' || l.status === 'approved');
-            const pendingLoans = user.loans.filter(l => l.status === 'pending');
-            const availableBalance = user.totalContributions - user.loans.reduce((sum, l) => sum + (l.remainingBalance || 0), 0);
-            
+        function renderDashboard(user) {
+            const container = document.getElementById('contentArea');
             container.innerHTML = `
-                <div class="fade-in space-y-6">
-                    <!-- Welcome Banner -->
-                    <div class="bg-gradient-to-r from-green-800 to-green-900 rounded-2xl p-8 text-white relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                        <h3 class="text-2xl font-bold mb-2">Welcome back, ${user.fullName.split(' ')[0]}!</h3>
-                        <p class="text-green-200 italic text-lg">"${getMotto()}"</p>
-                        <div class="mt-4 flex items-center gap-2 text-sm text-green-200">
-                            <i data-lucide="calendar" class="h-4 w-4"></i>
-                            <span>Member since ${new Date(user.joinDate).getFullYear()}</span>
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-600">
+                    <p class="text-sm text-gray-500 font-bold uppercase">Member Name</p>
+                    <h3 class="text-2xl font-bold">${user.fullName}</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="bg-gray-50 p-4 rounded">
+                            <p class="text-xs text-gray-400">TOTAL SAVINGS</p>
+                            <p class="text-xl font-bold text-green-700">${user.totalBalance.toLocaleString()} RWF</p>
                         </div>
-                    </div>
-                    
-                    <!-- Financial Summary Cards -->
-                    <div class="grid md:grid-cols-4 gap-6">
-                        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-600 card-hover">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-500 text-sm font-medium">Total Savings</p>
-                                    <h4 class="text-2xl font-bold text-gray-800">${formatCurrency(user.totalContributions)}</h4>
-                                </div>
-                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i data-lucide="wallet" class="h-5 w-5 text-green-600"></i>
-                                </div>
-                            </div>
-                            <div class="flex items-center text-sm text-green-600">
-                                <i data-lucide="trending-up" class="h-4 w-4 mr-1"></i>
-                                <span>+12% this year</span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-amber-500 card-hover">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-500 text-sm font-medium">Available Balance</p>
-                                    <h4 class="text-2xl font-bold text-gray-800">${formatCurrency(Math.max(0, availableBalance))}</h4>
-                                </div>
-                                <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                                    <i data-lucide="banknote" class="h-5 w-5 text-amber-600"></i>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-500">Available for withdrawal/loan collateral</p>
-                        </div>
-                        
-                        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 card-hover">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-500 text-sm font-medium">Active Loan Balance</p>
-                                    <h4 class="text-2xl font-bold ${activeLoans.length > 0 ? 'text-red-600' : 'text-gray-800'}">
-                                        ${formatCurrency(activeLoans.reduce((sum, l) => sum + l.remainingBalance, 0))}
-                                    </h4>
-                                </div>
-                                <div class="w-10 h-10 ${activeLoans.length > 0 ? 'bg-red-100' : 'bg-blue-100'} rounded-lg flex items-center justify-center">
-                                    <i data-lucide="${activeLoans.length > 0 ? 'alert-circle' : 'check-circle'}" class="h-5 w-5 ${activeLoans.length > 0 ? 'text-red-600' : 'text-blue-600'}"></i>
-                                </div>
-                            </div>
-                            <p class="text-xs ${activeLoans.length > 0 ? 'text-red-500' : 'text-green-600'}">
-                                ${activeLoans.length > 0 ? `${activeLoans.length} active loan(s)` : 'No active loans'}
-                            </p>
-                        </div>
-                        
-                        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500 card-hover">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <p class="text-gray-500 text-sm font-medium">Share Capital</p>
-                                    <h4 class="text-2xl font-bold text-gray-800">${formatCurrency(user.shareCapital)}</h4>
-                                </div>
-                                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                                    <i data-lucide="award" class="h-5 w-5 text-purple-600"></i>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-500">Required membership stake</p>
-                        </div>
-                    </div>
-                    
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <!-- Quick Actions -->
-                        <div class="md:col-span-2 bg-white rounded-xl shadow-md p-6">
-                            <h3 class="text-lg font-bold mb-4 text-gray-800">Quick Actions</h3>
-                            <div class="grid sm:grid-cols-3 gap-4">
-                                <button onclick="navigateTo('contributions')" class="flex flex-col items-center p-4 border-2 border-gray-200 rounded-xl hover:border-green-500 hover:bg-green-50 transition group">
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-green-200 transition">
-                                        <i data-lucide="plus-circle" class="h-6 w-6 text-green-600"></i>
-                                    </div>
-                                    <span class="font-medium text-gray-800">Make Contribution</span>
-                                    <span class="text-xs text-gray-500 mt-1">Add to your savings</span>
-                                </button>
-                                
-                                <button onclick="navigateTo('loans')" class="flex flex-col items-center p-4 border-2 border-gray-200 rounded-xl hover:border-amber-500 hover:bg-amber-50 transition group">
-                                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-amber-200 transition">
-                                        <i data-lucide="banknote" class="h-6 w-6 text-amber-600"></i>
-                                    </div>
-                                    <span class="font-medium text-gray-800">Apply for Loan</span>
-                                    <span class="text-xs text-gray-500 mt-1">Up to 3x your savings</span>
-                                </button>
-                                
-                                <button onclick="showToast('Statement downloaded!', 'success')" class="flex flex-col items-center p-4 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition group">
-                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3 group-hover:bg-blue-200 transition">
-                                        <i data-lucide="download" class="h-6 w-6 text-blue-600"></i>
-                                    </div>
-                                    <span class="font-medium text-gray-800">Download Statement</span>
-                                    <span class="text-xs text-gray-500 mt-1">Last 6 months</span>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Loan Status Widget -->
-                        <div class="bg-white rounded-xl shadow-md p-6">
-                            <h3 class="text-lg font-bold mb-4 text-gray-800">Loan Status</h3>
-                            ${getLoanStatusWidget(user)}
-                        </div>
-                    </div>
-                    
-                    <!-- Recent Activity & Announcements -->
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-white rounded-xl shadow-md p-6">
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-lg font-bold text-gray-800">Recent Activity</h3>
-                                <button onclick="navigateTo('contributions')" class="text-green-600 text-sm hover:underline">View All</button>
-                            </div>
-                            <div class="space-y-3">
-                                ${getRecentActivity(user)}
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-md p-6">
-                            <h3 class="text-lg font-bold mb-4 text-gray-800">Announcements</h3>
-                            <div class="space-y-4">
-                                <div class="flex gap-3 items-start p-3 bg-amber-50 rounded-lg border-l-4 border-amber-400">
-                                    <i data-lucide="info" class="h-5 w-5 text-amber-600 mt-0.5"></i>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Monthly Meeting Reminder</p>
-                                        <p class="text-sm text-gray-600 mt-1">Next general assembly on March 15th, 2024 at 2PM. Location: Cooperative Office.</p>
-                                        <p class="text-xs text-gray-400 mt-2">Posted 2 days ago</p>
-                                    </div>
-                                </div>
-                                <div class="flex gap-3 items-start p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
-                                    <i data-lucide="trending-up" class="h-5 w-5 text-green-600 mt-0.5"></i>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Great Performance!</p>
-                                        <p class="text-sm text-gray-600 mt-1">Our cooperative reached 8.5M RWF in total savings. Keep up the excellent work!</p>
-                                        <p class="text-xs text-gray-400 mt-2">Posted 1 week ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Financial Tip -->
-                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-6 border border-amber-200">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="lightbulb" class="h-6 w-6 text-amber-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-amber-900 mb-1">Financial Wisdom Tip</h4>
-                                <p class="text-amber-800 text-sm">"Save 20% of your income before spending. At HPA-Aguka, consistent monthly savings unlock bigger loan opportunities through our 3x multiplier rule."</p>
-                            </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <p class="text-xs text-gray-400">PENALTIES DUE</p>
+                            <p class="text-xl font-bold text-red-600">${user.penalties.toLocaleString()} RWF</p>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        function renderContributions(container) {
-            const user = currentUser;
-            const yearlyGoal = 1000000;
-            const progress = Math.min((user.totalContributions / yearlyGoal) * 100, 100);
-            
-            container.innerHTML = `
-                <div class="fade-in space-y-6">
-                    <!-- Progress Tracker -->
-                    <div class="bg-white rounded-xl shadow-md p-6">
-                        <div class="flex justify-between items-end mb-4">
-                            <div>
-                                <h3 class="text-lg font-bold text-gray-800">Annual Savings Goal</h3>
-                                <p class="text-sm text-gray-500">Target: ${formatCurrency(yearlyGoal)}</p>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-3xl font-bold text-green-600">${progress.toFixed(0)}%</span>
-                                <p class="text-sm text-gray-
+        function logout() {
+            location.reload();
+        }
 
+        function showToast(msg, type) {
+            const toast = document.createElement('div');
+            toast.className = `toast show ${type === 'success' ? 'bg-green-600' : 'bg-red-600'}`;
+            toast.innerText = msg;
+            document.getElementById('toastContainer').appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
