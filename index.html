@@ -8,14 +8,12 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #FEF3C7; }
+        body { font-family: 'Inter', sans-serif; background-color: #FEF3C7; scroll-behavior: smooth; }
         h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
-        .bg-primary-green { background-color: #1B4332; }
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; justify-content: center; align-items: center; }
         .modal.active { display: flex; }
         .btn-primary { background-color: #1B4332; color: white; transition: 0.3s; }
         .btn-primary:hover { background-color: #143628; transform: translateY(-1px); }
-        .card-hover:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .toast { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 8px; color: white; z-index: 1000; transform: translateX(400px); transition: 0.3s; }
         .toast.show { transform: translateX(0); }
     </style>
@@ -33,63 +31,72 @@
                     <p class="text-xs text-amber-600 -mt-1">Live Wisely, Save to Invest</p>
                 </div>
             </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-700 hover:text-green-800 font-medium">About</a>
-                <a href="#how-it-works" class="text-gray-700 hover:text-green-800 font-medium">How It Works</a>
-                <a href="#leadership" class="text-gray-700 hover:text-green-800 font-medium">Leadership</a>
+            <div class="flex items-center space-x-6">
+                <a href="#about" class="hidden md:block text-gray-700 hover:text-green-800 font-medium">About</a>
+                <a href="#contact" class="hidden md:block text-gray-700 hover:text-green-800 font-medium">Contact</a>
                 <button onclick="showLogin()" class="btn-primary px-6 py-2 rounded-lg font-medium">Member Login</button>
             </div>
         </div>
     </nav>
 
     <div id="landingPage">
-        <section class="relative bg-green-900 text-white py-24 px-4 overflow-hidden">
-            <div class="max-w-7xl mx-auto relative z-10">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">Build Wealth Together<br/><span class="text-amber-400">Live Wisely</span></h1>
-                <p class="text-xl mb-8 max-w-2xl text-green-100">Join HPA-Aguka Cooperative: Where 20 committed members save diligently to invest in their dreams.</p>
-                <div class="flex gap-4">
-                    <button onclick="showLogin()" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold">Access Member Portal</button>
-                    <a href="#about" class="border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-green-900 transition">Learn More</a>
-                </div>
-            </div>
+        <section class="bg-green-900 text-white py-24 px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6">Build Wealth Together</h1>
+            <p class="text-green-100 mb-10 max-w-2xl mx-auto">Providing 20 committed members with the tools to save diligently and invest strategically for a prosperous future.</p>
+            <button onclick="showLogin()" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition">Access Member Portal</button>
         </section>
 
         <section id="about" class="py-20 bg-[#FEF3C7]">
             <div class="max-w-7xl mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold text-green-900 mb-12">Our Mission</h2>
+                <h2 class="text-3xl font-bold text-green-900 mb-12">How It Works</h2>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card-hover">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
                         <i data-lucide="piggy-bank" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
-                        <h3 class="font-bold text-xl mb-2">Saving Culture</h3>
-                        <p class="text-gray-600">Building financial discipline through consistent monthly contributions.</p>
+                        <h3 class="font-bold text-xl mb-2">Save</h3>
+                        <p class="text-gray-600">Monthly contributions of 10,000 RWF to build group capital.</p>
                     </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card-hover">
-                        <i data-lucide="line-chart" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
-                        <h3 class="font-bold text-xl mb-2">Strategic Investment</h3>
-                        <p class="text-gray-600">Turning shared capital into opportunities for business and agriculture.</p>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <i data-lucide="banknote" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Borrow</h3>
+                        <p class="text-gray-600">Access loans up to 3x your savings with a flat 2% interest rate.</p>
                     </div>
-                    <div class="bg-white p-8 rounded-2xl shadow-sm card-hover">
-                        <i data-lucide="heart-handshake" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
-                        <h3 class="font-bold text-xl mb-2">Community</h3>
-                        <p class="text-gray-600">Mutual accountability through our unique guarantor system.</p>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <i data-lucide="trending-up" class="h-12 w-12 text-green-800 mx-auto mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Invest</h3>
+                        <p class="text-gray-600">Grow your business or farm with community-backed capital.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section id="contact" class="py-20 bg-white">
+            <div class="max-w-xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-10 text-green-900">Contact Us</h2>
+                <form onsubmit="event.preventDefault(); showToast('Message Sent Successfully!', 'success'); this.reset();" class="space-y-4">
+                    <input type="text" placeholder="Full Name" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" required>
+                    <textarea placeholder="Your Message" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" rows="4" required></textarea>
+                    <button type="submit" class="btn-primary w-full py-4 rounded-xl font-bold text-lg">Send Inquiry</button>
+                </form>
+            </div>
+        </section>
+        
+        <footer class="bg-green-900 text-green-200 py-10 text-center border-t border-green-800">
+            <p>&copy; 2026 HPA-Aguka Cooperative. All Rights Reserved.</p>
+        </footer>
     </div>
 
     <div id="loginModal" class="modal" onclick="if(event.target == this) closeLogin()">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full relative">
+        <div class="bg-white p-10 rounded-2xl shadow-2xl max-w-md w-full relative">
             <button onclick="closeLogin()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i data-lucide="x"></i></button>
-            <div class="text-center mb-6">
-                <i data-lucide="lock" class="h-12 w-12 text-green-800 mx-auto mb-2"></i>
-                <h2 class="text-2xl font-bold">Member Access</h2>
-                <p class="text-sm text-gray-500">Enter your HPA credentials</p>
+            <div class="text-center mb-8">
+                <i data-lucide="shield-check" class="h-12 w-12 text-green-800 mx-auto mb-2"></i>
+                <h2 class="text-2xl font-bold">Secure Access</h2>
+                <p class="text-sm text-gray-400">Enter your credentials below</p>
             </div>
             <form onsubmit="handleLogin(event)" class="space-y-4">
-                <input type="email" id="loginEmail" class="w-full px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" placeholder="Email" required>
-                <input type="password" id="loginPassword" class="w-full px-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" placeholder="Password" required>
-                <button type="submit" class="w-full btn-primary py-3 rounded-xl font-bold text-lg">Sign In</button>
+                <input type="email" id="loginEmail" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" placeholder="Email Address" required>
+                <input type="password" id="loginPassword" class="w-full p-4 border rounded-xl outline-none focus:ring-2 focus:ring-green-800" placeholder="Password" required>
+                <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg">Log In</button>
             </form>
         </div>
     </div>
@@ -97,46 +104,58 @@
     <div id="appContainer" class="hidden min-h-screen bg-gray-50">
         <header class="bg-green-900 text-white p-6 shadow-lg">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <i data-lucide="user-circle" class="h-10 w-10 text-amber-400"></i>
+                <div class="flex items-center gap-4">
+                    <div class="bg-amber-400 p-2 rounded-full text-green-900"><i data-lucide="user"></i></div>
                     <div>
-                        <h2 id="userNameDisplay" class="font-bold text-xl">Member Name</h2>
-                        <p id="userRoleDisplay" class="text-xs text-green-300"></p>
+                        <h2 id="userNameDisplay" class="font-bold text-xl leading-none"></h2>
+                        <p id="userRoleDisplay" class="text-xs text-green-300 mt-1 uppercase tracking-widest font-bold"></p>
                     </div>
                 </div>
-                <button onclick="logout()" class="bg-red-800 px-4 py-2 rounded font-bold hover:bg-red-700">Logout</button>
+                <button onclick="logout()" class="bg-red-800 hover:bg-red-700 px-6 py-2 rounded-lg font-bold transition">Logout</button>
             </div>
         </header>
 
-        <main class="max-w-7xl mx-auto p-6 md:p-8">
-            <div id="contentArea" class="grid md:grid-cols-3 gap-6">
-                </div>
+        <main class="max-w-7xl mx-auto p-6 md:p-10">
+            <div id="appContent"></div>
         </main>
     </div>
 
     <script>
         lucide.createIcons();
 
-        // 1. DATA WITH ALL 20 MEMBERS
+        // FULL DATABASE (MEMBER STATUS + LOAN LEDGER)
         const defaultMembers = [
-            { "id": "HPA-001", "fullName": "Innocent TURIKUMWE", "role": "Admin/Member", "penalties": 1000, "totalBalance": 310000, "email": "innocent@hpaaguka.com", "password": "password" },
-            { "id": "HPA-002", "fullName": "KAGABO Emmanuel", "role": "Member", "penalties": 4500, "totalBalance": 320000, "email": "kagabo@hpaaguka.com", "password": "password" },
-            { "id": "HPA-007", "fullName": "Reuben SINDAYIHEBA", "role": "Admin/Member", "penalties": 1000, "totalBalance": 320000, "email": "reuben@hpaaguka.com", "password": "password" },
-            { "id": "HPA-011", "fullName": "Eliab MWISENEZA", "role": "Admin/Member", "penalties": 5605, "totalBalance": 320000, "email": "eliab@hpaaguka.com", "password": "password" },
-            { "id": "HPA-020", "fullName": "NIYOMUFASHA Gentille", "role": "Member", "penalties": 101131, "totalBalance": 320000, "email": "gentille@hpaaguka.com", "password": "password" }
-            // Note: You can add all 20 members here following this exact format.
+            { 
+                id: "HPA-007", fullName: "Reuben SINDAYIHEBA", role: "Admin/Member", penalties: 1000, totalBalance: 320000, email: "reuben@hpaaguka.com", password: "password", 
+                loans: [
+                    { principal: 433000, totalWithInterest: 452634.6, paid: [113716.08, 113716.08, 113716.08, 111486.36], date: "25/07/2024" },
+                    { principal: 600000, totalWithInterest: 640000, paid: [160000, 160000, 160000, 160000], date: "18/07/2025" }
+                ] 
+            },
+            { 
+                id: "HPA-011", fullName: "Eliab MWISENEZA", role: "Admin/Member", penalties: 5605, totalBalance: 320000, email: "eliab@hpaaguka.com", password: "password",
+                loans: [
+                    { principal: 472000, totalWithInterest: 514011.79, paid: [84264.18, 84264.18, 88477.43, 88478, 84264, 84264], date: "25/07/2024" },
+                    { principal: 500000, totalWithInterest: 516100, paid: [257550, 257550], date: "19/12/2024" }
+                ]
+            },
+            { 
+                id: "HPA-013", fullName: "IGIHOZO Chancelline", role: "Member", penalties: 22236, totalBalance: 320000, email: "chancelline@hpaaguka.com", password: "password",
+                loans: [{ principal: 300000, totalWithInterest: 163370, paid: [53560, 56250, 53560], date: "31/10/2025" }]
+            },
+            { 
+                id: "HPA-020", fullName: "NIYOMUFASHA Gentille", role: "Member", penalties: 101131, totalBalance: 320000, email: "gentille@hpaaguka.com", password: "password",
+                loans: [{ principal: 670000, totalWithInterest: 729634, paid: [119612, 119612, 119612, 119612, 125593, 125593], date: "09/01/2026" }]
+            }
         ];
 
-        // 2. MODAL & UI HELPERS
         function showLogin() { document.getElementById('loginModal').classList.add('active'); }
         function closeLogin() { document.getElementById('loginModal').classList.remove('active'); }
 
-        // 3. LOGIN LOGIC
         function handleLogin(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const pass = document.getElementById('loginPassword').value;
-
             const user = defaultMembers.find(u => u.email === email && u.password === pass);
 
             if (user) {
@@ -144,45 +163,105 @@
                 document.getElementById('publicNav').classList.add('hidden');
                 document.getElementById('loginModal').classList.remove('active');
                 document.getElementById('appContainer').classList.remove('hidden');
-                
                 document.getElementById('userNameDisplay').innerText = user.fullName;
                 document.getElementById('userRoleDisplay').innerText = user.role;
-                
                 renderDashboard(user);
                 showToast("Login Successful", "success");
-            } else {
-                showToast("Invalid Email or Password", "error");
-            }
+            } else { showToast("Invalid email or password", "error"); }
         }
 
         function renderDashboard(user) {
-            const container = document.getElementById('contentArea');
-            container.innerHTML = `
-                <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-green-800 md:col-span-2">
-                    <h3 class="text-lg font-bold text-gray-500 mb-4 uppercase tracking-wider">Account Overview</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-green-50 p-6 rounded-xl">
-                            <p class="text-sm text-green-800 font-medium mb-1">Total Savings</p>
-                            <p class="text-3xl font-black text-green-900">${user.totalBalance.toLocaleString()} RWF</p>
+            const container = document.getElementById('appContent');
+            
+            let loanSection = user.loans.map((loan, idx) => {
+                const totalPaid = loan.paid.reduce((a, b) => a + b, 0);
+                const remaining = Math.max(0, loan.totalWithInterest - totalPaid);
+                const progress = (totalPaid / loan.totalWithInterest) * 100;
+
+                return `
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-6">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <span class="text-[10px] font-black uppercase text-amber-500 bg-amber-50 px-2 py-1 rounded">Loan #${idx+1}</span>
+                            <h4 class="text-lg font-bold text-green-900 mt-1">Disbursed: ${loan.date}</h4>
                         </div>
-                        <div class="bg-red-50 p-6 rounded-xl">
-                            <p class="text-sm text-red-800 font-medium mb-1">Total Penalties Due</p>
-                            <p class="text-3xl font-black text-red-900">${user.penalties.toLocaleString()} RWF</p>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-400 font-medium">Principal</p>
+                            <p class="font-bold">${loan.principal.toLocaleString()} RWF</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 p-4 rounded-2xl">
+                            <p class="text-xs text-gray-400 mb-1">Total Due (+2%)</p>
+                            <p class="text-xl font-bold">${Math.round(loan.totalWithInterest).toLocaleString()} RWF</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-2xl">
+                            <p class="text-xs text-red-400 mb-1">Remaining Balance</p>
+                            <p class="text-xl font-bold text-red-600">${Math.round(remaining).toLocaleString()} RWF</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex justify-between text-xs font-bold mb-2">
+                            <span>Repayment Progress</span>
+                            <span>${Math.round(progress)}%</span>
+                        </div>
+                        <div class="w-full bg-gray-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-green-600 h-full rounded-full transition-all duration-1000" style="width: ${progress}%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase mb-3">Installment History</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${loan.paid.map((amt, i) => `
+                                <div class="bg-green-50 border border-green-100 px-3 py-1 rounded-full text-[10px] font-bold text-green-700">
+                                    UKWEZI ${i+1}: ${Math.round(amt).toLocaleString()} RWF
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-amber-500">
-                    <h3 class="text-lg font-bold text-gray-500 mb-4 uppercase tracking-wider">Quick Actions</h3>
-                    <div class="space-y-3">
-                        <button onclick="showToast('Loan system coming soon', 'success')" class="w-full bg-amber-500 text-white font-bold py-3 rounded-lg hover:bg-amber-600 transition">Apply for Loan</button>
-                        <button onclick="showToast('Receipt downloaded', 'success')" class="w-full border-2 border-gray-200 py-3 rounded-lg font-bold hover:bg-gray-50 transition">View Statement</button>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-8 rounded-[40px] shadow-sm border-t-8 border-green-800 mb-8">
+                            <p class="text-xs font-black uppercase text-gray-400 mb-2">My Total Savings</p>
+                            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                                <h3 class="text-5xl font-black text-green-900">${user.totalBalance.toLocaleString()} <span class="text-lg">RWF</span></h3>
+                                <div class="bg-red-50 px-6 py-2 rounded-2xl border border-red-100">
+                                    <p class="text-[10px] font-black text-red-400 uppercase">Outstanding Penalties</p>
+                                    <p class="text-xl font-black text-red-600">${user.penalties.toLocaleString()} RWF</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="font-black text-gray-800 text-lg mb-6 uppercase tracking-widest flex items-center gap-2">
+                            <i data-lucide="scroll-text" class="h-5 w-5 text-amber-500"></i> My Loan Ledger
+                        </h3>
+                        ${loanSection || '<p class="text-gray-400 italic">No loan records available for this account.</p>'}
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-white p-8 rounded-[40px] shadow-sm">
+                            <h3 class="font-black text-gray-800 text-sm uppercase mb-6">Quick Portal Actions</h3>
+                            <button onclick="showToast('Request Sent to Admin', 'success')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-5 rounded-3xl shadow-lg shadow-amber-200 transition mb-4">Request New Loan</button>
+                            <button onclick="showToast('Feature available in V2', 'success')" class="w-full border-2 border-gray-100 font-bold py-5 rounded-3xl hover:bg-gray-50 transition">Download Statements</button>
+                        </div>
+                        <div class="bg-green-900 p-8 rounded-[40px] text-white shadow-xl">
+                            <i data-lucide="info" class="h-8 w-8 text-amber-400 mb-4"></i>
+                            <h4 class="font-bold mb-2">Group Policy</h4>
+                            <p class="text-xs text-green-200 leading-relaxed">Remember: Loans must be guaranteed by at least 2 active members. Interest is fixed at 2% monthly. Penalties apply for late contributions.</p>
+                        </div>
                     </div>
                 </div>
             `;
+            lucide.createIcons();
         }
 
         function logout() { location.reload(); }
-
         function showToast(msg, type) {
             const toast = document.createElement('div');
             toast.className = `toast show ${type === 'success' ? 'bg-green-800' : 'bg-red-700'}`;
