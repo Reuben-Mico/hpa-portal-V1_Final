@@ -10,25 +10,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #FEF3C7; scroll-behavior: smooth; }
         h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
-        
-        .hero-visual {
-            background: radial-gradient(circle at top right, #1b4332, #081c15);
-            position: relative;
-        }
-
+        .hero-visual { background: radial-gradient(circle at top right, #1b4332, #081c15); position: relative; }
         .modal { display: none; position: fixed; inset: 0; background: rgba(7, 26, 20, 0.95); backdrop-filter: blur(12px); z-index: 100; justify-content: center; align-items: center; }
         .modal.active { display: flex; animation: fadeIn 0.4s ease-out; }
-        
         .btn-primary { background-color: #1B4332; color: white; transition: 0.3s; }
         .btn-gold { background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); color: white; transition: 0.3s; }
-        
         .btn-admin-tab { padding: 12px 24px; border-radius: 14px; font-weight: 700; font-size: 13px; transition: 0.3s; }
         .btn-admin-tab.active { background-color: #1B4332; color: white; }
         .btn-admin-tab:not(.active) { background-color: #f9fafb; color: #9ca3af; }
-
         .toast { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 12px; color: white; z-index: 1000; transform: translateX(400px); transition: 0.4s; }
         .toast.show { transform: translateX(0); }
-        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -39,13 +30,13 @@
     <nav id="publicNav" class="bg-white/90 backdrop-blur-md h-20 flex items-center px-8 sticky top-0 z-40 border-b border-green-100">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-green-900 p-2 rounded-xl shadow-lg shadow-green-900/20"><i data-lucide="trees" class="text-amber-400 h-6 w-6"></i></div>
+                <div class="bg-green-900 p-2 rounded-xl"><i data-lucide="trees" class="text-amber-400 h-6 w-6"></i></div>
                 <div>
                     <h1 class="text-2xl font-black text-green-900 tracking-tighter leading-none uppercase">HPA-Aguka</h1>
                     <p class="text-[9px] font-bold text-amber-600 uppercase tracking-widest mt-1">Live Wisely, Save to Invest</p>
                 </div>
             </div>
-            <div class="hidden md:flex gap-8 font-bold text-sm text-gray-500 mr-8">
+            <div class="hidden md:flex gap-8 font-bold text-xs uppercase tracking-widest text-gray-500">
                 <a href="#mission" class="hover:text-green-800 transition">Mission</a>
                 <a href="#how-it-works" class="hover:text-green-800 transition">Process</a>
                 <a href="#leadership" class="hover:text-green-800 transition">Leadership</a>
@@ -58,52 +49,30 @@
     <div id="landingPage">
         <section class="hero-visual text-white py-32 md:py-48 px-8 text-center border-b border-green-800/30">
             <div class="max-w-5xl mx-auto relative z-10">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 mb-8">
-                    <span class="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-amber-100">Official Member Portal</span>
-                </div>
                 <h1 class="text-5xl md:text-8xl font-black mb-8 leading-[1.1] tracking-tighter">Build Wealth.<br/><span class="text-amber-400 italic">Thrive Together.</span></h1>
-                <p class="text-lg md:text-2xl mb-12 max-w-2xl mx-auto text-green-100/60 font-medium leading-relaxed">Securing a legacy for Kigali's most committed savings group through disciplined contributions.</p>
+                <p class="text-lg md:text-2xl mb-12 max-w-2xl mx-auto text-green-100/60 font-medium leading-relaxed">Securing a legacy for 20 visionaries in Kigali since 2020.</p>
                 <button onclick="showLogin()" class="btn-gold px-12 py-5 rounded-2xl font-black text-xl shadow-2xl">Enter Portal</button>
             </div>
         </section>
-        
-        <div class="max-w-5xl mx-auto px-6 -mt-16 relative z-20">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-green-50 flex items-center gap-6">
-                    <div class="bg-green-100 p-4 rounded-2xl"><i data-lucide="piggy-bank" class="text-green-800"></i></div>
-                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Valuation</p><p class="text-2xl font-black text-green-900">6.7M RWF</p></div>
-                </div>
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-green-50 flex items-center gap-6">
-                    <div class="bg-amber-100 p-4 rounded-2xl"><i data-lucide="percent" class="text-amber-600"></i></div>
-                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Interest</p><p class="text-2xl font-black text-green-900">2% Monthly</p></div>
-                </div>
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-2xl border border-green-50 flex items-center gap-6">
-                    <div class="bg-blue-100 p-4 rounded-2xl"><i data-lucide="users" class="text-blue-600"></i></div>
-                    <div><p class="text-[10px] font-black text-gray-400 uppercase">Active Members</p><p class="text-2xl font-black text-green-900">20 Visionaries</p></div>
-                </div>
-            </div>
-        </div>
 
-        <section id="mission" class="py-24 px-8 bg-[#FEF3C7] mt-10">
+        <section id="mission" class="py-24 px-8 bg-[#FEF3C7]">
             <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-4xl font-black text-green-900 mb-2 uppercase">Our Mission</h2>
-                <div class="w-24 h-1 bg-amber-500 mx-auto mb-16"></div>
+                <h2 class="text-4xl font-black text-green-900 mb-16 uppercase">Our Mission</h2>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-10 rounded-3xl shadow-sm text-left border border-amber-100">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-amber-100 text-left">
                         <i data-lucide="target" class="text-green-800 mb-6 h-10 w-10"></i>
                         <h3 class="text-xl font-bold mb-4">Cultivate Saving</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Building a culture of financial responsibility through consistent monthly contributions from every member.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Building a culture of responsibility through consistent monthly contributions.</p>
                     </div>
-                    <div class="bg-white p-10 rounded-3xl shadow-sm text-left border border-amber-100">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-amber-100 text-left">
                         <i data-lucide="trending-up" class="text-amber-600 mb-6 h-10 w-10"></i>
                         <h3 class="text-xl font-bold mb-4">Strategic Growth</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Turning collective savings into opportunities via accessible 2% interest loans for business projects.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Accessible 2% interest loans designed for business and agriculture.</p>
                     </div>
-                    <div class="bg-white p-10 rounded-3xl shadow-sm text-left border border-amber-100">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-amber-100 text-left">
                         <i data-lucide="heart" class="text-green-800 mb-6 h-10 w-10"></i>
                         <h3 class="text-xl font-bold mb-4">Community</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Fostering mutual accountability and professional growth through our trusted guarantor system.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Shared success through a professional and trusted guarantor ecosystem.</p>
                     </div>
                 </div>
             </div>
@@ -111,60 +80,68 @@
 
         <section id="leadership" class="py-24 px-8 bg-white">
             <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-4xl font-black text-green-900 mb-16 uppercase">Cooperative Leadership</h2>
+                <h2 class="text-4xl font-black text-green-900 mb-16 uppercase">Leadership</h2>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem] shadow-sm">
-                        <h3 class="text-xl font-black text-gray-900">Eliab MWISENEZA</h3>
-                        <p class="text-amber-600 font-bold text-xs uppercase tracking-widest mb-4">Chairperson</p>
-                        <p class="text-gray-600 text-xs">Strategic vision and cooperative governance lead.</p>
-                    </div>
-                    <div class="bg-green-900 text-white p-8 rounded-[3rem] shadow-xl">
-                        <h3 class="text-xl font-black">Reuben SINDAYIHEBA</h3>
-                        <p class="text-amber-400 font-bold text-xs uppercase tracking-widest mb-4">Treasurer</p>
-                        <p class="text-green-100/60 text-xs">Financial management and digital systems oversight.</p>
-                    </div>
-                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem] shadow-sm">
-                        <h3 class="text-xl font-black text-gray-900">Innocent TURIKUMWE</h3>
-                        <p class="text-amber-600 font-bold text-xs uppercase tracking-widest mb-4">Advisor</p>
-                        <p class="text-gray-600 text-xs">Member relations and community success coordinator.</p>
-                    </div>
+                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem]"><h3 class="text-xl font-black">MWISENEZA Eliab</h3><p class="text-amber-600 font-bold text-xs uppercase">Chairperson</p></div>
+                    <div class="bg-green-900 text-white p-8 rounded-[3rem] shadow-xl"><h3 class="text-xl font-black text-amber-400">SINDAYIHEBA Reuben</h3><p class="text-green-300 font-bold text-xs uppercase">Treasurer</p></div>
+                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem]"><h3 class="text-xl font-black">TURIKUMWE Innocent</h3><p class="text-amber-600 font-bold text-xs uppercase">Advisor</p></div>
                 </div>
             </div>
         </section>
+
+        <section id="contact" class="py-24 px-8 bg-white">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-5xl font-black text-green-950 mb-6">Inquiries.</h2>
+                    <p class="text-gray-500 mb-10 text-lg">Thank you for visiting. If you have questions about membership, reach out to the committee.</p>
+                </div>
+                <div class="bg-gray-50 p-10 rounded-[4rem] border">
+                    <form onsubmit="event.preventDefault(); showToast('Message Forwarded.', 'success');" class="space-y-4">
+                        <input type="text" placeholder="Name" class="w-full px-6 py-4 bg-white rounded-2xl outline-none shadow-sm" required>
+                        <textarea placeholder="Message" rows="4" class="w-full px-6 py-4 bg-white rounded-2xl outline-none shadow-sm" required></textarea>
+                        <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-black">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-green-950 text-white py-20 px-8 text-center">
+            <h2 class="text-2xl font-black mb-4 uppercase">HPA-Aguka Cooperative</h2>
+            <p class="text-green-100/40 text-xs mb-10 uppercase tracking-widest">Integrity • Transparency • Legacy</p>
+            <p class="italic text-green-100/60 mb-8">Thank you for visiting us. If you have questions, click below to WhatsApp us.</p>
+            <a href="https://wa.me/250788123456" target="_blank" class="bg-green-500 px-10 py-4 rounded-full font-black flex items-center gap-3 w-fit mx-auto shadow-xl">
+                <i data-lucide="message-circle"></i> Chat on WhatsApp
+            </a>
+        </footer>
     </div>
 
     <div id="loginModal" class="modal" onclick="if(event.target == this) closeLogin()">
-        <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl max-w-md w-full relative">
+        <div class="bg-white p-12 rounded-[4rem] shadow-2xl max-w-md w-full relative text-center">
             <button onclick="closeLogin()" class="absolute top-10 right-10 text-gray-400"><i data-lucide="x"></i></button>
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-black text-green-950">Identity Check</h2>
-                <p class="text-sm font-semibold text-gray-400 mt-2">Secure Member Authentication</p>
-            </div>
+            <h2 class="text-3xl font-black text-green-950 mb-8">Identity Check</h2>
             <form onsubmit="handleLogin(event)" class="space-y-4">
-                <input type="email" id="loginEmail" class="w-full px-8 py-5 bg-gray-50 border-none rounded-2xl outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Email Address" required>
-                <input type="password" id="loginPassword" class="w-full px-8 py-5 bg-gray-50 border-none rounded-2xl outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Password" required>
-                <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-black text-lg">Sign In</button>
+                <input type="email" id="loginEmail" class="w-full px-8 py-5 bg-gray-50 rounded-3xl outline-none focus:ring-4 focus:ring-green-800/10" placeholder="Member Email" required>
+                <input type="password" id="loginPassword" class="w-full px-8 py-5 bg-gray-50 rounded-3xl outline-none focus:ring-4 focus:ring-green-800/10" placeholder="Password" required>
+                <button type="submit" class="w-full btn-primary py-5 rounded-3xl font-black text-lg shadow-xl shadow-green-900/20">Sign In</button>
             </form>
         </div>
     </div>
 
     <div id="appContainer" class="hidden min-h-screen bg-gray-50 pb-20">
-        <header class="bg-green-950 text-white p-8 flex justify-between items-center shadow-xl sticky top-0 z-30">
+        <header class="bg-green-950 text-white p-8 flex justify-between items-center sticky top-0 z-30 shadow-2xl">
             <div class="flex items-center gap-4">
-                <div class="bg-amber-400 p-2.5 rounded-2xl text-green-950 shadow-lg"><i data-lucide="shield-check" class="h-6 w-6"></i></div>
-                <div><h2 id="userNameDisplay" class="font-black text-xl leading-none"></h2><p id="userRoleDisplay" class="text-[10px] text-green-400 uppercase mt-1 tracking-widest font-black"></p></div>
+                <div class="bg-amber-400 p-2.5 rounded-2xl text-green-950"><i data-lucide="shield-check"></i></div>
+                <div><h2 id="userNameDisplay" class="font-black text-xl"></h2><p id="userRoleDisplay" class="text-[10px] text-green-400 uppercase tracking-widest font-black"></p></div>
             </div>
-            <button onclick="logout()" class="bg-red-900/10 text-red-400 border border-red-900/20 px-6 py-2.5 rounded-2xl font-bold hover:bg-red-800 transition text-xs">Logout Session</button>
+            <button onclick="logout()" class="bg-red-900/20 border border-red-900 text-red-400 px-6 py-2 rounded-2xl font-bold">Logout</button>
         </header>
-
         <main class="max-w-7xl mx-auto p-6 md:p-12">
             <div id="adminControls" class="hidden mb-12">
-                <div class="flex flex-wrap gap-2 mb-8 bg-white p-2 rounded-2xl shadow-sm border border-gray-100 w-fit">
-                    <button onclick="setAdminTab('members')" id="tab-members" class="btn-admin-tab active">Member Ledger</button>
-                    <button onclick="setAdminTab('loans')" id="tab-loans" class="btn-admin-tab">Loan Performance</button>
-                    <button onclick="setAdminTab('equity')" id="tab-equity" class="btn-admin-tab">Group Equity</button>
+                <div class="flex gap-2 mb-8 bg-white p-2 rounded-2xl shadow-sm border w-fit">
+                    <button onclick="setAdminTab('members')" id="tab-members" class="btn-admin-tab active">Ledger</button>
+                    <button onclick="setAdminTab('loans')" id="tab-loans" class="btn-admin-tab">Loans</button>
                 </div>
-                <div id="adminDataWindow" class="bg-white p-10 rounded-[3rem] shadow-2xl border border-gray-50 overflow-x-auto min-h-[300px]"></div>
+                <div id="adminDataWindow" class="bg-white p-10 rounded-[3rem] shadow-2xl border min-h-[300px]"></div>
             </div>
             <div id="personalArea"></div>
         </main>
@@ -176,16 +153,16 @@
 
         const allMembers = [
             { id: "HPA-001", fullName: "Innocent TURIKUMWE", role: "Admin/Member", penalties: 1000, totalBalance: 310000, email: "innocent@hpaaguka.com", password: "password", loans: [{principal: 120000, totalDue: 128551, paid: [128551], date: "10/24"}] },
-            { id: "HPA-007", fullName: "Reuben SINDAYIHEBA", role: "Admin/Member", penalties: 1000, totalBalance: 320000, email: "sireuben007@gmail.com", password: "UWINEMA@12", loans: [{principal: 433000, totalDue: 453634, paid: [113716, 113716, 113716, 111486], date: "25/07/24"}] },
-            { id: "HPA-011", fullName: "Eliab MWISENEZA", role: "Admin/Member", penalties: 5605, totalBalance: 320000, email: "eliab@hpaaguka.com", password: "password", loans: [{principal: 472000, totalDue: 515011, paid: [84264, 84264, 84264, 84264, 84264, 84264], date: "25/07/24"}] },
-            { id: "HPA-002", fullName: "KAGABO Emmanuel", role: "Member", penalties: 4500, totalBalance: 320000, email: "kagabo@hpaaguka.com", password: "password", loans: [{principal: 240000, totalDue: 258150, paid: [50920, 50920, 50920, 50920, 50920], date: "15/08/24"}] },
+            { id: "HPA-002", fullName: "KAGABO Emmanuel", role: "Member", penalties: 4500, totalBalance: 320000, email: "kagabo@hpaaguka.com", password: "password", loans: [{principal: 240000, totalDue: 258150, paid: [258150], date: "08/24"}] },
             { id: "HPA-003", fullName: "KAYITESI Isabelle", role: "Member", penalties: 1000, totalBalance: 320000, email: "isabelle@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-004", fullName: "Jocelyne UWAMBAJIMANA", role: "Member", penalties: 3250, totalBalance: 300000, email: "jocelyne@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-005", fullName: "Odile NTAKINANIRIMANA", role: "Member", penalties: 1000, totalBalance: 310000, email: "odile@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-006", fullName: "Gisèle UYISENGA", role: "Member", penalties: 7930, totalBalance: 310000, email: "gisele@hpaaguka.com", password: "password", loans: [] },
+            { id: "HPA-007", fullName: "Reuben SINDAYIHEBA", role: "Admin/Member", penalties: 1000, totalBalance: 320000, email: "sireuben007@gmail.com", password: "UWINEMA@12", loans: [{principal: 433000, totalDue: 453634, paid: [113716, 113716, 113716, 111486], date: "25/07/24"}] },
             { id: "HPA-008", fullName: "Patrick UWIDUHAYE", role: "Member", penalties: 6000, totalBalance: 320000, email: "patrick@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-009", fullName: "Theonille MUKABAGORORA", role: "Member", penalties: 11275, totalBalance: 300000, email: "theonille@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-010", fullName: "Mireille UMWALI", role: "Member", penalties: 4265, totalBalance: 350000, email: "mireille@hpaaguka.com", password: "password", loans: [] },
+            { id: "HPA-011", fullName: "Eliab MWISENEZA", role: "Admin/Member", penalties: 5605, totalBalance: 320000, email: "eliab@hpaaguka.com", password: "password", loans: [{principal: 472000, totalDue: 515011, paid: [515011], date: "07/24"}] },
             { id: "HPA-012", fullName: "Gabriel ISHIMWE", role: "Member", penalties: 7688, totalBalance: 320000, email: "gabriel@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-013", fullName: "IGIHOZO Chanceline", role: "Member", penalties: 22236, totalBalance: 320000, email: "chanceline@hpaaguka.com", password: "password", loans: [] },
             { id: "HPA-014", fullName: "Maurice TUYISENGE", role: "Member", penalties: 6788, totalBalance: 310000, email: "maurice@hpaaguka.com", password: "password", loans: [] },
@@ -205,7 +182,6 @@
             const email = document.getElementById('loginEmail').value.toLowerCase().trim();
             const pass = document.getElementById('loginPassword').value.trim();
             const user = allMembers.find(u => u.email.toLowerCase() === email && u.password === pass);
-
             if (user) {
                 document.getElementById('landingPage').classList.add('hidden');
                 document.getElementById('loginModal').classList.remove('active');
@@ -215,10 +191,7 @@
                 if (user.role === "Admin/Member") document.getElementById('adminControls').classList.remove('hidden');
                 renderAdminView();
                 renderPersonal(user);
-                showToast("Access Granted. Welcome back.", "success");
-            } else { 
-                showToast("Login Failed. Please check email/password.", "error"); 
-            }
+            } else { showToast("Authentication failed.", "error"); }
         }
 
         function setAdminTab(tab) {
@@ -231,15 +204,13 @@
         function renderAdminView() {
             const win = document.getElementById('adminDataWindow');
             if (currentAdminTab === 'members') {
-                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] text-gray-400 uppercase tracking-widest border-b"><th class="pb-5">Name</th><th class="pb-5">Savings</th><th class="pb-5 text-right">Penalties</th></tr></thead><tbody>${allMembers.map(m => `<tr class="border-b border-gray-50 hover:bg-gray-50 transition"><td class="py-5 font-black text-gray-800">${m.fullName}</td><td class="py-5 font-bold text-green-700">${m.totalBalance.toLocaleString()} RWF</td><td class="py-5 font-bold text-red-500 text-right">${m.penalties.toLocaleString()} RWF</td></tr>`).join('')}</tbody></table>`;
-            } else if (currentAdminTab === 'loans') {
-                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] text-gray-400 uppercase tracking-widest border-b"><th class="pb-5">Member</th><th class="pb-5">Total Loan</th><th class="pb-5 text-right">Balance</th></tr></thead><tbody>${allMembers.map(m => {
+                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] uppercase border-b"><th class="pb-5">Name</th><th class="pb-5">Savings</th><th class="pb-5 text-right">Penalties</th></tr></thead><tbody>${allMembers.map(m => `<tr class="border-b"><td class="py-4 font-black">${m.fullName}</td><td class="py-4 font-bold text-green-700">${m.totalBalance.toLocaleString()} RWF</td><td class="py-4 text-red-500 font-bold text-right">${m.penalties.toLocaleString()} RWF</td></tr>`).join('')}</tbody></table>`;
+            } else {
+                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] uppercase border-b"><th class="pb-5">Member</th><th class="pb-5">Total Loan</th><th class="pb-5 text-right">Balance</th></tr></thead><tbody>${allMembers.map(m => {
                     const tDue = m.loans.reduce((s, l) => s + l.totalDue, 0);
                     const tPaid = m.loans.reduce((s, l) => s + l.paid.reduce((a, b) => a + b, 0), 0);
-                    return `<tr class="border-b border-gray-50"><td class="py-5 font-black text-gray-800">${m.fullName}</td><td class="py-5 font-bold">${Math.round(tDue).toLocaleString()} RWF</td><td class="py-5 text-right font-black text-red-600">${Math.round(tDue - tPaid).toLocaleString()} RWF</td></tr>`;
+                    return `<tr class="border-b"><td class="py-4 font-black">${m.fullName}</td><td class="py-4 font-bold">${Math.round(tDue).toLocaleString()}</td><td class="py-4 text-red-600 font-black text-right">${Math.round(tDue - tPaid).toLocaleString()} RWF</td></tr>`;
                 }).join('')}</tbody></table>`;
-            } else {
-                win.innerHTML = `<div class="text-center py-20"><h3 class="text-7xl font-black text-green-950 tracking-tighter">6,766,153 RWF</h3><p class="text-gray-400 font-bold uppercase tracking-[0.3em] mt-4 text-xs italic">Verified Group Valuation 2026</p></div>`;
             }
         }
 
@@ -248,37 +219,17 @@
             let loanHtml = user.loans.map((loan, idx) => {
                 const paid = loan.paid.reduce((a, b) => a + b, 0);
                 const rem = loan.totalDue - paid;
-                const prog = (paid/loan.totalDue)*100;
-                return `
-                <div class="bg-white p-10 rounded-[3rem] shadow-sm border mb-6 transition hover:shadow-lg">
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-[10px] font-black text-amber-500 bg-amber-50 px-3 py-1.5 rounded-full uppercase tracking-widest tracking-widest">FACILITY ID: HPA-L${idx+1}</span>
-                        <span class="text-[10px] font-black px-4 py-2 rounded-full ${rem <= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}">${rem <= 0 ? 'PAID IN FULL' : 'REPAYING'}</span>
-                    </div>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-                        <div><p class="text-[10px] uppercase text-gray-400 font-black">Principal + Int.</p><p class="text-2xl font-black text-gray-900">${Math.round(loan.totalDue).toLocaleString()}</p></div>
-                        <div><p class="text-[10px] uppercase text-green-600 font-black">Repaid</p><p class="text-2xl font-black text-green-600">${Math.round(paid).toLocaleString()}</p></div>
-                        <div class="text-right"><p class="text-[10px] uppercase text-red-400 font-black">Remaining Debt</p><p class="text-2xl font-black text-red-600">${Math.round(rem).toLocaleString()}</p></div>
-                    </div>
-                    <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden shadow-inner"><div class="bg-green-600 h-full transition-all duration-1000 shadow-lg" style="width: ${prog}%"></div></div>
-                </div>`;
+                return `<div class="bg-white p-10 rounded-[3rem] border mb-6 shadow-sm"><div class="flex justify-between items-center mb-6"><span class="text-xs font-black text-amber-500 uppercase">Facility ID: HPA-L${idx+1}</span><span class="text-xs font-black px-4 py-1 rounded-full ${rem <= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-600'}">${rem <= 0 ? 'PAID' : 'REPAYING'}</span></div><div class="grid grid-cols-2 md:grid-cols-3 gap-8"><div><p class="text-[10px] uppercase text-gray-400">Due Total</p><p class="text-xl font-black">${Math.round(loan.totalDue).toLocaleString()}</p></div><div><p class="text-[10px] uppercase text-red-400">Remaining</p><p class="text-xl font-black text-red-600">${Math.round(rem).toLocaleString()}</p></div></div></div>`;
             }).join('');
 
             area.innerHTML = `
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div class="lg:col-span-2">
-                    <div class="bg-white p-12 rounded-[4.5rem] shadow-2xl border-t-8 border-green-800 mb-10 flex justify-between items-end relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-green-50 rounded-full translate-x-10 -translate-y-10"></div>
-                        <div><p class="text-xs font-black text-gray-400 uppercase tracking-[0.3em] mb-4">Total Equity Balance</p><h3 class="text-6xl font-black text-green-950 tracking-tighter">${user.totalBalance.toLocaleString()} RWF</h3></div>
-                        <div class="bg-red-50 px-8 py-5 rounded-[2.5rem] border border-red-100 text-center"><p class="text-[10px] font-black text-red-400 uppercase tracking-widest mb-1">Penalties</p><p class="text-3xl font-black text-red-600">${user.penalties.toLocaleString()}</p></div>
-                    </div>
-                    <h4 class="font-black text-gray-800 mb-8 uppercase text-xs tracking-[0.3em] flex items-center gap-3"><i data-lucide="scroll-text" class="text-amber-500 h-6 w-6"></i> My Borrowing Facilities</h4>
-                    ${loanHtml || '<p class="text-gray-400 italic p-16 bg-white rounded-[3.5rem] border border-dashed text-center font-bold">No active borrowing history recorded.</p>'}
+                <div class="bg-white p-12 rounded-[4rem] shadow-2xl border-t-8 border-green-800 mb-10 flex justify-between items-end relative overflow-hidden">
+                    <div><p class="text-xs font-black text-gray-400 uppercase tracking-widest mb-4">Savings Account</p><h3 class="text-6xl font-black text-green-950">${user.totalBalance.toLocaleString()} RWF</h3></div>
+                    <div class="bg-red-50 px-8 py-5 rounded-[2rem] border text-center"><p class="text-[10px] font-black text-red-400 uppercase">Penalty</p><p class="text-3xl font-black text-red-600">${user.penalties.toLocaleString()}</p></div>
                 </div>
-                <div class="space-y-10">
-                    <div class="bg-white p-12 rounded-[3.5rem] shadow-xl border border-gray-100 text-center"><div class="bg-amber-400 w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-amber-200"><i data-lucide="shield-check" class="text-green-950"></i></div><p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 tracking-widest">Verified Profile</p><p class="font-black text-lg text-green-950">${user.fullName}</p><p class="text-[10px] text-gray-400 mt-4 leading-relaxed font-bold tracking-tight">Accessing HPA Secure Network [v1.20]</p></div>
-                </div>
-            </div>`;
+                <h4 class="font-black text-gray-800 mb-8 uppercase text-xs tracking-widest">Borrowing History</h4>
+                ${loanHtml || '<p class="p-12 text-center text-gray-400 font-bold border rounded-[3rem] bg-white">No borrowing history recorded.</p>'}
+            `;
             lucide.createIcons();
         }
 
