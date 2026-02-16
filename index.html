@@ -596,24 +596,28 @@
         const SESSION_KEY = 'hpa_aguka_session';
         
         // Sample Data for 20 Members
-        const defaultMembers = [
-            {
-                id: "M001",
-                fullName: "Jean Bosco Habimana",
-                email: "jean@hpaaguka.com",
-                password: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", // "password" hashed
-                role: "chairperson",
-                joinDate: "2020-01-15",
-                phoneNumber: "+250 788 111 111",
-                occupation: "Agricultural Officer",
-                profileImage: "http://static.photos/people/200x200/101",
-                totalContributions: 850000,
-                shareCapital: 100000,
-                contributions: [
-                    { date: "2024-01-05", amount: 50000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240105-001" },
-                    { date: "2024-02-05", amount: 50000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240205-002" },
-                    { date: "2024-03-05", amount: 75000, type: "monthly_savings", status: "completed", receiptNumber: "REC-20240305-003" }
-                ],
+const defaultMembers = [
+    { "id": "HPA-001", "fullName": "Innocent TURIKUMWE", "role": "Admin/Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 310000, "email": "innocent@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-002", "fullName": "KAGABO Emmanuel", "role": "Member", "previousYears": 240000, "penalties": 4500, "totalBalance": 320000, "email": "kagabo@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-003", "fullName": "KAYITESI Isabelle", "role": "Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 320000, "email": "isabelle@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-004", "fullName": "Jocelyne UWAMBAJIMANA", "role": "Member", "previousYears": 240000, "penalties": 3250, "totalBalance": 300000, "email": "jocelyne@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-005", "fullName": "Odile NTAKINANIRIMANA", "role": "Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 310000, "email": "odile@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-006", "fullName": "Gisèle UYISENGA", "role": "Member", "previousYears": 240000, "penalties": 7930, "totalBalance": 310000, "email": "gisele@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-007", "fullName": "Reuben SINDAYIHEBA", "role": "Admin/Member", "previousYears": 240000, "penalties": 1000, "totalBalance": 320000, "email": "reuben@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-008", "fullName": "Patrick UWIDUHAYE", "role": "Member", "previousYears": 240000, "penalties": 6000, "totalBalance": 320000, "email": "patrick@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-009", "fullName": "Theonille MUKABAGORORA", "role": "Member", "previousYears": 240000, "penalties": 11275, "totalBalance": 300000, "email": "theonille@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-010", "fullName": "Mireille UMWALI", "role": "Member", "previousYears": 240000, "penalties": 4265, "totalBalance": 350000, "email": "mireille@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-011", "fullName": "Eliab MWISENEZA", "role": "Admin/Member", "previousYears": 240000, "penalties": 5605, "totalBalance": 320000, "email": "eliab@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-012", "fullName": "Gabriel ISHIMWE", "role": "Member", "previousYears": 240000, "penalties": 7688, "totalBalance": 320000, "email": "gabriel@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-013", "fullName": "IGIHOZO Chanceline", "role": "Member", "previousYears": 240000, "penalties": 22236, "totalBalance": 320000, "email": "chanceline@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-014", "fullName": "Maurice TUYISENGE", "role": "Member", "previousYears": 240000, "penalties": 6788, "totalBalance": 310000, "email": "maurice@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-015", "fullName": "Adrien TUYIZERE", "role": "Member", "previousYears": 240000, "penalties": 6525, "totalBalance": 310000, "email": "adrien@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-016", "fullName": "Stanisilas TUYISENGE", "role": "Member", "previousYears": 240000, "penalties": 0, "totalBalance": 320000, "email": "stanisilas@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-017", "fullName": "MUGABWAMBERE Jean de Dieu", "role": "Member", "previousYears": 240000, "penalties": 0, "totalBalance": 320000, "email": "jeandedieu@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-018", "fullName": "UWAMAHORO Josiane", "role": "Member", "previousYears": 240000, "penalties": 13970, "totalBalance": 320000, "email": "josiane@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-019", "fullName": "UMUHOZA Alliance", "role": "Member", "previousYears": 240000, "penalties": 10990, "totalBalance": 330000, "email": "alliance@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] },
+    { "id": "HPA-020", "fullName": "NIYOMUFASHA Gentille", "role": "Member", "previousYears": 240000, "penalties": 101131, "totalBalance": 320000, "email": "gentille@hpaaguka.com", "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "loans": [] }
+];
                 loans: []
             },
             {
@@ -1338,3 +1342,4 @@
                             <div class="text-right">
                                 <span class="text-3xl font-bold text-green-600">${progress.toFixed(0)}%</span>
                                 <p class="text-sm text-gray-
+
