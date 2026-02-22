@@ -3,170 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPA-Aguka Cooperative | Official Portal</title>
+    <title>HPA-Aguka Cooperative | Full Financial Ledger</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFCF6; scroll-behavior: smooth; }
-        .hero-bg { background: radial-gradient(circle at top right, #1b4332, #081c15); }
-        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
-        .tab-btn.active { background-color: #1B4332; color: white; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; }
+        .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.95); border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
-<body class="text-gray-900">
+<body class="text-slate-900">
 
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-amber-100 px-6 py-4">
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-green-900 p-2 rounded-xl text-amber-400"><i data-lucide="shield-check"></i></div>
+                <div class="bg-emerald-900 p-2 rounded-xl text-amber-400"><i data-lucide="shield-check"></i></div>
                 <div>
-                    <h1 class="font-extrabold text-xl text-green-950 leading-none">HPA-AGUKA</h1>
-                    <p class="text-[10px] font-bold text-amber-600 uppercase tracking-widest mt-1">Live Wisely, Save to Invest</p>
+                    <h1 class="font-extrabold text-xl text-emerald-950 leading-none tracking-tighter uppercase">HPA-AGUKA</h1>
+                    <p class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest mt-1">Live Wisely, Save to Invest</p>
                 </div>
             </div>
-            <div class="hidden lg:flex items-center gap-6">
-                <div class="bg-amber-50 px-4 py-2 rounded-2xl border border-amber-200 flex items-center gap-3">
-                    <i data-lucide="landmark" class="text-amber-700 h-4 w-4"></i>
-                    <div class="text-xs">
-                        <p class="text-[8px] font-black text-amber-600 uppercase">BK Account</p>
-                        <p class="font-black text-green-950">00095-07743455-22</p>
-                    </div>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:block text-right border-r border-slate-200 pr-6">
+                    <p class="text-[8px] font-black text-slate-400 uppercase">Official BK Account</p>
+                    <p class="font-black text-emerald-900 text-sm">00095-07743455-22</p>
                 </div>
-                <button onclick="showLogin()" class="bg-green-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition">Member Access</button>
+                <button onclick="showLogin()" class="bg-emerald-900 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-emerald-800 transition">Member Login</button>
             </div>
         </div>
     </nav>
 
     <div id="landingPage">
-        <section class="hero-bg text-white py-24 px-6 text-center">
+        <header class="hero-gradient text-white py-24 px-6 text-center">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Securing the Future <br><span class="text-amber-400 italic">Together.</span></h2>
-                <p class="text-green-100/70 text-lg mb-10 max-w-2xl mx-auto">Founded in 2020 in Kigali, we empower 20 visionaries through disciplined savings and strategic low-interest loans.</p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <button onclick="showLogin()" class="bg-amber-500 text-green-950 px-8 py-4 rounded-2xl font-black text-lg shadow-xl">Enter Member Portal</button>
-                    <a href="#contact" class="bg-white/10 px-8 py-4 rounded-2xl font-black text-lg border border-white/20">Contact Leaders</a>
-                </div>
+                <h2 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">Financial <span class="text-amber-400">Integrity.</span></h2>
+                <p class="text-emerald-100/70 text-lg mb-10 max-w-2xl mx-auto font-medium">HPA-Aguka Cooperative: Managing over 10.4 Million RWF in revolving loans for our 20 active members.</p>
+                <button onclick="showLogin()" class="bg-amber-500 text-emerald-950 px-10 py-4 rounded-2xl font-black text-lg shadow-xl hover:bg-amber-400 transition">Enter Member Portal</button>
             </div>
-        </section>
+        </header>
 
-        <section id="contact" class="py-20 max-w-7xl mx-auto px-6">
-            <h3 class="text-center font-black text-3xl text-green-950 mb-12 uppercase tracking-tight">Executive Committee</h3>
+        <section class="py-20 max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-lg border border-amber-100 text-center">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-green-800"><i data-lucide="user-check"></i></div>
-                    <h4 class="font-black text-xl">Eliab MWISENEZA</h4>
-                    <p class="text-amber-600 font-bold text-xs uppercase mb-6">Chairperson</p>
-                    <a href="https://wa.me/250782685476" class="inline-flex items-center gap-2 font-bold text-green-700 bg-green-50 px-6 py-2 rounded-full hover:bg-green-100 transition">
-                        <i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp
+                <div class="glass-card p-8 rounded-[2.5rem] text-center">
+                    <h4 class="font-black text-xl mb-1">Eliab MWISENEZA</h4>
+                    <p class="text-emerald-600 font-bold text-xs uppercase mb-4 tracking-widest">Chairperson</p>
+                    <a href="https://wa.me/250782685476" class="text-emerald-900 font-black text-sm flex items-center justify-center gap-2 bg-emerald-50 py-3 rounded-xl hover:bg-emerald-100 transition">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +250 782 685 476
                     </a>
                 </div>
-                <div class="bg-green-900 text-white p-8 rounded-[2.5rem] shadow-xl text-center scale-105">
-                    <div class="w-16 h-16 bg-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-green-900"><i data-lucide="coins"></i></div>
-                    <h4 class="font-black text-xl">Reuben SINDAYIHEBA</h4>
-                    <p class="text-green-300 font-bold text-xs uppercase mb-6">Treasurer</p>
-                    <a href="https://wa.me/250782307562" class="inline-flex items-center gap-2 font-bold text-green-900 bg-amber-400 px-6 py-2 rounded-full hover:bg-amber-300 transition">
-                        <i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp
+                <div class="bg-emerald-900 text-white p-8 rounded-[2.5rem] text-center shadow-2xl scale-105">
+                    <h4 class="font-black text-xl mb-1 text-amber-400">Reuben SINDAYIHEBA</h4>
+                    <p class="text-emerald-300 font-bold text-xs uppercase mb-4 tracking-widest">Treasurer</p>
+                    <a href="https://wa.me/250782307562" class="text-emerald-950 font-black text-sm flex items-center justify-center gap-2 bg-amber-400 py-3 rounded-xl hover:bg-amber-300 transition">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +250 782 307 562
                     </a>
                 </div>
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-lg border border-amber-100 text-center">
-                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-green-800"><i data-lucide="info"></i></div>
-                    <h4 class="font-black text-xl">Innocent TURIKUMWE</h4>
-                    <p class="text-amber-600 font-bold text-xs uppercase mb-6">Advisor</p>
-                    <a href="https://wa.me/250733311987" class="inline-flex items-center gap-2 font-bold text-green-700 bg-green-50 px-6 py-2 rounded-full hover:bg-green-100 transition">
-                        <i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp
+                <div class="glass-card p-8 rounded-[2.5rem] text-center">
+                    <h4 class="font-black text-xl mb-1">Innocent TURIKUMWE</h4>
+                    <p class="text-emerald-600 font-bold text-xs uppercase mb-4 tracking-widest">Advisor</p>
+                    <a href="https://wa.me/250733311987" class="text-emerald-900 font-black text-sm flex items-center justify-center gap-2 bg-emerald-50 py-3 rounded-xl hover:bg-emerald-100 transition">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +250 733 311 987
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-amber-50 py-20 border-y border-amber-200">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <i data-lucide="landmark" class="h-12 w-12 text-amber-600 mx-auto mb-6"></i>
-                <h3 class="text-3xl font-black text-green-950 mb-4">Official Deposit Account</h3>
-                <div class="bg-white p-10 rounded-[3rem] shadow-inner border border-amber-200">
-                    <p class="text-gray-500 font-bold text-xs uppercase tracking-widest mb-2">Bank of Kigali (BK)</p>
-                    <p class="text-4xl font-black text-green-900 tracking-tighter mb-4">00095-07743455-22</p>
-                    <div class="inline-block bg-green-900 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest">Account Name: HPA-AGUKA</div>
                 </div>
             </div>
         </section>
     </div>
 
     <div id="dashboard" class="hidden min-h-screen pb-20">
-        <header class="bg-green-950 text-white p-8 flex justify-between items-center">
-            <div>
-                <h2 id="userName" class="text-2xl font-black"></h2>
-                <span id="userRole" class="text-[10px] font-black text-green-400 uppercase tracking-widest"></span>
+        <header class="bg-emerald-950 text-white p-8">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div>
+                    <h2 id="userName" class="text-2xl font-black"></h2>
+                    <p id="userRole" class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest"></p>
+                </div>
+                <button onclick="logout()" class="bg-red-500/10 text-red-500 px-6 py-2 rounded-xl border border-red-500/50 font-bold text-xs">EXIT PORTAL</button>
             </div>
-            <button onclick="logout()" class="bg-red-900/40 text-red-200 px-6 py-2 rounded-xl border border-red-900 font-bold">Sign Out</button>
         </header>
 
-        <main class="max-w-7xl mx-auto p-6 md:p-12 grid lg:grid-cols-3 gap-8">
-            <div class="space-y-6">
-                <div class="bg-white p-8 rounded-[3rem] shadow-xl border-t-8 border-green-800">
-                    <p class="text-[10px] font-black text-gray-400 uppercase mb-2">Total Savings Balance</p>
-                    <h3 id="userBalance" class="text-5xl font-black text-green-950"></h3>
-                </div>
-                <div class="bg-red-50 p-8 rounded-[3rem] border border-red-100">
-                    <p class="text-[10px] font-black text-red-400 uppercase mb-2">Outstanding Penalty</p>
-                    <h3 id="userPenalty" class="text-4xl font-black text-red-600"></h3>
-                </div>
-            </div>
-
-            <div class="lg:col-span-2 space-y-8">
-                <div class="bg-white p-10 rounded-[3rem] shadow-lg border border-gray-50">
-                    <h3 class="font-black text-lg mb-6 flex items-center gap-2"><i data-lucide="history"></i> Contribution Timeline</h3>
-                    <div id="contributionGrid" class="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6"></div>
-                    <div class="flex justify-between items-center bg-gray-50 p-4 rounded-2xl border border-dashed">
-                        <span class="text-xs font-bold text-gray-400">Previous Years Total</span>
-                        <span id="userPrevSum" class="font-black text-green-800"></span>
+        <main class="max-w-7xl mx-auto p-6 md:p-12">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-emerald-900 text-white p-10 rounded-[3rem] shadow-xl">
+                        <p class="text-[10px] font-black text-emerald-400 uppercase mb-2 tracking-widest">Total Shares Balance</p>
+                        <h3 id="userBalance" class="text-5xl font-black text-amber-400 mb-6"></h3>
+                        <div class="pt-6 border-t border-emerald-800 flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-300">Previous Years Total</span>
+                            <span id="userPrevSum" class="font-black text-white"></span>
+                        </div>
+                    </div>
+                    <div id="penaltyBox" class="p-8 rounded-[3rem] border-2">
+                        <p class="text-[10px] font-black uppercase mb-1 tracking-widest">Outstanding Penalty</p>
+                        <h3 id="userPenalty" class="text-4xl font-black"></h3>
                     </div>
                 </div>
 
-                <div class="bg-white p-10 rounded-[3rem] shadow-lg border border-gray-50">
-                    <h3 class="font-black text-lg mb-6 flex items-center gap-2"><i data-lucide="bar-chart-3"></i> Loan Performance</h3>
-                    <div id="loanList" class="space-y-6"></div>
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="bg-white p-10 rounded-[3.5rem] shadow-sm border border-slate-200">
+                        <h3 class="font-black text-xl mb-8 flex items-center gap-2"><i data-lucide="calendar"></i> Contribution Ledger (May'25 - Apr'26)</h3>
+                        <div id="contributionGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-[3.5rem] shadow-sm border border-slate-200">
+                        <h3 class="font-black text-xl mb-8 flex items-center gap-2"><i data-lucide="landmark"></i> Loan History & Repayments</h3>
+                        <div id="loanList" class="space-y-8"></div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <div id="loginModal" class="fixed inset-0 bg-green-950/95 backdrop-blur-xl z-[100] hidden items-center justify-center p-6">
-        <div class="bg-white p-12 rounded-[4rem] max-w-md w-full relative text-center">
-            <h2 class="text-3xl font-black text-green-950 mb-6">Member Access</h2>
-            <input type="email" id="loginEmail" placeholder="Member Email" class="w-full p-5 bg-gray-50 rounded-2xl mb-4 border focus:border-green-800 outline-none">
-            <input type="password" id="loginPass" placeholder="Password" class="w-full p-5 bg-gray-50 rounded-2xl mb-6 border focus:border-green-800 outline-none">
-            <button onclick="handleLogin()" class="w-full bg-green-950 text-white p-5 rounded-2xl font-black text-lg shadow-xl">Sign In</button>
-            <button onclick="hideLogin()" class="mt-4 text-gray-400 font-bold uppercase text-[10px] tracking-widest">Back to Home</button>
+    <div id="loginModal" class="fixed inset-0 bg-emerald-950/98 backdrop-blur-xl z-[100] hidden items-center justify-center p-6">
+        <div class="bg-white p-12 rounded-[4rem] max-w-md w-full relative">
+            <h2 class="text-3xl font-black text-emerald-950 mb-6">Private Member Access</h2>
+            <input type="email" id="loginEmail" placeholder="Member Email" class="w-full p-5 bg-slate-50 rounded-2xl mb-4 border focus:border-emerald-800 outline-none font-bold">
+            <input type="password" id="loginPass" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl mb-8 border focus:border-emerald-800 outline-none font-bold">
+            <button onclick="handleLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg shadow-2xl hover:bg-emerald-900 transition">View My Ledger</button>
+            <button onclick="hideLogin()" class="w-full mt-4 text-slate-400 font-bold uppercase text-[10px] tracking-widest text-center">Back to Home</button>
         </div>
     </div>
 
     <script>
-        // FULL DATASET
+        // THE FULL 20-MEMBER DATABASE
         const members = [
             { 
-                email: "innocent@hpaaguka.com", pass: "password", 
-                name: "Innocent TURIKUMWE", role: "Admin/Member",
+                name: "Innocent TURIKUMWE", role: "Admin/Member", email: "innocent@hpaaguka.com", pass: "1234",
                 balance: 350000, penalty: 0, prev: 240000,
-                history: ["10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k"],
-                loans: [{ name: "Consolidated Loans", req: 1184000, paid: 1173659, rem: 40880 }]
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000],["Mar", 10000],["Apr", 10000]],
+                loans: [{ id: "L007", requested: 1184000, totalDue: 1208198, repaid: 1173659, outstanding: 40880, monthly: ["21,425", "21,425", "21,425", "21,426", "21,425", "21,425"] }]
             },
             { 
-                email: "sireuben007@gmail.com", pass: "password", 
-                name: "Reuben SINDAYIHEBA", role: "Admin/Member",
-                balance: 330000, penalty: 0, prev: 240000,
-                history: ["10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k"],
-                loans: [{ name: "Consolidated Loans", req: 2188000, paid: 1699070, rem: 585000 }]
+                name: "KAGABO Emmanuel", role: "Member", email: "kagabo@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: [{ id: "L004", requested: 1200000, totalDue: 746400, repaid: 694200, outstanding: 555000, monthly: ["50,920", "53,470", "50,920", "50,920", "50,920"] }]
             },
             { 
-                email: "eliab@hpaaguka.com", pass: "password", 
-                name: "Eliab MWISENEZA", role: "Admin/Member",
+                name: "KAYITESI Isabelle", role: "Member", email: "kayitesi@hpaaguka.com", pass: "1234",
+                balance: 380000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000],["Mar", 10000]],
+                loans: []
+            },
+            { 
+                name: "Jocelyne UWAMBAJIMANA", role: "Member", email: "jocelyne@hpaaguka.com", pass: "1234",
+                balance: 340000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000],["Mar", 10000]],
+                loans: [{ id: "L029", requested: 600000, totalDue: 116471, repaid: 115471, outstanding: 484529, monthly: ["112,471", "3,000"] }]
+            },
+            { 
+                name: "Odile NTAKINANIRIMANA", role: "Member", email: "odile@hpaaguka.com", pass: "1234",
+                balance: 350000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000],["Mar", 10000],["Apr", 10000]],
+                loans: [{ id: "L009", requested: 400000, totalDue: 441400, repaid: 420200, outstanding: 0, monthly: ["105,050", "105,050", "105,050", "105,050"] }]
+            },
+            { 
+                name: "Gisèle UYISENGA", role: "Member", email: "gisele@hpaaguka.com", pass: "1234",
+                balance: 310000, penalty: 21525, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000]],
+                loans: []
+            },
+            { 
+                name: "Reuben SINDAYIHEBA", role: "Admin/Member", email: "sireuben007@gmail.com", pass: "1234",
                 balance: 330000, penalty: 0, prev: 240000,
-                history: ["10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k", "10k"],
-                loans: [{ name: "Consolidated Loans", req: 1872000, paid: 1984412, rem: 0 }]
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000]],
+                loans: [{ id: "L001/6/19/27", requested: 2188000, totalDue: 1799140, repaid: 1699070, outstanding: 585000, monthly: ["113,716", "113,716", "81,229", "81,229", "160,000", "115,000"] }]
+            },
+            { 
+                name: "Patrick UWIDUHAYE", role: "Member", email: "patrick@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: [{ id: "L003", requested: 264500, totalDue: 281500, repaid: 272500, outstanding: 0, monthly: ["136,250", "136,250"] }]
+            },
+            { 
+                name: "Theonille MUKABAGORORA", role: "Member", email: "theonille@hpaaguka.com", pass: "1234",
+                balance: 300000, penalty: 33105, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000]],
+                loans: []
+            },
+            { 
+                name: "Mireille UMWALI", role: "Member", email: "mireille@hpaaguka.com", pass: "1234",
+                balance: 350000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000],["Mar", 10000],["Apr", 10000]],
+                loans: []
+            },
+            { 
+                name: "Eliab MWISENEZA", role: "Admin/Member", email: "eliab@hpaaguka.com", pass: "1234",
+                balance: 330000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000]],
+                loans: [{ id: "L002/8/11/17", requested: 1872000, totalDue: 2100824, repaid: 1984412, outstanding: 0, monthly: ["84,264", "257,550", "321,300", "634,000"] }]
+            },
+            { 
+                name: "Gabriel ISHIMWE", role: "Member", email: "gabriel@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: [{ id: "L005/10/31", requested: 590000, totalDue: 596516, repaid: 556758, outstanding: 72000, monthly: ["244,800", "108,160", "113,568", "8,122"] }]
+            },
+            { 
+                name: "IGIHOZO Chanceline", role: "Member", email: "igihozo@hpaaguka.com", pass: "1234",
+                balance: 330000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000]],
+                loans: [{ id: "L023", requested: 300000, totalDue: 164370, repaid: 163370, outstanding: 136630, monthly: ["53,560", "56,250", "53,560"] }]
+            },
+            { 
+                name: "Maurice TUYISENGE", role: "Member", email: "maurice@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: []
+            },
+            { 
+                name: "Adrien TUYIZERE", role: "Member", email: "adrien@hpaaguka.com", pass: "1234",
+                balance: 330000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000]],
+                loans: [{ id: "L021/30", requested: 220000, totalDue: 125362, repaid: 111681, outstanding: 120000, monthly: ["18,800", "19,683", "18,746", "17,853", "18,745", "17,853"] }]
+            },
+            { 
+                name: "Stanisilas TUYISENGE", role: "Member", email: "stanisilas@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: [{ id: "L015/26", requested: 1200000, totalDue: 891300, repaid: 839300, outstanding: 410700, monthly: ["125,000", "125,000", "125,000", "125,000", "125,000", "89,300", "89,300"] }]
+            },
+            { 
+                name: "Jean de Dieu MUGABWAMBERE", role: "Member", email: "mugabwambere@hpaaguka.com", pass: "1234",
+                balance: 330000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000]],
+                loans: []
+            },
+            { 
+                name: "UWAMAHORO Josiane", role: "Member", email: "josiane@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: [{ id: "L018/20/24", requested: 1100000, totalDue: 1157100, repaid: 1127050, outstanding: 0, monthly: ["306,000", "306,000", "257,600", "257,450"] }]
+            },
+            { 
+                name: "UMUHOZA Alliance", role: "Member", email: "alliance@hpaaguka.com", pass: "1234",
+                balance: 330000, penalty: 0, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000],["Feb", 10000]],
+                loans: []
+            },
+            { 
+                name: "NIYOMUFASHA Gentille", role: "Member", email: "gentille@hpaaguka.com", pass: "1234",
+                balance: 320000, penalty: 500, prev: 240000,
+                history: [["May", 10000],["Jun", 10000],["Jul", 10000],["Aug", 10000],["Sep", 10000],["Oct", 10000],["Nov", 10000],["Dec", 10000],["Jan", 10000]],
+                loans: [{ id: "L014/28", requested: 1370000, totalDue: 791268, repaid: 729634, outstanding: 700000, monthly: ["119,612", "119,612", "119,612", "119,612", "125,593", "125,593"] }]
             }
-            // Add more members here using the same format
         ];
 
         function showLogin() { document.getElementById('loginModal').classList.replace('hidden', 'flex'); }
@@ -182,42 +261,52 @@
                 document.getElementById('dashboard').classList.remove('hidden');
                 hideLogin();
                 renderUser(user);
-            } else { alert("Invalid Credentials"); }
+            } else { alert("User profile not found. Check email or contact Treasurer."); }
         }
 
         function renderUser(u) {
             document.getElementById('userName').innerText = u.name;
             document.getElementById('userRole').innerText = u.role;
             document.getElementById('userBalance').innerText = u.balance.toLocaleString() + " RWF";
-            document.getElementById('userPenalty').innerText = u.penalty.toLocaleString() + " RWF";
             document.getElementById('userPrevSum').innerText = u.prev.toLocaleString() + " RWF";
+            
+            const pBox = document.getElementById('penaltyBox');
+            const pText = document.getElementById('userPenalty');
+            pText.innerText = u.penalty.toLocaleString() + " RWF";
+            pBox.className = u.penalty > 0 ? "p-8 rounded-[3rem] border-2 border-red-200 bg-red-50 text-red-700" : "p-8 rounded-[3rem] border-2 border-emerald-100 bg-emerald-50 text-emerald-700";
 
             const grid = document.getElementById('contributionGrid');
-            grid.innerHTML = u.history.map((h, i) => `
-                <div class="bg-gray-50 border p-3 rounded-xl text-center">
-                    <p class="text-[8px] font-black text-gray-400 uppercase">May'25 +${i}</p>
-                    <p class="font-black text-green-900">${h}</p>
+            grid.innerHTML = u.history.map(h => `
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl text-center">
+                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">${h[0]} 2025</p>
+                    <p class="font-black text-emerald-900">${h[1].toLocaleString()}</p>
                 </div>
             `).join('');
 
             const loans = document.getElementById('loanList');
-            loans.innerHTML = u.loans.map(l => {
-                const perc = (l.paid / (l.req || 1)) * 100;
-                return `
-                <div class="border rounded-3xl p-6 bg-gray-50/50">
-                    <div class="flex justify-between mb-4">
-                        <span class="font-black text-green-950">${l.name}</span>
-                        <span class="text-xs font-bold ${l.rem === 0 ? 'text-green-600' : 'text-red-500'}">${l.rem === 0 ? 'CLEARED' : 'OUTSTANDING'}</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
-                        <div><p class="text-gray-400 text-[10px] uppercase font-bold">Total Repaid</p><p class="font-black">${l.paid.toLocaleString()}</p></div>
-                        <div class="text-right"><p class="text-gray-400 text-[10px] uppercase font-bold">Remaining Balance</p><p class="font-black text-red-600">${l.rem.toLocaleString()}</p></div>
-                    </div>
-                    <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                        <div class="bg-green-600 h-full" style="width: ${perc}%"></div>
-                    </div>
-                </div>`;
-            }).join('');
+            if(u.loans.length === 0) {
+                loans.innerHTML = `<div class="p-8 border-2 border-dashed border-slate-200 rounded-[2.5rem] text-center text-slate-400 font-bold">No active loan records found.</div>`;
+            } else {
+                loans.innerHTML = u.loans.map(l => {
+                    const progress = (l.repaid / (l.totalDue || 1)) * 100;
+                    return `
+                    <div class="border border-slate-200 rounded-[2.5rem] p-8 bg-slate-50/50">
+                        <div class="flex justify-between items-start mb-6">
+                            <div><h4 class="font-black text-xl text-emerald-950">Loan Summary</h4><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">ID Reference: ${l.id}</p></div>
+                            <span class="px-4 py-1 rounded-full text-[10px] font-black ${l.outstanding <= 0 ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${l.outstanding <= 0 ? 'CLEARED' : 'PENDING'}</span>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                            <div><p class="text-[9px] font-bold text-slate-400 uppercase">Requested</p><p class="font-black">${l.requested.toLocaleString()}</p></div>
+                            <div><p class="text-[9px] font-bold text-slate-400 uppercase">Total Due</p><p class="font-black">${l.totalDue.toLocaleString()}</p></div>
+                            <div><p class="text-[9px] font-bold text-slate-400 uppercase text-emerald-600">Total Repaid</p><p class="font-black text-emerald-700">${l.repaid.toLocaleString()}</p></div>
+                            <div><p class="text-[9px] font-bold text-slate-400 uppercase text-red-500">Remaining</p><p class="font-black text-red-600">${l.outstanding.toLocaleString()}</p></div>
+                        </div>
+                        <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden mb-6"><div class="bg-emerald-600 h-full transition-all" style="width: ${progress}%"></div></div>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase mb-3 tracking-widest">Installments Applied:</p>
+                        <div class="flex flex-wrap gap-2">${l.monthly.map(m => `<span class="bg-white border text-[10px] px-3 py-1.5 rounded-lg font-bold text-emerald-900">${m} RWF</span>`).join('')}</div>
+                    </div>`;
+                }).join('');
+            }
             lucide.createIcons();
         }
 
