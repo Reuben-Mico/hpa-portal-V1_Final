@@ -3,43 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPA-Aguka | Health Professionals Ledger</title>
+    <title>HPA-Aguka | Health Professionals Cooperative</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; }
-        .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white; padding: 0; margin: 0; }
-            .main-container { width: 100% !important; max-width: 100% !important; padding: 0 !important; }
-            .card { border: 1px solid #ddd !important; box-shadow: none !important; border-radius: 10px !important; }
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFDFD; scroll-behavior: smooth; }
+        .hero-bg { background: linear-gradient(rgba(2, 44, 34, 0.9), rgba(2, 44, 34, 0.9)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; }
+        .stat-card { transition: transform 0.3s ease; border: 1px solid #e2e8f0; }
+        .stat-card:hover { transform: translateY(-5px); border-color: #10b981; }
+        @media print { .no-print { display: none !important; } .print-only { display: block !important; } }
     </style>
 </head>
 <body class="text-slate-900">
 
-    <div id="loginPage" class="min-h-screen flex items-center justify-center bg-slate-100 p-6 no-print">
-        <div class="bg-white p-10 rounded-[3rem] shadow-2xl max-w-md w-full border border-emerald-100 text-center">
-            <div class="bg-emerald-900 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-amber-400">
-                <i data-lucide="shield-check" size="32"></i>
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b no-print">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-emerald-900 p-2 rounded-lg text-amber-400"><i data-lucide="activity"></i></div>
+                <span class="font-black text-xl tracking-tighter text-emerald-950">HPA-AGUKA</span>
             </div>
-            <h1 class="text-3xl font-black text-emerald-950 tracking-tighter mb-2">HPA-AGUKA</h1>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8 text-center">Secure Member Portal</p>
-            
-            <div class="space-y-4 text-left">
-                <div>
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2">Email Address</label>
-                    <input type="email" id="email" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
-                </div>
-                <div>
-                    <label class="text-[10px] font-black uppercase text-slate-500 ml-2">Secret Password</label>
-                    <input type="password" id="password" class="w-full p-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
-                </div>
-                <button onclick="handleLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg hover:bg-emerald-800 transition shadow-xl pt-4">Sign In</button>
+            <div class="flex gap-4">
+                <button onclick="scrollToLogin()" class="bg-emerald-900 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-emerald-800 transition">Portal Login</button>
             </div>
-            <p class="mt-8 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Equity Bank: 4030201344354</p>
+        </div>
+    </nav>
+
+    <div id="homePage" class="no-print">
+        <header class="hero-bg min-h-screen flex items-center pt-20 px-6">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <span class="bg-emerald-500/20 text-emerald-400 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest border border-emerald-500/30">Official Member Portal</span>
+                    <h1 class="text-5xl md:text-7xl font-black mt-6 leading-tight tracking-tighter">Empowering Health <span class="text-amber-400 text-glow">Professionals.</span></h1>
+                    <p class="text-emerald-100/70 text-lg mt-6 max-w-lg font-medium">Securely track your shares, manage loans, and grow your financial future with HPA-Aguka Cooperative.</p>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <button onclick="scrollToLogin()" class="bg-amber-400 text-emerald-950 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-2xl">Access My Ledger</button>
+                        <div class="flex items-center gap-3 px-6 py-4 rounded-2xl border border-white/20 bg-white/5">
+                            <i data-lucide="landmark" class="text-emerald-400"></i>
+                            <div>
+                                <p class="text-[10px] uppercase font-black text-emerald-500 leading-none">Equity Bank Account</p>
+                                <p class="font-bold text-sm">4030201344354</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-24 max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+            <div class="stat-card p-10 rounded-[3rem] bg-white">
+                <i data-lucide="shield-check" class="text-emerald-600 mb-6" size="40"></i>
+                <h3 class="text-xl font-black mb-4">Transparent Shares</h3>
+                <p class="text-slate-500 text-sm leading-relaxed font-medium">Real-time tracking of your 3-year contribution history and lifetime accumulated balance.</p>
+            </div>
+            <div class="stat-card p-10 rounded-[3rem] bg-white">
+                <i data-lucide="trending-up" class="text-emerald-600 mb-6" size="40"></i>
+                <h3 class="text-xl font-black mb-4">Smart Loans</h3>
+                <p class="text-slate-500 text-sm leading-relaxed font-medium">Clear breakdown of interest rates, application fees, and customized repayment schedules.</p>
+            </div>
+            <div class="stat-card p-10 rounded-[3rem] bg-white">
+                <i data-lucide="alert-triangle" class="text-emerald-600 mb-6" size="40"></i>
+                <h3 class="text-xl font-black mb-4">Fair Policies</h3>
+                <p class="text-slate-500 text-sm leading-relaxed font-medium">Automatic penalty tracking ensures fairness for all members with clear 5% overdue rules.</p>
+            </div>
+        </section>
+    </div>
+
+    <div id="loginSection" class="py-24 bg-slate-50 no-print">
+        <div class="max-w-md mx-auto px-6">
+            <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-200">
+                <h2 class="text-3xl font-black text-center mb-8 tracking-tighter">Member Login</h2>
+                <div class="space-y-4">
+                    <input type="email" id="email" placeholder="Email Address" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold transition">
+                    <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold transition">
+                    <button onclick="handleLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg hover:bg-emerald-800 transition shadow-xl mt-4">Verify & Enter</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -49,162 +88,189 @@
                 <div class="flex items-center gap-4">
                     <div class="bg-white p-2 rounded-lg"><i data-lucide="user" class="text-[#064e3b]"></i></div>
                     <div>
-                        <h2 id="uName" class="text-3xl font-extrabold tracking-tight">Member Name</h2>
-                        <p id="uRole" class="text-emerald-400 font-bold text-xs uppercase tracking-widest mt-1">Role</p>
+                        <h2 id="uName" class="text-3xl font-extrabold tracking-tight"></h2>
+                        <p id="uRole" class="text-emerald-400 font-bold text-xs uppercase tracking-widest mt-1"></p>
                     </div>
                 </div>
                 <div class="flex gap-3">
-                    <button onclick="window.print()" class="bg-amber-500 text-emerald-950 px-6 py-2 rounded-xl text-xs font-black flex items-center gap-2 shadow-lg">
-                        <i data-lucide="download" size="14"></i> STATEMENT
+                    <button onclick="window.print()" class="bg-amber-500 text-emerald-950 px-6 py-2.5 rounded-xl text-xs font-black flex items-center gap-2 transition hover:scale-105">
+                        <i data-lucide="printer" size="14"></i> PRINT STATEMENT
                     </button>
                     <button onclick="location.reload()" class="bg-white/10 border border-white/20 px-6 py-2 rounded-xl text-xs font-bold">LOGOUT</button>
                 </div>
             </div>
         </header>
 
-        <div class="hidden print:block text-center py-10 border-b-2 border-slate-900 mb-10">
-            <h1 class="text-3xl font-black">HPA-AGUKA COOPERATIVE</h1>
-            <p class="font-bold">Member Financial Statement | 2026 Fiscal Year</p>
-            <p class="text-sm mt-2 font-bold">Bank: Equity Bank | Acc: 4030201344354</p>
+        <div class="hidden print:block text-center py-10 border-b-4 border-emerald-900 mb-10">
+            <h1 class="text-4xl font-black text-emerald-950">HPA-AGUKA COOPERATIVE</h1>
+            <p class="font-bold text-lg">Official Financial Performance Statement</p>
+            <p class="text-sm mt-2">Equity Bank Acc: 4030201344354 | Date Generated: Feb 2026</p>
         </div>
 
-        <main class="max-w-7xl mx-auto px-6 -mt-8 grid lg:grid-cols-3 gap-8 print:mt-0 main-container">
+        <main class="max-w-7xl mx-auto px-6 -mt-8 grid lg:grid-cols-3 gap-8 print:mt-0">
             <div class="space-y-6">
-                <div class="bg-[#004d3d] text-white p-8 rounded-[2rem] shadow-xl card">
-                    <p class="text-[10px] font-black text-emerald-400 uppercase mb-2 tracking-widest">Total Accumulated Shares</p>
-                    <h3 id="uTotalShares" class="text-4xl font-black text-amber-400">0 RWF</h3>
+                <div class="bg-[#004d3d] text-white p-8 rounded-[2.5rem] shadow-xl">
+                    <p class="text-[10px] font-black text-emerald-400 uppercase mb-2 tracking-widest">Savings Portfolio (3 Yrs)</p>
+                    <h3 id="uTotalShares" class="text-4xl font-black text-amber-400"></h3>
                     <div class="mt-6 pt-6 border-t border-emerald-800/50 space-y-3 text-[11px] font-bold">
-                        <div class="flex justify-between"><span>PREVIOUS TOTAL</span><span id="uPrev">0</span></div>
-                        <div class="flex justify-between"><span>OP. FEES PAID</span><span id="uOp">0</span></div>
+                        <div class="flex justify-between"><span>PREVIOUS TOTAL</span><span id="uPrev"></span></div>
+                        <div class="flex justify-between"><span>OP. FEES PAID</span><span id="uOp"></span></div>
                     </div>
                 </div>
 
-                <div id="penaltyCard" class="bg-white p-8 rounded-[2rem] border-2 border-slate-200 card">
+                <div id="penaltyCard" class="bg-white p-8 rounded-[2.5rem] border-2 card">
                     <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Outstanding Penalty</p>
-                    <h3 id="uPenalty" class="text-4xl font-black text-red-600">0 RWF</h3>
+                    <h3 id="uPenalty" class="text-4xl font-black"></h3>
                 </div>
 
-                <div class="no-print space-y-4">
-                    <div class="bg-amber-50 border-l-4 border-amber-400 p-5 rounded-r-2xl">
-                        <p class="text-[10px] font-black text-amber-600 uppercase mb-1">Loan Contact</p>
-                        <p class="text-xs font-bold">Contact Reuben for payment amount assistance.</p>
-                    </div>
-                    <div class="bg-red-50 border-l-4 border-red-500 p-5 rounded-r-2xl">
-                        <p class="text-[10px] font-black text-red-600 uppercase mb-1">5% Overdue Penalty</p>
-                        <p class="text-xs font-bold">Add 5% if payment is made after the 15th.</p>
-                    </div>
+                <div class="no-print bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] text-red-900">
+                    <div class="flex gap-3 mb-2"><i data-lucide="alert-octagon" size="18"></i> <p class="text-xs font-black uppercase">Penalty Policy</p></div>
+                    <p class="text-[11px] leading-relaxed font-bold">Payments made after the 15th must include an additional <span class="underline">5% charge</span> of the monthly installment.</p>
                 </div>
             </div>
 
             <div class="lg:col-span-2 space-y-8">
-                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm card">
-                    <h3 class="font-black text-lg mb-6 flex items-center gap-2">
-                        <i data-lucide="calendar" class="text-emerald-700 no-print"></i> 2025/26 Share Ledger
-                    </h3>
+                <div class="bg-white p-8 rounded-[3rem] border shadow-sm">
+                    <h3 class="font-black text-lg mb-6 flex items-center gap-2"><i data-lucide="calendar" class="text-emerald-700"></i> Contribution History (2025/26)</h3>
                     <div id="shareGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]"></div>
                 </div>
 
-                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm card">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-black text-lg text-emerald-950">Current Loan Status</h3>
-                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-[9px] font-black uppercase">Deadline: 15th/Month</span>
+                <div class="bg-white p-8 rounded-[3rem] border shadow-sm">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-black text-lg">Active Loan Status</h3>
+                        <div class="bg-slate-900 text-white px-4 py-1 rounded-full text-[10px] font-black">DEADLINE: 15th</div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-3">
-                            <div class="flex justify-between text-xs border-b pb-2"><span>Current Requested</span><span id="uLoanReq" class="font-black">0</span></div>
-                            <div class="flex justify-between text-xs border-b pb-2"><span>Total Balance Due</span><span id="uLoanOut" class="font-black text-red-600">0</span></div>
-                            <div class="flex justify-between text-xs border-b pb-2"><span>Interest Accrued</span><span id="uLoanInt" class="font-black">0</span></div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between text-xs border-b pb-2"><span>Requested This Cycle</span><span id="uLoanReq" class="font-black"></span></div>
+                            <div class="flex justify-between text-xs border-b pb-2"><span>Balance Remaining</span><span id="uLoanOut" class="font-black text-red-600"></span></div>
+                            <div class="flex justify-between text-xs border-b pb-2"><span>Lifetime Interest</span><span id="uLoanInt" class="font-black text-emerald-600"></span></div>
                         </div>
-                        <div class="bg-slate-50 p-5 rounded-2xl">
-                            <p class="font-black uppercase text-[10px] text-slate-400 mb-2">Loan History / Payments</p>
-                            <div id="uHistory" class="text-[11px] font-bold space-y-1"></div>
+                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                            <p class="font-black uppercase text-[10px] text-slate-400 mb-4">Payment Support Message</p>
+                            <p class="text-xs font-bold text-slate-700 italic">"For payment amount verification, please contact Reuben, the Loan Officer."</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] card">
-                    <h3 class="font-black text-lg mb-6 text-amber-400">Lifetime Summary</h3>
-                    <div class="grid grid-cols-3 gap-4 text-center">
-                        <div><p class="text-[8px] text-slate-400 uppercase">Total Requested</p><p id="uLifeReq" class="font-black text-sm">0</p></div>
-                        <div><p class="text-[8px] text-slate-400 uppercase">Total Repaid</p><p id="uLifePaid" class="font-black text-sm text-emerald-400">0</p></div>
-                        <div><p class="text-[8px] text-slate-400 uppercase">Total Fees</p><p id="uLifeFees" class="font-black text-sm text-blue-400">0</p></div>
+                <div class="bg-slate-900 text-white p-10 rounded-[3.5rem] shadow-2xl">
+                    <h3 class="font-black text-xl mb-8 text-amber-400">Member Lifetime Aggregate</h3>
+                    <div class="grid grid-cols-3 gap-8">
+                        <div><p class="text-[9px] text-slate-400 uppercase font-black">Lifetime Borrowed</p><p id="uLifeReq" class="text-xl font-black"></p></div>
+                        <div><p class="text-[9px] text-slate-400 uppercase font-black">Lifetime Repaid</p><p id="uLifePaid" class="text-xl font-black text-emerald-400"></p></div>
+                        <div><p class="text-[9px] text-slate-400 uppercase font-black">Cycle App Fees</p><p id="uLifeFees" class="text-xl font-black text-blue-400"></p></div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
+    <div id="adminPanel" class="hidden min-h-screen bg-slate-950 text-white p-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-black tracking-tighter uppercase">Executive Management Board</h2>
+                <button onclick="location.reload()" class="bg-white/10 px-6 py-2 rounded-xl font-bold">Exit Admin</button>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-white/10 font-black uppercase tracking-widest text-emerald-400">
+                        <tr>
+                            <th class="p-6">Member Name</th>
+                            <th class="p-6">Shares</th>
+                            <th class="p-6">Outstanding Loan</th>
+                            <th class="p-6">Penalties</th>
+                            <th class="p-6">Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody" class="divide-y divide-white/5 font-bold"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <script>
         const months = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
         
-        // FULL DATABASE FOR 20 MEMBERS
+        // --- VERIFIED DATA FOR ALL 20 MEMBERS ---
         const db = [
-            { name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 350000, prev: 240000, op: 2750, paidM: 12, penalty: 0, loanOut: 40880, loanReq: 250000, lifeReq: 1184000, lifePaid: 1173659, lifeFees: 4000, interest: 30539, history: ["Month 1: 128,780", "Month 2: 26,780"] },
-            { name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 4500, paidM: 9, penalty: 500, loanOut: 555000, loanReq: 600000, lifeReq: 1200000, lifePaid: 694200, lifeFees: 3000, interest: 49200, history: ["Pending Payment"] },
-            { name: "KAYITESI Isabelle", email: "kayitesi@hpaaguka.com", pass: "1234", role: "Member", shares: 380000, prev: 240000, op: 15000, paidM: 11, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "Jocelyne UWAMBAJIMANA", email: "jocelyne@hpaaguka.com", pass: "1234", role: "Member", shares: 340000, prev: 240000, op: 6351, paidM: 11, penalty: 0, loanOut: 484529, loanReq: 600000, lifeReq: 600000, lifePaid: 115471, lifeFees: 1000, interest: 0, history: ["Month 1: 112,471"] },
-            { name: "Odile NTAKINANIRIMANA", email: "odile@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, prev: 240000, op: 2750, paidM: 12, penalty: 0, loanOut: 0, loanReq: 400, lifeReq: 400000, lifePaid: 420200, lifeFees: 1000, interest: 20200, history: [] },
-            { name: "Gisèle UYISENGA", email: "gisele@hpaaguka.com", pass: "1234", role: "Member", shares: 310000, prev: 240000, op: 7930, paidM: 8, penalty: 21525, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "Reuben SINDAYIHEBA", email: "sireuben007@gmail.com", pass: "leader123", role: "Admin/Member", shares: 330000, prev: 240000, op: 1000, paidM: 10, penalty: 0, loanOut: 585000, loanReq: 700000, lifeReq: 2188000, lifePaid: 1699070, lifeFees: 4000, interest: 96070, history: ["Month 1: 115,000 (Feb 15)"] },
-            { name: "Patrick UWIDUHAYE", email: "patrick@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 6000, paidM: 9, penalty: 500, loanOut: 0, loanReq: 264500, lifeReq: 264500, lifePaid: 272500, lifeFees: 1000, interest: 8000, history: [] },
-            { name: "Theonille MUKABAGORORA", email: "theonille@hpaaguka.com", pass: "1234", role: "Member", shares: 300000, prev: 240000, op: 11275, paidM: 7, penalty: 33105, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "Mireille UMWALI", email: "mireille@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, prev: 240000, op: 4265, paidM: 12, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "Eliab MWISENEZA", email: "eliab@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 330000, prev: 240000, op: 5605, paidM: 10, penalty: 0, loanOut: 0, loanReq: 1872000, lifeReq: 1872000, lifePaid: 1984412, lifeFees: 4000, interest: 112412, history: [] },
-            { name: "Gabriel ISHIMWE", email: "gabriel@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 7688, paidM: 9, penalty: 500, loanOut: 72000, loanReq: 150000, lifeReq: 590000, lifePaid: 556758, lifeFees: 1000, interest: 38758, history: ["Month 1: 78,000"] },
-            { name: "IGIHOZO Chancelline", email: "igihozo@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 22236, paidM: 10, penalty: 0, loanOut: 136630, loanReq: 300000, lifeReq: 300000, lifePaid: 163370, lifeFees: 1000, interest: 0, history: ["Month 1: 53,560", "Month 2: 56,250"] },
-            { name: "Maurice TUYISENGE", email: "maurice@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 7788, paidM: 9, penalty: 500, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "Adrien TUYIZERE", email: "adrien@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 7025, paidM: 10, penalty: 0, loanOut: 120000, loanReq: 120000, lifeReq: 220000, lifePaid: 111681, lifeFees: 2000, interest: 11681, history: [] },
-            { name: "Stanisilas TUYISENGE", email: "stan@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 0, paidM: 10, penalty: 500, loanOut: 410700, loanReq: 500000, lifeReq: 1200000, lifePaid: 839300, lifeFees: 2000, interest: 50000, history: ["Month 1: 89,300"] },
-            { name: "MUGABWAMBERE J. Dieu", email: "jdd@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 0, paidM: 10, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "UWAMAHORO Josiane", email: "josiane@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 13970, paidM: 9, penalty: 500, loanOut: 0, loanReq: 500000, lifeReq: 1100000, lifePaid: 1127050, lifeFees: 3000, interest: 27050, history: ["Month 1: 257,600", "Month 2: 257,450"] },
-            { name: "UMUHOZA Alliance", email: "alliance@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 10990, paidM: 10, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0, history: [] },
-            { name: "NIYOMUFASHA Gentille", email: "gentille@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 101131, paidM: 10, penalty: 0, loanOut: 700000, loanReq: 700000, lifeReq: 1370000, lifePaid: 729634, lifeFees: 2000, interest: 59634, history: ["Pending Payment"] }
+            { name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 350000, prev: 240000, op: 2750, paidM: 12, penalty: 0, loanOut: 40880, loanReq: 250000, lifeReq: 1184000, lifePaid: 1173659, lifeFees: 4000, interest: 30539 },
+            { name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 4500, paidM: 9, penalty: 500, loanOut: 555000, loanReq: 600000, lifeReq: 1200000, lifePaid: 694200, lifeFees: 3000, interest: 49200 },
+            { name: "KAYITESI Isabelle", email: "kayitesi@hpaaguka.com", pass: "1234", role: "Member", shares: 380000, prev: 240000, op: 15000, paidM: 11, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "Jocelyne UWAMBAJIMANA", email: "jocelyne@hpaaguka.com", pass: "1234", role: "Member", shares: 340000, prev: 240000, op: 6351, paidM: 11, penalty: 0, loanOut: 484529, loanReq: 600000, lifeReq: 600000, lifePaid: 115471, lifeFees: 1000, interest: 0 },
+            { name: "Odile NTAKINANIRIMANA", email: "odile@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, prev: 240000, op: 2750, paidM: 12, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 400000, lifePaid: 420200, lifeFees: 1000, interest: 20200 },
+            { name: "Gisèle UYISENGA", email: "gisele@hpaaguka.com", pass: "1234", role: "Member", shares: 310000, prev: 240000, op: 7930, paidM: 8, penalty: 21525, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "Reuben SINDAYIHEBA", email: "sireuben007@gmail.com", pass: "leader123", role: "Admin/Member", shares: 330000, prev: 240000, op: 1000, paidM: 10, penalty: 0, loanOut: 585000, loanReq: 700000, lifeReq: 2188000, lifePaid: 1699070, lifeFees: 4000, interest: 96070 },
+            { name: "Patrick UWIDUHAYE", email: "patrick@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 6000, paidM: 9, penalty: 500, loanOut: 0, loanReq: 264500, lifeReq: 264500, lifePaid: 272500, lifeFees: 1000, interest: 8000 },
+            { name: "Theonille MUKABAGORORA", email: "theonille@hpaaguka.com", pass: "1234", role: "Member", shares: 300000, prev: 240000, op: 11275, paidM: 7, penalty: 33105, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "Mireille UMWALI", email: "mireille@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, prev: 240000, op: 4265, paidM: 12, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "Eliab MWISENEZA", email: "eliab@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 330000, prev: 240000, op: 5605, paidM: 10, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 1872000, lifePaid: 1984412, lifeFees: 4000, interest: 112412 },
+            { name: "Gabriel ISHIMWE", email: "gabriel@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 7688, paidM: 9, penalty: 500, loanOut: 72000, loanReq: 150000, lifeReq: 590000, lifePaid: 556758, lifeFees: 1000, interest: 38758 },
+            { name: "IGIHOZO Chancelline", email: "igihozo@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 22236, paidM: 10, penalty: 0, loanOut: 136630, loanReq: 300000, lifeReq: 300000, lifePaid: 163370, lifeFees: 1000, interest: 0 },
+            { name: "Maurice TUYISENGE", email: "maurice@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 7788, paidM: 9, penalty: 500, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "Adrien TUYIZERE", email: "adrien@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 7025, paidM: 10, penalty: 0, loanOut: 120000, loanReq: 120000, lifeReq: 220000, lifePaid: 111681, lifeFees: 2000, interest: 11681 },
+            { name: "Stanisilas TUYISENGE", email: "stan@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 0, paidM: 10, penalty: 0, loanOut: 410700, loanReq: 500000, lifeReq: 1200000, lifePaid: 839300, lifeFees: 2000, interest: 50000 },
+            { name: "MUGABWAMBERE J. Dieu", email: "jdd@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 0, paidM: 10, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "UWAMAHORO Josiane", email: "josiane@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 13970, paidM: 9, penalty: 500, loanOut: 0, loanReq: 500000, lifeReq: 1100000, lifePaid: 1127050, lifeFees: 3000, interest: 27050 },
+            { name: "UMUHOZA Alliance", email: "alliance@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 10990, paidM: 10, penalty: 0, loanOut: 0, loanReq: 0, lifeReq: 0, lifePaid: 0, lifeFees: 0, interest: 0 },
+            { name: "NIYOMUFASHA Gentille", email: "gentille@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 101131, paidM: 10, penalty: 0, loanOut: 700000, loanReq: 700000, lifeReq: 1370000, lifePaid: 729634, lifeFees: 2000, interest: 59634 }
         ];
 
+        function scrollToLogin() { document.getElementById('loginSection').scrollIntoView(); }
+
         function handleLogin() {
-            const email = document.getElementById('email').value.toLowerCase().trim();
-            const pass = document.getElementById('password').value;
-            const user = db.find(u => u.email === email && u.pass === pass);
+            const e = document.getElementById('email').value.toLowerCase().trim();
+            const p = document.getElementById('password').value;
+            const u = db.find(m => m.email === e && m.pass === p);
             
-            if (user) {
-                document.getElementById('loginPage').classList.add('hidden');
-                document.getElementById('dashboard').classList.remove('hidden');
-                renderUser(user);
+            if (!u) { alert("Invalid Credentials."); return; }
+
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('loginSection').classList.add('hidden');
+            
+            if (u.role.includes("Admin") && p === "leader123") {
+                renderAdmin();
             } else {
-                alert("Incorrect login details. Please try again.");
+                renderUser(u);
             }
         }
 
         function renderUser(u) {
+            document.getElementById('dashboard').classList.remove('hidden');
             document.getElementById('uName').innerText = u.name;
             document.getElementById('uRole').innerText = u.role;
             document.getElementById('uTotalShares').innerText = u.shares.toLocaleString() + " RWF";
-            document.getElementById('uPrev').innerText = u.prev.toLocaleString() + " RWF";
-            document.getElementById('uOp').innerText = u.op.toLocaleString() + " RWF";
+            document.getElementById('uPrev').innerText = u.prev.toLocaleString();
+            document.getElementById('uOp').innerText = u.op.toLocaleString();
             document.getElementById('uPenalty').innerText = u.penalty.toLocaleString() + " RWF";
-            
-            // Stats & Loans
+            document.getElementById('penaltyCard').className = u.penalty > 0 ? "bg-white p-8 rounded-[2.5rem] border-2 border-red-500 text-red-600 shadow-lg" : "bg-white p-8 rounded-[2.5rem] border-2 border-emerald-100 text-emerald-700 shadow-sm";
+
             document.getElementById('uLoanReq').innerText = u.loanReq.toLocaleString();
             document.getElementById('uLoanOut').innerText = u.loanOut.toLocaleString();
-            document.getElementById('uLoanInt').innerText = (u.interest || 0).toLocaleString();
+            document.getElementById('uLoanInt').innerText = u.interest.toLocaleString();
             document.getElementById('uLifeReq').innerText = u.lifeReq.toLocaleString();
             document.getElementById('uLifePaid').innerText = u.lifePaid.toLocaleString();
             document.getElementById('uLifeFees').innerText = u.lifeFees.toLocaleString();
 
-            // Share Grid
-            const grid = document.getElementById('shareGrid');
-            grid.innerHTML = months.map((m, i) => `
-                <div class="${i < u.paidM ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-100'} border p-3 rounded-xl text-center">
+            document.getElementById('shareGrid').innerHTML = months.map((m, i) => `
+                <div class="${i < u.paidM ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-100'} border p-3 rounded-2xl text-center">
                     <p class="font-black uppercase text-slate-400" style="font-size: 8px;">${m} '25</p>
                     <p class="font-black ${i < u.paidM ? 'text-emerald-800' : 'text-slate-200'}">${i < u.paidM ? '10,000' : '0'}</p>
                 </div>
             `).join('');
+            lucide.createIcons();
+        }
 
-            // History
-            document.getElementById('uHistory').innerHTML = u.history.length > 0 
-                ? u.history.map(h => `<div class="flex justify-between border-b border-slate-100 py-1"><span>${h.split(':')[0]}</span><span class="text-emerald-600">${h.split(':')[1]}</span></div>`).join('')
-                : "<p class='text-slate-300 italic'>No current cycle payments.</p>";
-
+        function renderAdmin() {
+            document.getElementById('adminPanel').classList.remove('hidden');
+            document.getElementById('adminTableBody').innerHTML = db.map(m => `
+                <tr class="hover:bg-white/5 transition">
+                    <td class="p-6">${m.name}</td>
+                    <td class="p-6 text-amber-400 font-black">${m.shares.toLocaleString()}</td>
+                    <td class="p-6 text-red-400 font-black">${m.loanOut.toLocaleString()}</td>
+                    <td class="p-6">${m.penalty.toLocaleString()}</td>
+                    <td class="p-6 text-[10px] uppercase">${m.role}</td>
+                </tr>
+            `).join('');
             lucide.createIcons();
         }
 
