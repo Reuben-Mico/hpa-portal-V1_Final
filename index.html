@@ -7,191 +7,148 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFDFD; scroll-behavior: smooth; }
-        .hero-bg { background: linear-gradient(rgba(2, 44, 34, 0.9), rgba(2, 44, 34, 0.9)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; }
-        .stat-card { transition: transform 0.3s ease; border: 1px solid #e2e8f0; }
-        .stat-card:hover { transform: translateY(-5px); border-color: #10b981; }
-        @media print { .no-print { display: none !important; } .print-only { display: block !important; } }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; scroll-behavior: smooth; }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .hero-gradient { background: radial-gradient(circle at top right, #064e3b, #022c22); }
+        @media print { .no-print { display: none !important; } }
     </style>
 </head>
-<body class="text-slate-900">
+<body>
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b no-print">
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-lg border-b border-slate-200 no-print">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="bg-emerald-900 p-2 rounded-lg text-amber-400"><i data-lucide="activity"></i></div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-950 rounded-xl flex items-center justify-center text-amber-400">
+                    <i data-lucide="activity" size="20"></i>
+                </div>
                 <span class="font-black text-xl tracking-tighter text-emerald-950">HPA-AGUKA</span>
             </div>
-            <div class="flex gap-4">
-                <button onclick="scrollToLogin()" class="bg-emerald-900 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-emerald-800 transition">Portal Login</button>
-            </div>
+            <button onclick="document.getElementById('loginModal').classList.remove('hidden')" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-xl">Member Login</button>
         </div>
     </nav>
 
     <div id="homePage" class="no-print">
-        <header class="hero-bg min-h-screen flex items-center pt-20 px-6">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <span class="bg-emerald-500/20 text-emerald-400 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest border border-emerald-500/30">Official Member Portal</span>
-                    <h1 class="text-5xl md:text-7xl font-black mt-6 leading-tight tracking-tighter">Empowering Health <span class="text-amber-400 text-glow">Professionals.</span></h1>
-                    <p class="text-emerald-100/70 text-lg mt-6 max-w-lg font-medium">Securely track your shares, manage loans, and grow your financial future with HPA-Aguka Cooperative.</p>
-                    <div class="mt-10 flex flex-wrap gap-4">
-                        <button onclick="scrollToLogin()" class="bg-amber-400 text-emerald-950 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-2xl">Access My Ledger</button>
-                        <div class="flex items-center gap-3 px-6 py-4 rounded-2xl border border-white/20 bg-white/5">
-                            <i data-lucide="landmark" class="text-emerald-400"></i>
-                            <div>
-                                <p class="text-[10px] uppercase font-black text-emerald-500 leading-none">Equity Bank Account</p>
-                                <p class="font-bold text-sm">4030201344354</p>
-                            </div>
+        <section class="hero-gradient min-h-screen flex items-center px-6 pt-20">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h1 class="text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter">
+                        Smart Finance for <span class="text-amber-400">Healers.</span>
+                    </h1>
+                    <p class="text-emerald-100/60 text-lg font-medium max-w-md">The 2026 digital ledger for health professionals. Manage shares and loans with absolute transparency.</p>
+                    <div class="flex gap-4">
+                        <button onclick="document.getElementById('loginModal').classList.remove('hidden')" class="bg-amber-400 text-emerald-950 px-8 py-4 rounded-2xl font-black text-lg">Enter Portal</button>
+                        <div class="bg-emerald-900/50 p-4 rounded-2xl border border-emerald-800 text-white">
+                            <p class="text-[9px] font-black uppercase text-emerald-500">Equity Bank Acc</p>
+                            <p class="font-bold">4030201344354</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
-
-        <section class="py-24 max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
-            <div class="stat-card p-10 rounded-[3rem] bg-white">
-                <i data-lucide="shield-check" class="text-emerald-600 mb-6" size="40"></i>
-                <h3 class="text-xl font-black mb-4">Transparent Shares</h3>
-                <p class="text-slate-500 text-sm leading-relaxed font-medium">Real-time tracking of your 3-year contribution history and lifetime accumulated balance.</p>
-            </div>
-            <div class="stat-card p-10 rounded-[3rem] bg-white">
-                <i data-lucide="trending-up" class="text-emerald-600 mb-6" size="40"></i>
-                <h3 class="text-xl font-black mb-4">Smart Loans</h3>
-                <p class="text-slate-500 text-sm leading-relaxed font-medium">Clear breakdown of interest rates, application fees, and customized repayment schedules.</p>
-            </div>
-            <div class="stat-card p-10 rounded-[3rem] bg-white">
-                <i data-lucide="alert-triangle" class="text-emerald-600 mb-6" size="40"></i>
-                <h3 class="text-xl font-black mb-4">Fair Policies</h3>
-                <p class="text-slate-500 text-sm leading-relaxed font-medium">Automatic penalty tracking ensures fairness for all members with clear 5% overdue rules.</p>
             </div>
         </section>
     </div>
 
-    <div id="loginSection" class="py-24 bg-slate-50 no-print">
-        <div class="max-w-md mx-auto px-6">
-            <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-slate-200">
-                <h2 class="text-3xl font-black text-center mb-8 tracking-tighter">Member Login</h2>
-                <div class="space-y-4">
-                    <input type="email" id="email" placeholder="Email Address" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold transition">
-                    <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold transition">
-                    <button onclick="handleLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg hover:bg-emerald-800 transition shadow-xl mt-4">Verify & Enter</button>
-                </div>
+    <div id="loginModal" class="fixed inset-0 z-[60] bg-emerald-950/80 backdrop-blur-md hidden flex items-center justify-center p-6">
+        <div class="bg-white p-10 rounded-[2.5rem] w-full max-w-md shadow-2xl relative">
+            <button onclick="document.getElementById('loginModal').classList.add('hidden')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600"><i data-lucide="x"></i></button>
+            <h2 class="text-3xl font-black mb-8 tracking-tighter text-center">Identity Verification</h2>
+            <div class="space-y-4">
+                <input type="email" id="email" placeholder="Email" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
+                <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
+                <button onclick="handleLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg shadow-xl">Verify & Sign In</button>
             </div>
+            <p class="text-center mt-6 text-[10px] font-bold text-slate-400 uppercase">Contact Reuben or Innocent if you forgot your credentials</p>
         </div>
     </div>
 
     <div id="dashboard" class="hidden min-h-screen pb-20">
-        <header class="bg-[#064e3b] text-white p-10 no-print">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-4">
-                    <div class="bg-white p-2 rounded-lg"><i data-lucide="user" class="text-[#064e3b]"></i></div>
-                    <div>
-                        <h2 id="uName" class="text-3xl font-extrabold tracking-tight"></h2>
-                        <p id="uRole" class="text-emerald-400 font-bold text-xs uppercase tracking-widest mt-1"></p>
-                    </div>
+        <div class="bg-emerald-950 text-white pt-32 pb-20 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-8">
+                <div>
+                    <h2 id="uName" class="text-4xl md:text-6xl font-black tracking-tighter"></h2>
+                    <span id="uRole" class="inline-block mt-4 px-4 py-1 rounded-full bg-emerald-800 text-emerald-300 text-[10px] font-black uppercase"></span>
                 </div>
-                <div class="flex gap-3">
-                    <button onclick="window.print()" class="bg-amber-500 text-emerald-950 px-6 py-2.5 rounded-xl text-xs font-black flex items-center gap-2 transition hover:scale-105">
-                        <i data-lucide="printer" size="14"></i> PRINT STATEMENT
-                    </button>
-                    <button onclick="location.reload()" class="bg-white/10 border border-white/20 px-6 py-2 rounded-xl text-xs font-bold">LOGOUT</button>
+                <div class="flex gap-4 no-print">
+                    <button onclick="window.print()" class="bg-white text-emerald-950 px-6 py-3 rounded-2xl font-black text-xs flex items-center gap-2 shadow-lg"><i data-lucide="download"></i> EXPORT</button>
+                    <button onclick="location.reload()" class="bg-red-500/20 text-red-400 border border-red-500/20 px-6 py-3 rounded-2xl font-black text-xs">LOGOUT</button>
                 </div>
             </div>
-        </header>
-
-        <div class="hidden print:block text-center py-10 border-b-4 border-emerald-900 mb-10">
-            <h1 class="text-4xl font-black text-emerald-950">HPA-AGUKA COOPERATIVE</h1>
-            <p class="font-bold text-lg">Official Financial Performance Statement</p>
-            <p class="text-sm mt-2">Equity Bank Acc: 4030201344354 | Date Generated: Feb 2026</p>
         </div>
 
-        <main class="max-w-7xl mx-auto px-6 -mt-8 grid lg:grid-cols-3 gap-8 print:mt-0">
-            <div class="space-y-6">
-                <div class="bg-[#004d3d] text-white p-8 rounded-[2.5rem] shadow-xl">
-                    <p class="text-[10px] font-black text-emerald-400 uppercase mb-2 tracking-widest">Savings Portfolio (3 Yrs)</p>
-                    <h3 id="uTotalShares" class="text-4xl font-black text-amber-400"></h3>
-                    <div class="mt-6 pt-6 border-t border-emerald-800/50 space-y-3 text-[11px] font-bold">
-                        <div class="flex justify-between"><span>PREVIOUS TOTAL</span><span id="uPrev"></span></div>
-                        <div class="flex justify-between"><span>OP. FEES PAID</span><span id="uOp"></span></div>
+        <main class="max-w-7xl mx-auto px-6 -mt-10 grid lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100">
+                    <p class="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-2">Total Member Savings</p>
+                    <h3 id="uTotalShares" class="text-4xl font-black text-emerald-950 tracking-tighter"></h3>
+                    <div class="mt-6 pt-6 border-t border-slate-100 space-y-3 text-xs font-bold text-slate-500">
+                        <div class="flex justify-between"><span>Previous Years</span><span id="uPrev"></span></div>
+                        <div class="flex justify-between"><span>Application Fees</span><span id="uOp"></span></div>
                     </div>
                 </div>
 
-                <div id="penaltyCard" class="bg-white p-8 rounded-[2.5rem] border-2 card">
-                    <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Outstanding Penalty</p>
-                    <h3 id="uPenalty" class="text-4xl font-black"></h3>
+                <div id="penaltyCard" class="p-8 rounded-[2.5rem] border-2">
+                    <p class="text-[10px] font-black uppercase mb-1">Active Penalty</p>
+                    <h3 id="uPenalty" class="text-4xl font-black tracking-tighter"></h3>
                 </div>
 
-                <div class="no-print bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] text-red-900">
-                    <div class="flex gap-3 mb-2"><i data-lucide="alert-octagon" size="18"></i> <p class="text-xs font-black uppercase">Penalty Policy</p></div>
-                    <p class="text-[11px] leading-relaxed font-bold">Payments made after the 15th must include an additional <span class="underline">5% charge</span> of the monthly installment.</p>
+                <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] no-print">
+                    <h4 class="font-black text-sm mb-4 flex items-center gap-2 text-amber-400"><i data-lucide="calculator" size="16"></i> Penalty Estimator</h4>
+                    <p class="text-[10px] font-bold text-slate-400 mb-4 italic">Enter your intended payment to see the 5% late fee.</p>
+                    <input type="number" id="calcInput" oninput="calcPenalty()" placeholder="Amount (RWF)" class="w-full bg-white/5 border border-white/10 p-4 rounded-xl text-white font-bold mb-4 outline-none focus:border-amber-400">
+                    <div class="flex justify-between text-xs font-black p-4 bg-white/5 rounded-xl">
+                        <span class="text-slate-400 uppercase">Penalty:</span>
+                        <span id="calcResult" class="text-amber-400">0 RWF</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-2 space-y-8">
-                <div class="bg-white p-8 rounded-[3rem] border shadow-sm">
-                    <h3 class="font-black text-lg mb-6 flex items-center gap-2"><i data-lucide="calendar" class="text-emerald-700"></i> Contribution History (2025/26)</h3>
-                    <div id="shareGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]"></div>
+            <div class="lg:col-span-8 space-y-8">
+                <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100">
+                    <h3 class="font-black text-xl mb-8">2025/26 Share Ledger</h3>
+                    <div id="shareGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
                 </div>
 
-                <div class="bg-white p-8 rounded-[3rem] border shadow-sm">
-                    <div class="flex justify-between items-start mb-6">
-                        <h3 class="font-black text-lg">Active Loan Status</h3>
-                        <div class="bg-slate-900 text-white px-4 py-1 rounded-full text-[10px] font-black">DEADLINE: 15th</div>
+                <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100">
+                    <div class="flex justify-between mb-8">
+                        <h3 class="font-black text-xl">Loan Breakdown</h3>
+                        <div class="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full text-[10px] font-black">DEADLINE: 15th</div>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-4">
-                            <div class="flex justify-between text-xs border-b pb-2"><span>Requested This Cycle</span><span id="uLoanReq" class="font-black"></span></div>
-                            <div class="flex justify-between text-xs border-b pb-2"><span>Balance Remaining</span><span id="uLoanOut" class="font-black text-red-600"></span></div>
-                            <div class="flex justify-between text-xs border-b pb-2"><span>Lifetime Interest</span><span id="uLoanInt" class="font-black text-emerald-600"></span></div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                            <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Requested</p>
+                            <p id="uLoanReq" class="text-xl font-black"></p>
                         </div>
-                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
-                            <p class="font-black uppercase text-[10px] text-slate-400 mb-4">Payment Support Message</p>
-                            <p class="text-xs font-bold text-slate-700 italic">"For payment amount verification, please contact Reuben, the Loan Officer."</p>
+                        <div class="p-6 bg-red-50 rounded-3xl border border-red-100">
+                            <p class="text-[9px] font-black text-red-400 uppercase mb-1">Outstanding</p>
+                            <p id="uLoanOut" class="text-xl font-black text-red-600"></p>
                         </div>
+                        <div class="p-6 bg-emerald-50 rounded-3xl border border-emerald-100">
+                            <p class="text-[9px] font-black text-emerald-400 uppercase mb-1">Interest</p>
+                            <p id="uLoanInt" class="text-xl font-black text-emerald-700"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-amber-50 rounded-3xl border border-amber-100 flex gap-4 no-print">
+                        <i data-lucide="info" class="text-amber-600 shrink-0"></i>
+                        <p class="text-xs font-bold text-amber-800 leading-relaxed italic">
+                            "Before making a payment, please contact Reuben (Admin) to verify the exact amount including interest."
+                        </p>
                     </div>
                 </div>
 
-                <div class="bg-slate-900 text-white p-10 rounded-[3.5rem] shadow-2xl">
-                    <h3 class="font-black text-xl mb-8 text-amber-400">Member Lifetime Aggregate</h3>
-                    <div class="grid grid-cols-3 gap-8">
-                        <div><p class="text-[9px] text-slate-400 uppercase font-black">Lifetime Borrowed</p><p id="uLifeReq" class="text-xl font-black"></p></div>
-                        <div><p class="text-[9px] text-slate-400 uppercase font-black">Lifetime Repaid</p><p id="uLifePaid" class="text-xl font-black text-emerald-400"></p></div>
-                        <div><p class="text-[9px] text-slate-400 uppercase font-black">Cycle App Fees</p><p id="uLifeFees" class="text-xl font-black text-blue-400"></p></div>
+                <div class="bg-slate-900 text-white p-10 rounded-[3.5rem]">
+                    <h3 class="text-xl font-black mb-10 text-amber-400">Total Lifetime History</h3>
+                    <div class="grid grid-cols-3 gap-8 text-center">
+                        <div><p class="text-[9px] text-slate-400 uppercase font-black mb-1">Borrowed</p><p id="uLifeReq" class="text-lg font-black"></p></div>
+                        <div><p class="text-[9px] text-slate-400 uppercase font-black mb-1">Repaid</p><p id="uLifePaid" class="text-lg font-black text-emerald-400"></p></div>
+                        <div><p class="text-[9px] text-slate-400 uppercase font-black mb-1">Fees</p><p id="uLifeFees" class="text-lg font-black text-amber-500"></p></div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <div id="adminPanel" class="hidden min-h-screen bg-slate-950 text-white p-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-3xl font-black tracking-tighter uppercase">Executive Management Board</h2>
-                <button onclick="location.reload()" class="bg-white/10 px-6 py-2 rounded-xl font-bold">Exit Admin</button>
-            </div>
-            <div class="bg-white/5 border border-white/10 rounded-[2rem] overflow-hidden overflow-x-auto">
-                <table class="w-full text-left text-xs">
-                    <thead class="bg-white/10 font-black uppercase tracking-widest text-emerald-400">
-                        <tr>
-                            <th class="p-6">Member Name</th>
-                            <th class="p-6">Shares</th>
-                            <th class="p-6">Outstanding Loan</th>
-                            <th class="p-6">Penalties</th>
-                            <th class="p-6">Role</th>
-                        </tr>
-                    </thead>
-                    <tbody id="adminTableBody" class="divide-y divide-white/5 font-bold"></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
     <script>
-        const months = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
-        
-        // --- VERIFIED DATA FOR ALL 20 MEMBERS ---
         const db = [
             { name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 350000, prev: 240000, op: 2750, paidM: 12, penalty: 0, loanOut: 40880, loanReq: 250000, lifeReq: 1184000, lifePaid: 1173659, lifeFees: 4000, interest: 30539 },
             { name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 4500, paidM: 9, penalty: 500, loanOut: 555000, loanReq: 600000, lifeReq: 1200000, lifePaid: 694200, lifeFees: 3000, interest: 49200 },
@@ -215,35 +172,25 @@
             { name: "NIYOMUFASHA Gentille", email: "gentille@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, prev: 240000, op: 101131, paidM: 10, penalty: 0, loanOut: 700000, loanReq: 700000, lifeReq: 1370000, lifePaid: 729634, lifeFees: 2000, interest: 59634 }
         ];
 
-        function scrollToLogin() { document.getElementById('loginSection').scrollIntoView(); }
-
         function handleLogin() {
             const e = document.getElementById('email').value.toLowerCase().trim();
             const p = document.getElementById('password').value;
             const u = db.find(m => m.email === e && m.pass === p);
-            
-            if (!u) { alert("Invalid Credentials."); return; }
-
-            document.getElementById('homePage').classList.add('hidden');
-            document.getElementById('loginSection').classList.add('hidden');
-            
-            if (u.role.includes("Admin") && p === "leader123") {
-                renderAdmin();
-            } else {
+            if(u) {
+                document.getElementById('homePage').classList.add('hidden');
+                document.getElementById('loginModal').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
                 renderUser(u);
-            }
+            } else { alert("User not found."); }
         }
 
         function renderUser(u) {
-            document.getElementById('dashboard').classList.remove('hidden');
             document.getElementById('uName').innerText = u.name;
             document.getElementById('uRole').innerText = u.role;
             document.getElementById('uTotalShares').innerText = u.shares.toLocaleString() + " RWF";
             document.getElementById('uPrev').innerText = u.prev.toLocaleString();
             document.getElementById('uOp').innerText = u.op.toLocaleString();
             document.getElementById('uPenalty').innerText = u.penalty.toLocaleString() + " RWF";
-            document.getElementById('penaltyCard').className = u.penalty > 0 ? "bg-white p-8 rounded-[2.5rem] border-2 border-red-500 text-red-600 shadow-lg" : "bg-white p-8 rounded-[2.5rem] border-2 border-emerald-100 text-emerald-700 shadow-sm";
-
             document.getElementById('uLoanReq').innerText = u.loanReq.toLocaleString();
             document.getElementById('uLoanOut').innerText = u.loanOut.toLocaleString();
             document.getElementById('uLoanInt').innerText = u.interest.toLocaleString();
@@ -251,27 +198,22 @@
             document.getElementById('uLifePaid').innerText = u.lifePaid.toLocaleString();
             document.getElementById('uLifeFees').innerText = u.lifeFees.toLocaleString();
 
-            document.getElementById('shareGrid').innerHTML = months.map((m, i) => `
-                <div class="${i < u.paidM ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-100'} border p-3 rounded-2xl text-center">
-                    <p class="font-black uppercase text-slate-400" style="font-size: 8px;">${m} '25</p>
-                    <p class="font-black ${i < u.paidM ? 'text-emerald-800' : 'text-slate-200'}">${i < u.paidM ? '10,000' : '0'}</p>
+            const pCard = document.getElementById('penaltyCard');
+            pCard.className = u.penalty > 0 ? "p-8 rounded-[2.5rem] border-2 border-red-500 bg-red-50 text-red-600" : "p-8 rounded-[2.5rem] border-2 border-emerald-100 bg-white text-emerald-800";
+
+            const ms = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
+            document.getElementById('shareGrid').innerHTML = ms.map((m, i) => `
+                <div class="p-5 rounded-2xl text-center border ${i < u.paidM ? 'bg-emerald-600 text-white' : 'bg-slate-50 text-slate-300'}">
+                    <p class="font-black uppercase text-[8px] tracking-widest">${m}</p>
+                    <p class="font-black text-sm">${i < u.paidM ? '10,000' : '0'}</p>
                 </div>
             `).join('');
             lucide.createIcons();
         }
 
-        function renderAdmin() {
-            document.getElementById('adminPanel').classList.remove('hidden');
-            document.getElementById('adminTableBody').innerHTML = db.map(m => `
-                <tr class="hover:bg-white/5 transition">
-                    <td class="p-6">${m.name}</td>
-                    <td class="p-6 text-amber-400 font-black">${m.shares.toLocaleString()}</td>
-                    <td class="p-6 text-red-400 font-black">${m.loanOut.toLocaleString()}</td>
-                    <td class="p-6">${m.penalty.toLocaleString()}</td>
-                    <td class="p-6 text-[10px] uppercase">${m.role}</td>
-                </tr>
-            `).join('');
-            lucide.createIcons();
+        function calcPenalty() {
+            const val = document.getElementById('calcInput').value;
+            document.getElementById('calcResult').innerText = val ? (val * 0.05).toLocaleString() + " RWF" : "0 RWF";
         }
 
         lucide.createIcons();
