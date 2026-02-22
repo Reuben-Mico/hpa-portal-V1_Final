@@ -11,7 +11,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; scroll-behavior: smooth; }
         .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
         @media print { .no-print { display: none !important; } .print-area { display: block !important; width: 100%; } }
-        .news-slide { animation: slide 20s linear infinite; }
+        .news-slide { animation: slide 25s linear infinite; }
         @keyframes slide { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
     </style>
 </head>
@@ -21,11 +21,11 @@
         <div class="inline-block news-slide">
             <span class="font-black text-[11px] uppercase tracking-widest text-emerald-950 px-10">
                 <i data-lucide="megaphone" class="inline-block mr-2" size="14"></i> 
-                Next General Meeting: March 15th, 2026 at 2:00 PM (Kigali Time) 
+                General Meeting: March 15th, 2026 at 2:00 PM 
                 &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
-                Reminder: Submit all loan applications by the 10th for board review
+                Loan Requests Deadline: 10th of every month
                 &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-                HPA-Aguka Membership is now open for new Healthcare practitioners!
+                Motto: Live Wisely, Save to Invest.
             </span>
         </div>
     </div>
@@ -33,242 +33,142 @@
     <nav class="bg-white border-b sticky top-0 z-50 no-print">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <div class="bg-emerald-900 p-2 rounded-xl text-amber-400 shadow-lg shadow-emerald-900/20">
-                    <i data-lucide="heart-pulse"></i>
-                </div>
+                <div class="bg-emerald-900 p-2 rounded-xl text-amber-400 shadow-lg"><i data-lucide="heart-pulse"></i></div>
                 <div>
                     <span class="font-black text-xl tracking-tighter text-emerald-950 block leading-none">HPA-AGUKA</span>
-                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-[0.2em]">Health & Prosperity for All</span>
+                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-[0.15em]">Live Wisely, Save to Invest</span>
                 </div>
             </div>
             <div class="hidden lg:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-slate-400">
-                <a href="#mission" class="hover:text-emerald-700 transition">Mission</a>
-                <a href="#leadership" class="hover:text-emerald-700 transition">Leadership</a>
-                <a href="#contact" class="hover:text-emerald-700 transition">Contact</a>
-                <button onclick="openLogin('member')" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl ml-4 shadow-lg shadow-emerald-900/20 active:scale-95 transition">Access Portal</button>
+                <a href="#mission" class="hover:text-emerald-700">Mission</a>
+                <a href="#leadership" class="hover:text-emerald-700">Leadership</a>
+                <button onclick="openLogin('member')" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl shadow-lg">Access Portal</button>
             </div>
         </div>
     </nav>
 
     <div id="homePage" class="no-print">
-        <header class="hero-gradient text-white py-32 px-6 text-center relative overflow-hidden">
-             <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <svg width="100%" height="100%"><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
+        <header class="hero-gradient text-white py-32 px-6 text-center relative">
+            <h1 class="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-none">Empowering <br>Our <span class="text-amber-400">Healers.</span></h1>
+            <p class="text-emerald-100/70 text-lg mb-12 max-w-2xl mx-auto">Official management portal for HPA Healthcare Professionals Cooperative.</p>
+            <div class="flex flex-wrap justify-center gap-6 mb-20">
+                <button onclick="openLogin('member')" class="bg-white text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl">Member Login</button>
+                <button onclick="openLogin('leader')" class="bg-amber-400 text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl border-b-4 border-amber-600">Leader Portal</button>
             </div>
-            <div class="relative z-10">
-                <h1 class="text-5xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-[0.9]">Empowering <br>Our <span class="text-amber-400 underline decoration-emerald-500/30">Healers.</span></h1>
-                <p class="text-emerald-100/70 text-lg mb-12 max-w-2xl mx-auto font-medium">The official secure financial management hub for the HPA Healthcare Professionals Cooperative (Rwanda).</p>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <button onclick="openLogin('member')" class="bg-white text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl hover:-translate-y-1 transition-all">Member Login</button>
-                    <button onclick="openLogin('leader')" class="bg-amber-400 text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl hover:-translate-y-1 transition-all border-b-4 border-amber-600">Leader Portal</button>
-                </div>
+
+            <div class="max-w-4xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/10 bg-black aspect-video flex items-center justify-center relative group">
+                <div class="absolute inset-0 bg-emerald-900/20 group-hover:bg-transparent transition-all"></div>
+                <i data-lucide="play-circle" class="text-white w-20 h-20 opacity-80 group-hover:scale-110 transition cursor-pointer"></i>
+                <p class="absolute bottom-6 left-6 text-xs font-bold uppercase tracking-widest text-white/60">HPA Cooperative Introduction Video</p>
             </div>
         </header>
 
-        <section id="mission" class="max-w-7xl mx-auto py-24 px-6 grid lg:grid-cols-2 gap-20 items-center">
-            <div>
-                <span class="bg-emerald-100 text-emerald-700 font-black uppercase text-[10px] tracking-widest px-4 py-1 rounded-full">Strategic Vision</span>
-                <h2 class="text-5xl font-black mt-6 mb-8 tracking-tight text-emerald-950">Growth Through Unity.</h2>
-                <p class="text-slate-600 text-lg leading-relaxed mb-8">HPA-Aguka is not just a savings group; it is a financial anchor for health professionals. We provide the capital and security required to build a prosperous future outside the clinic.</p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                        <h4 class="font-black text-emerald-900 text-2xl mb-1">5%</h4>
-                        <p class="text-xs font-bold text-slate-400 uppercase">Fair Interest Rate</p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                        <h4 class="font-black text-emerald-900 text-2xl mb-1">20</h4>
-                        <p class="text-xs font-bold text-slate-400 uppercase">Trusted Members</p>
-                    </div>
-                </div>
+        <section id="leadership" class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-6 text-center mb-16">
+                <h2 class="text-4xl font-black text-emerald-950">Executive Board</h2>
             </div>
-            <div class="relative">
-                <div class="bg-emerald-950 rounded-[3rem] p-12 text-white shadow-2xl">
-                    <i data-lucide="quote" class="text-amber-400 mb-6" size="40"></i>
-                    <p class="text-2xl font-medium leading-relaxed italic mb-8">"Our mission is to ensure every healthcare worker in our group has the financial freedom to focus on their life's work while their wealth grows."</p>
-                    <p class="font-black text-amber-400 uppercase tracking-widest text-sm">— HPA Leadership Team</p>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-10">
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-200 text-center">
+                    <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-6 flex items-center justify-center font-black text-emerald-900 text-2xl">EM</div>
+                    <h4 class="font-black text-xl">Eliab MWISENEZA</h4>
+                    <p class="text-xs font-black text-amber-600 uppercase mt-2">Chairman</p>
+                </div>
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-200 text-center ring-4 ring-emerald-500/10">
+                    <div class="w-20 h-20 bg-emerald-950 rounded-full mx-auto mb-6 flex items-center justify-center font-black text-amber-400 text-2xl">RS</div>
+                    <h4 class="font-black text-xl">Reuben SINDAYIHEBA</h4>
+                    <p class="text-xs font-black text-emerald-600 uppercase mt-2">Treasurer & Secretary</p>
+                </div>
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-200 text-center">
+                    <div class="w-20 h-20 bg-emerald-100 rounded-full mx-auto mb-6 flex items-center justify-center font-black text-emerald-900 text-2xl">IT</div>
+                    <h4 class="font-black text-xl">Innocent TURIKUMWE</h4>
+                    <p class="text-xs font-black text-slate-400 uppercase mt-2">Strategic Advisor</p>
                 </div>
             </div>
         </section>
-
-        <section id="leadership" class="bg-white py-24 px-6 border-y">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-black text-emerald-950">The Board of Directors</h2>
-                    <p class="text-slate-400 font-bold uppercase text-[10px] tracking-[0.4em] mt-2">Executive Governance</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
-                    <div class="group">
-                        <div class="bg-slate-50 h-80 rounded-[2.5rem] mb-6 flex flex-col items-center justify-center border group-hover:border-emerald-500 transition-all">
-                             <div class="w-24 h-24 bg-emerald-950 text-amber-400 rounded-full flex items-center justify-center text-3xl font-black mb-4">RS</div>
-                             <h4 class="font-black text-xl text-emerald-950">Reuben S.</h4>
-                             <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Chairperson & Treasurer</p>
-                        </div>
-                    </div>
-                    <div class="group">
-                        <div class="bg-slate-50 h-80 rounded-[2.5rem] mb-6 flex flex-col items-center justify-center border group-hover:border-emerald-500 transition-all">
-                             <div class="w-24 h-24 bg-emerald-950 text-amber-400 rounded-full flex items-center justify-center text-3xl font-black mb-4">IT</div>
-                             <h4 class="font-black text-xl text-emerald-950">Innocent T.</h4>
-                             <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Vice-Chair & Audit</p>
-                        </div>
-                    </div>
-                    <div class="group">
-                        <div class="bg-slate-50 h-80 rounded-[2.5rem] mb-6 flex flex-col items-center justify-center border group-hover:border-emerald-500 transition-all">
-                             <div class="w-24 h-24 bg-emerald-950 text-amber-400 rounded-full flex items-center justify-center text-3xl font-black mb-4">EM</div>
-                             <h4 class="font-black text-xl text-emerald-950">Eliab M.</h4>
-                             <p class="text-xs font-black text-slate-400 uppercase tracking-widest">Strategic Advisor</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer id="contact" class="bg-emerald-950 text-white py-20 px-6">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
-                <div>
-                    <h3 class="font-black text-2xl mb-6">HPA-AGUKA</h3>
-                    <p class="text-emerald-100/60 text-sm leading-relaxed mb-6">Promoting health and economic prosperity for Rwanda's healthcare workers.</p>
-                    <div class="flex gap-4">
-                        <div class="w-10 h-10 bg-emerald-900 rounded-lg flex items-center justify-center"><i data-lucide="facebook" size="18"></i></div>
-                        <div class="w-10 h-10 bg-emerald-900 rounded-lg flex items-center justify-center"><i data-lucide="twitter" size="18"></i></div>
-                        <div class="w-10 h-10 bg-emerald-900 rounded-lg flex items-center justify-center"><i data-lucide="instagram" size="18"></i></div>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-black text-xs uppercase tracking-[0.2em] text-amber-400 mb-8">Official Contact</h4>
-                    <ul class="space-y-4 text-sm font-bold">
-                        <li class="flex gap-3"><i data-lucide="mail" class="text-emerald-500"></i> info@hpaaguka.com</li>
-                        <li class="flex gap-3"><i data-lucide="phone" class="text-emerald-500"></i> +250 78X XXX XXX</li>
-                        <li class="flex gap-3"><i data-lucide="map-pin" class="text-emerald-500"></i> Kigali, Rwanda</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-black text-xs uppercase tracking-[0.2em] text-amber-400 mb-8">Bank Credentials</h4>
-                    <div class="p-6 bg-emerald-900/50 border border-emerald-800 rounded-3xl">
-                        <p class="text-[10px] uppercase font-black text-emerald-400">Equity Bank Rwanda</p>
-                        <p class="text-xl font-black mt-1">4030201344354</p>
-                        <p class="text-[9px] mt-4 font-bold text-white/40">HPA-AGUKA COOPERATIVE ACC.</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <div id="loginPanel" class="hidden fixed inset-0 z-[60] bg-emerald-950/95 backdrop-blur-md flex items-center justify-center p-6 no-print">
-        <div class="bg-white p-10 rounded-[3rem] w-full max-w-md relative shadow-2xl">
-            <button onclick="closeLogin()" class="absolute top-6 right-6 text-slate-200 hover:text-slate-900 transition"><i data-lucide="x"></i></button>
-            <div id="loginHeader" class="text-center mb-10">
-                <h2 class="text-3xl font-black tracking-tighter">Portal Login</h2>
-                <p id="loginSub" class="text-[10px] font-black text-slate-400 uppercase mt-2 tracking-widest"></p>
-            </div>
-            <div class="space-y-4">
-                <input type="email" id="email" placeholder="Email" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
-                <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
-                <button onclick="processLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg hover:bg-emerald-900 transition active:scale-95">Sign In</button>
-            </div>
-        </div>
     </div>
 
     <div id="memberDashboard" class="hidden min-h-screen pb-32 print-area">
         <header class="bg-emerald-950 text-white pt-24 pb-20 px-6 no-print">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end">
-                <div>
-                    <h2 id="uName" class="text-4xl md:text-6xl font-black tracking-tighter"></h2>
-                    <p class="mt-4 text-emerald-400 font-black uppercase text-[10px] tracking-widest flex items-center gap-2">
-                        <i data-lucide="check-circle" size="12"></i> Verified Member Status
-                    </p>
-                </div>
-                <div class="flex gap-4 mt-8 md:mt-0">
-                    <button onclick="window.print()" class="bg-white text-emerald-950 px-8 py-4 rounded-2xl font-black text-xs flex items-center gap-2 shadow-xl"><i data-lucide="printer" size="14"></i> EXPORT REPORT</button>
-                    <button onclick="location.reload()" class="bg-red-500/10 text-red-400 border border-red-500/20 px-8 py-4 rounded-2xl font-black text-xs uppercase">Logout</button>
-                </div>
+            <div class="max-w-7xl mx-auto flex justify-between items-end">
+                <h2 id="uName" class="text-4xl md:text-6xl font-black tracking-tighter"></h2>
+                <button onclick="window.print()" class="bg-white text-emerald-950 px-8 py-4 rounded-2xl font-black text-xs">PRINT REPORT</button>
             </div>
         </header>
 
         <main class="max-w-7xl mx-auto px-6 -mt-10 grid lg:grid-cols-12 gap-8">
-            <div class="hidden print:block lg:col-span-12 border-b-4 border-emerald-950 pb-8 mb-8 text-center">
-                <h1 class="text-4xl font-black">HPA-AGUKA COOPERATIVE</h1>
-                <p class="text-sm font-bold uppercase tracking-widest mt-2">Member Financial Statement: 2025/2026</p>
-            </div>
-
             <div class="lg:col-span-4 space-y-6">
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-100">
-                    <p class="text-[10px] font-black text-emerald-600 uppercase mb-4 tracking-[0.2em]">Total Contribution Balance</p>
-                    <h3 id="uShares" class="text-4xl font-black text-emerald-950"></h3>
-                    <div class="mt-10 pt-8 border-t space-y-4 text-[11px] font-bold text-slate-400">
-                        <div class="flex justify-between"><span>Previous Cycles</span><span id="uPrev" class="text-slate-900"></span></div>
-                        <div class="flex justify-between"><span>Admin/Op Fees</span><span id="uOp" class="text-slate-900"></span></div>
-                    </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border">
+                    <p class="text-[10px] font-black uppercase text-emerald-600 mb-2">Shares Balance</p>
+                    <h3 id="uShares" class="text-4xl font-black"></h3>
                 </div>
-
-                <div id="uPenaltyCard" class="p-10 rounded-[2.5rem] border-2 shadow-sm">
-                    <p class="text-[10px] font-black uppercase mb-2">Unpaid Penalty</p>
+                <div id="uPenaltyCard" class="p-10 rounded-[2.5rem] border-2 bg-white">
+                    <p class="text-[10px] font-black uppercase mb-2">Penalty Due</p>
                     <h3 id="uPenalty" class="text-4xl font-black"></h3>
                 </div>
             </div>
 
             <div class="lg:col-span-8 space-y-8">
-                <div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm">
-                    <h3 class="font-black text-xl mb-10 flex items-center gap-3"><i data-lucide="calendar" class="text-emerald-600"></i> Share History</h3>
-                    <div id="shareGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
-                </div>
-
                 <div class="bg-emerald-950 text-white p-10 rounded-[3rem] shadow-2xl">
-                    <h3 class="text-xl font-black mb-10 flex items-center gap-3"><i data-lucide="landmark" class="text-amber-400"></i> Loan Portfolio Summary</h3>
+                    <h3 class="text-xl font-black mb-10">Current Loan Status</h3>
                     <div class="grid md:grid-cols-3 gap-8">
-                        <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Original Loan</p><p id="uLoanReq" class="text-2xl font-black"></p></div>
-                        <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Total Interest</p><p id="uInterest" class="text-2xl font-black text-amber-400"></p></div>
-                        <div><p class="text-[9px] uppercase font-black text-red-400 mb-2">Total Owed</p><p id="uLoanOut" class="text-2xl font-black text-red-400"></p></div>
+                        <div><p class="text-[9px] font-black text-emerald-400 uppercase mb-2">Principal</p><p id="uLoanReq" class="text-2xl font-black"></p></div>
+                        <div><p class="text-[9px] font-black text-emerald-400 uppercase mb-2">Interest (5%)</p><p id="uInterest" class="text-2xl font-black text-amber-400"></p></div>
+                        <div><p class="text-[9px] font-black text-red-400 uppercase mb-2">Total Owed</p><p id="uLoanOut" class="text-2xl font-black text-red-400"></p></div>
                     </div>
+                </div>
+                <div class="bg-white p-10 rounded-[3rem] shadow-sm border overflow-hidden">
+                    <h3 class="font-black text-xl mb-10">Monthly Contributions</h3>
+                    <div id="shareGrid" class="grid grid-cols-4 md:grid-cols-6 gap-3"></div>
                 </div>
             </div>
         </main>
     </div>
 
     <div id="leaderDashboard" class="hidden min-h-screen bg-slate-50 pb-32">
-        <header class="bg-emerald-950 text-white py-20 px-6 no-print">
+        <header class="bg-emerald-950 text-white py-12 px-6 no-print">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <h2 class="text-3xl font-black tracking-tighter">Leadership Master Control</h2>
-                <button onclick="location.reload()" class="bg-white/10 px-8 py-3 rounded-2xl font-bold text-xs">LOGOUT</button>
+                <h2 class="text-3xl font-black">Master Ledger</h2>
+                <div class="flex gap-4">
+                    <button onclick="exportCSV()" class="bg-emerald-600 px-6 py-3 rounded-xl font-bold text-xs flex items-center gap-2"><i data-lucide="download" size="14"></i> CSV EXPORT</button>
+                    <button onclick="location.reload()" class="bg-white/10 px-6 py-3 rounded-xl font-bold text-xs">LOGOUT</button>
+                </div>
             </div>
         </header>
 
         <main class="max-w-7xl mx-auto px-6 -mt-10">
             <div class="grid md:grid-cols-3 gap-8 mb-10">
-                <div class="bg-emerald-800 text-white p-10 rounded-[2.5rem] shadow-2xl">
-                    <p class="text-[10px] font-black text-emerald-400 uppercase mb-2">Group Net Shares</p>
-                    <h4 id="totS" class="text-3xl font-black"></h4>
-                </div>
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200">
-                    <p class="text-[10px] font-black text-red-500 uppercase mb-2">Active Loans Portfolio</p>
-                    <h4 id="totL" class="text-3xl font-black"></h4>
-                </div>
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200">
-                    <p class="text-[10px] font-black text-slate-400 uppercase mb-2">Total Penalty Pool</p>
-                    <h4 id="totP" class="text-3xl font-black"></h4>
-                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border"><p class="text-[10px] font-black text-slate-400 uppercase mb-2">Total Savings</p><h4 id="totS" class="text-3xl font-black"></h4></div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border"><p class="text-[10px] font-black text-slate-400 uppercase mb-2">Total Loans Out</p><h4 id="totL" class="text-3xl font-black"></h4></div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border"><p class="text-[10px] font-black text-slate-400 uppercase mb-2">Total Penalties</p><h4 id="totP" class="text-3xl font-black"></h4></div>
             </div>
 
-            <div class="bg-white rounded-[3rem] shadow-xl border overflow-hidden">
-                <div class="p-10 border-b flex justify-between items-center">
-                    <h3 class="font-black text-2xl tracking-tighter">All 20 Members</h3>
-                    <div class="relative w-80">
-                        <i data-lucide="search" class="absolute left-5 top-4 text-slate-300" size="18"></i>
-                        <input type="text" id="leaderSearch" oninput="filterTable()" placeholder="Search by name..." class="w-full pl-14 p-4 rounded-2xl bg-slate-50 font-bold outline-none ring-2 ring-transparent focus:ring-emerald-600 transition">
-                    </div>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left font-bold text-slate-700">
-                        <thead class="bg-slate-50 text-[10px] uppercase font-black text-slate-400 tracking-widest border-b">
-                            <tr><th class="p-8">Name</th><th class="p-8">Shares</th><th class="p-8">Loan Bal.</th><th class="p-8">Penalty</th><th class="p-8">Compliance</th></tr>
-                        </thead>
-                        <tbody id="masterTable" class="divide-y"></tbody>
-                    </table>
-                </div>
+            <div class="bg-white rounded-[3rem] shadow-xl overflow-hidden border">
+                <div class="p-8 border-b"><input type="text" id="leaderSearch" oninput="filterTable()" placeholder="Search members..." class="w-full p-4 rounded-2xl bg-slate-50 outline-none focus:ring-2 focus:ring-emerald-600 font-bold transition"></div>
+                <table class="w-full text-left font-bold text-slate-700">
+                    <thead class="bg-slate-50 text-[10px] uppercase font-black text-slate-400 border-b"><tr><th class="p-8">Name</th><th class="p-8">Shares</th><th class="p-8">Loan</th><th class="p-8">Penalty</th></tr></thead>
+                    <tbody id="masterTable" class="divide-y"></tbody>
+                </table>
             </div>
         </main>
     </div>
 
+    <div id="loginPanel" class="hidden fixed inset-0 z-[60] bg-emerald-950/95 backdrop-blur-md flex items-center justify-center p-6 no-print">
+        <div class="bg-white p-10 rounded-[3rem] w-full max-w-md relative shadow-2xl">
+            <button onclick="closeLogin()" class="absolute top-6 right-6 text-slate-300"><i data-lucide="x"></i></button>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-black">Portal Access</h2>
+                <p id="loginSub" class="text-[10px] font-black text-slate-400 uppercase mt-2"></p>
+            </div>
+            <div class="space-y-4">
+                <input type="email" id="email" placeholder="Email" class="w-full p-5 bg-slate-50 rounded-2xl border-none outline-none font-bold">
+                <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-none outline-none font-bold">
+                <button onclick="processLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg">Sign In</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // DB with 20 Members
         const db = [
             { name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin", shares: 350000, prev: 240000, op: 2750, paidM: 12, penalty: 0, loanOut: 40880, loanReq: 250000, interest: 30539 },
             { name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 4500, paidM: 9, penalty: 500, loanOut: 555000, loanReq: 600000, interest: 49200 },
@@ -293,14 +193,14 @@
         ];
 
         let mode = 'member';
-        function openLogin(m) { mode = m; document.getElementById('loginSub').innerText = m === 'leader' ? 'ADMIN ACCESS' : 'MEMBER LEDGER'; document.getElementById('loginPanel').classList.remove('hidden'); }
+        function openLogin(m) { mode = m; document.getElementById('loginSub').innerText = m === 'leader' ? 'ADMIN ACCESS' : 'MEMBER ACCESS'; document.getElementById('loginPanel').classList.remove('hidden'); }
         function closeLogin() { document.getElementById('loginPanel').classList.add('hidden'); }
         function processLogin() {
             const e = document.getElementById('email').value.toLowerCase().trim();
             const p = document.getElementById('password').value;
             const u = db.find(x => x.email === e && x.pass === p);
-            if(!u) { alert("Error: Credentials fail."); return; }
-            if(mode === 'leader' && u.role !== 'Admin') { alert("Error: No admin rights."); return; }
+            if(!u) { alert("Invalid Credentials"); return; }
+            if(mode === 'leader' && u.role !== 'Admin') { alert("Admin Access Required"); return; }
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPanel').classList.add('hidden');
             if(mode === 'leader') renderLeader(); else renderMember(u);
@@ -310,16 +210,12 @@
             document.getElementById('memberDashboard').classList.remove('hidden');
             document.getElementById('uName').innerText = u.name;
             document.getElementById('uShares').innerText = u.shares.toLocaleString() + " RWF";
-            document.getElementById('uPrev').innerText = u.prev.toLocaleString() + " RWF";
-            document.getElementById('uOp').innerText = u.op.toLocaleString() + " RWF";
             document.getElementById('uPenalty').innerText = u.penalty.toLocaleString() + " RWF";
-            document.getElementById('uLoanOut').innerText = u.loanOut.toLocaleString() + " RWF";
             document.getElementById('uLoanReq').innerText = u.loanReq.toLocaleString() + " RWF";
             document.getElementById('uInterest').innerText = u.interest.toLocaleString() + " RWF";
-            const c = document.getElementById('uPenaltyCard');
-            c.className = u.penalty > 0 ? "p-10 rounded-[2.5rem] border-2 border-red-500 bg-red-50 text-red-600 shadow-lg" : "p-10 rounded-[2.5rem] border-2 border-emerald-100 bg-white text-emerald-800";
+            document.getElementById('uLoanOut').innerText = (u.loanOut).toLocaleString() + " RWF";
             const ms = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
-            document.getElementById('shareGrid').innerHTML = ms.map((m, i) => `<div class="p-4 rounded-2xl text-center border ${i < u.paidM ? 'bg-emerald-800 text-white' : 'bg-slate-50 text-slate-300'}"><p class="font-black text-[8px] mb-1">${m}</p><p class="font-black text-sm">${i < u.paidM ? '10,000' : '0'}</p></div>`).join('');
+            document.getElementById('shareGrid').innerHTML = ms.map((m, i) => `<div class="p-4 rounded-xl text-center border ${i < u.paidM ? 'bg-emerald-800 text-white' : 'bg-slate-50 text-slate-300'} text-[10px] font-black">${m}</div>`).join('');
             lucide.createIcons();
         }
 
@@ -332,10 +228,24 @@
         }
 
         function updateTable(data) {
-            document.getElementById('masterTable').innerHTML = data.map(m => `<tr class="border-b"><td class="p-8">${m.name}</td><td class="p-8 text-emerald-700">${m.shares.toLocaleString()}</td><td class="p-8 text-red-600">${m.loanOut.toLocaleString()}</td><td class="p-8 text-slate-400">${m.penalty.toLocaleString()}</td><td class="p-8"><span class="px-3 py-1.5 rounded-full text-[9px] uppercase ${m.penalty > 0 ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-800'}">${m.penalty > 0 ? 'Review' : 'OK'}</span></td></tr>`).join('');
+            document.getElementById('masterTable').innerHTML = data.map(m => `<tr class="border-b"><td class="p-8">${m.name}</td><td class="p-8 text-emerald-700">${m.shares.toLocaleString()}</td><td class="p-8 text-red-600">${m.loanOut.toLocaleString()}</td><td class="p-8">${m.penalty.toLocaleString()}</td></tr>`).join('');
         }
 
         function filterTable() { const q = document.getElementById('leaderSearch').value.toLowerCase(); updateTable(db.filter(x => x.name.toLowerCase().includes(q))); }
+
+        function exportCSV() {
+            let csv = "Name,Shares,Loan Outstanding,Penalty\n";
+            db.forEach(m => { csv += `${m.name},${m.shares},${m.loanOut},${m.penalty}\n`; });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'HPA_Aguka_Ledger.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
 
         lucide.createIcons();
     </script>
