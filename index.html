@@ -21,6 +21,7 @@
         .toast { position: fixed; top: 20px; right: 20px; padding: 16px 24px; border-radius: 12px; color: white; z-index: 1000; transform: translateX(400px); transition: 0.4s; }
         .toast.show { transform: translateX(0); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .step-card:hover { transform: translateY(-5px); transition: 0.3s; }
     </style>
 </head>
 <body class="text-gray-800">
@@ -38,7 +39,7 @@
             </div>
             <div class="hidden md:flex gap-8 font-bold text-xs uppercase tracking-widest text-gray-500">
                 <a href="#mission" class="hover:text-green-800 transition">Mission</a>
-                <a href="#how-it-works" class="hover:text-green-800 transition">Process</a>
+                <a href="#how-it-works" class="hover:text-green-800 transition">How it Works</a>
                 <a href="#leadership" class="hover:text-green-800 transition">Leadership</a>
                 <a href="#contact" class="hover:text-green-800 transition">Contact</a>
             </div>
@@ -78,13 +79,37 @@
             </div>
         </section>
 
-        <section id="leadership" class="py-24 px-8 bg-white">
+        <section id="how-it-works" class="py-24 px-8 bg-white">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl font-black text-green-900 mb-4 uppercase">How It Works</h2>
+                <p class="text-gray-400 font-bold mb-16 text-xs uppercase tracking-widest">A simple 3-step financial ecosystem</p>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="step-card bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 relative">
+                        <span class="absolute -top-5 left-1/2 -translate-x-1/2 bg-amber-400 text-green-900 w-12 h-12 rounded-full flex items-center justify-center font-black text-xl border-4 border-white shadow-lg">1</span>
+                        <h3 class="text-xl font-black mb-4 mt-4">Save Monthly</h3>
+                        <p class="text-gray-500 text-sm">Every member contributes 10,000 RWF monthly to build the collective investment fund.</p>
+                    </div>
+                    <div class="step-card bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 relative">
+                        <span class="absolute -top-5 left-1/2 -translate-x-1/2 bg-green-800 text-white w-12 h-12 rounded-full flex items-center justify-center font-black text-xl border-4 border-white shadow-lg">2</span>
+                        <h3 class="text-xl font-black mb-4 mt-4">Apply for Loans</h3>
+                        <p class="text-gray-500 text-sm">Members can borrow up to 3x their savings at a low 2% interest rate for development.</p>
+                    </div>
+                    <div class="step-card bg-gray-50 p-8 rounded-[2.5rem] border border-gray-100 relative">
+                        <span class="absolute -top-5 left-1/2 -translate-x-1/2 bg-amber-400 text-green-900 w-12 h-12 rounded-full flex items-center justify-center font-black text-xl border-4 border-white shadow-lg">3</span>
+                        <h3 class="text-xl font-black mb-4 mt-4">Invest & Repay</h3>
+                        <p class="text-gray-500 text-sm">Grow your project and repay in flexible installments, growing the pool for everyone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership" class="py-24 px-8 bg-[#FEF3C7]">
             <div class="max-w-7xl mx-auto text-center">
                 <h2 class="text-4xl font-black text-green-900 mb-16 uppercase">Leadership</h2>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem]"><h3 class="text-xl font-black">MWISENEZA Eliab</h3><p class="text-amber-600 font-bold text-xs uppercase">Chairperson</p></div>
-                    <div class="bg-green-900 text-white p-8 rounded-[3rem] shadow-xl"><h3 class="text-xl font-black text-amber-400">SINDAYIHEBA Reuben</h3><p class="text-green-300 font-bold text-xs uppercase">Treasurer</p></div>
-                    <div class="bg-[#FEF3C7] p-8 rounded-[3rem]"><h3 class="text-xl font-black">TURIKUMWE Innocent</h3><p class="text-amber-600 font-bold text-xs uppercase">Advisor</p></div>
+                    <div class="bg-white p-8 rounded-[3rem] shadow-sm"><h3 class="text-xl font-black">MWISENEZA Eliab</h3><p class="text-amber-600 font-bold text-xs uppercase tracking-widest">Chairperson</p></div>
+                    <div class="bg-green-900 text-white p-8 rounded-[3rem] shadow-xl"><h3 class="text-xl font-black text-amber-400">SINDAYIHEBA Reuben</h3><p class="text-green-300 font-bold text-xs uppercase tracking-widest">Treasurer</p></div>
+                    <div class="bg-white p-8 rounded-[3rem] shadow-sm"><h3 class="text-xl font-black">TURIKUMWE Innocent</h3><p class="text-amber-600 font-bold text-xs uppercase tracking-widest">Advisor</p></div>
                 </div>
             </div>
         </section>
@@ -92,26 +117,45 @@
         <section id="contact" class="py-24 px-8 bg-white">
             <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-5xl font-black text-green-950 mb-6">Inquiries.</h2>
-                    <p class="text-gray-500 mb-10 text-lg">Thank you for visiting. If you have questions about membership, reach out to the committee.</p>
+                    <h2 class="text-5xl font-black text-green-950 mb-6">Contact Us.</h2>
+                    <p class="text-gray-500 mb-10 text-lg">Our committee is always available to assist you with inquiries regarding membership, savings, or loans.</p>
+                    <div class="space-y-4">
+                        <a href="mailto:healthassociation.project2023@gmail.com" class="flex items-center gap-4 text-green-900 font-bold hover:text-amber-600 transition underline">
+                            <i data-lucide="mail"></i> healthassociation.project2023@gmail.com
+                        </a>
+                        <div class="flex items-center gap-4 text-green-900 font-bold"><i data-lucide="map-pin"></i> Kigali, Rwanda</div>
+                    </div>
                 </div>
-                <div class="bg-gray-50 p-10 rounded-[4rem] border">
-                    <form onsubmit="event.preventDefault(); showToast('Message Forwarded.', 'success');" class="space-y-4">
-                        <input type="text" placeholder="Name" class="w-full px-6 py-4 bg-white rounded-2xl outline-none shadow-sm" required>
-                        <textarea placeholder="Message" rows="4" class="w-full px-6 py-4 bg-white rounded-2xl outline-none shadow-sm" required></textarea>
-                        <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-black">Submit Inquiry</button>
+                <div class="bg-gray-50 p-10 rounded-[4rem] border shadow-inner">
+                    <form id="contactForm" onsubmit="handleInquiry(event)" class="space-y-4">
+                        <input type="text" id="contactName" placeholder="Full Name" class="w-full px-6 py-4 bg-white rounded-2xl outline-none shadow-sm focus:ring-2 focus:ring-green-800 transition" required>
+                        <textarea id="contactMessage" placeholder="How can we help?" rows="3" class="w-full px-6 py-4 bg-white rounded-2xl outline-none shadow-sm focus:ring-2 focus:ring-green-800 transition" required></textarea>
+                        <button type="submit" class="w-full btn-primary py-5 rounded-2xl font-black text-lg">Send Inquiry</button>
                     </form>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-green-950 text-white py-20 px-8 text-center">
-            <h2 class="text-2xl font-black mb-4 uppercase">HPA-Aguka Cooperative</h2>
-            <p class="text-green-100/40 text-xs mb-10 uppercase tracking-widest">Integrity • Transparency • Legacy</p>
-            <p class="italic text-green-100/60 mb-8">Thank you for visiting us. If you have questions, click below to WhatsApp us.</p>
-            <a href="https://wa.me/250788123456" target="_blank" class="bg-green-500 px-10 py-4 rounded-full font-black flex items-center gap-3 w-fit mx-auto shadow-xl">
-                <i data-lucide="message-circle"></i> Chat on WhatsApp
-            </a>
+        <footer class="bg-green-950 text-white py-16 px-8 border-t border-white/5">
+            <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+                <div class="bg-white/10 p-4 rounded-2xl mb-6"><i data-lucide="award" class="text-amber-400 h-8 w-8"></i></div>
+                <h2 class="text-3xl font-black mb-2 tracking-tighter uppercase">HPA-Aguka Cooperative</h2>
+                <p class="text-green-100/40 text-xs mb-8 uppercase tracking-[0.4em] font-bold">Integrity • Transparency • Legacy</p>
+                
+                <div class="max-w-xl bg-white/5 p-8 rounded-[2.5rem] border border-white/10 mb-10">
+                    <p class="italic text-green-100/80 leading-relaxed font-medium">
+                        "We would like to sincerely thank the reviewers for visiting our portal. Your attention to our cooperative's digital journey means a lot to us. If you have any questions or require more information, feel free to reach out to us via WhatsApp below."
+                    </p>
+                </div>
+
+                <a href="https://wa.me/250788123456" target="_blank" class="bg-green-500 hover:bg-green-400 px-12 py-4 rounded-full font-black flex items-center gap-3 transition-all transform hover:scale-105 shadow-2xl shadow-green-500/20">
+                    <i data-lucide="message-circle" class="fill-current"></i> Contact on WhatsApp
+                </a>
+                
+                <div class="mt-16 pt-8 border-t border-white/5 w-full text-[10px] text-green-100/20 uppercase tracking-widest font-black">
+                    &copy; 2026 HPA-Aguka. All Member Data Encrypted & Secured.
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -194,6 +238,15 @@
             } else { showToast("Authentication failed.", "error"); }
         }
 
+        function handleInquiry(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const msg = document.getElementById('contactMessage').value;
+            const mailtoLink = `mailto:healthassociation.project2023@gmail.com?subject=Portal Inquiry from ${name}&body=${encodeURIComponent(msg)}`;
+            window.location.href = mailtoLink;
+            showToast('Opening Email App...', 'success');
+        }
+
         function setAdminTab(tab) {
             currentAdminTab = tab;
             document.querySelectorAll('.btn-admin-tab').forEach(b => b.classList.remove('active'));
@@ -204,9 +257,9 @@
         function renderAdminView() {
             const win = document.getElementById('adminDataWindow');
             if (currentAdminTab === 'members') {
-                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] uppercase border-b"><th class="pb-5">Name</th><th class="pb-5">Savings</th><th class="pb-5 text-right">Penalties</th></tr></thead><tbody>${allMembers.map(m => `<tr class="border-b"><td class="py-4 font-black">${m.fullName}</td><td class="py-4 font-bold text-green-700">${m.totalBalance.toLocaleString()} RWF</td><td class="py-4 text-red-500 font-bold text-right">${m.penalties.toLocaleString()} RWF</td></tr>`).join('')}</tbody></table>`;
+                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] uppercase border-b"><th class="pb-5">Name</th><th class="pb-5">Savings</th><th class="pb-5 text-right">Penalties</th></tr></thead><tbody>${allMembers.map(m => `<tr class="border-b hover:bg-gray-50"><td class="py-4 font-black">${m.fullName}</td><td class="py-4 font-bold text-green-700">${m.totalBalance.toLocaleString()} RWF</td><td class="py-4 text-red-500 font-bold text-right">${m.penalties.toLocaleString()} RWF</td></tr>`).join('')}</tbody></table>`;
             } else {
-                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] uppercase border-b"><th class="pb-5">Member</th><th class="pb-5">Total Loan</th><th class="pb-5 text-right">Balance</th></tr></thead><tbody>${allMembers.map(m => {
+                win.innerHTML = `<table class="w-full text-left"><thead><tr class="text-[10px] uppercase border-b"><th class="pb-5">Member</th><th class="pb-5">Total Loan</th><th class="pb-5 text-right">Remaining</th></tr></thead><tbody>${allMembers.map(m => {
                     const tDue = m.loans.reduce((s, l) => s + l.totalDue, 0);
                     const tPaid = m.loans.reduce((s, l) => s + l.paid.reduce((a, b) => a + b, 0), 0);
                     return `<tr class="border-b"><td class="py-4 font-black">${m.fullName}</td><td class="py-4 font-bold">${Math.round(tDue).toLocaleString()}</td><td class="py-4 text-red-600 font-black text-right">${Math.round(tDue - tPaid).toLocaleString()} RWF</td></tr>`;
