@@ -191,7 +191,7 @@
             </div>
 
             <div class="lg:col-span-4 space-y-6">
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-100">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-100" id="shareSummaryCard">
                     <p class="text-[10px] font-black text-emerald-600 uppercase mb-4 tracking-[0.2em]">Total Contribution Balance</p>
                     <h3 id="uShares" class="text-4xl font-black text-emerald-950"></h3>
                     <div class="mt-10 pt-8 border-t space-y-4 text-[11px] font-bold text-slate-400">
@@ -219,7 +219,7 @@
                         <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Total Interest</p><p id="uInterest" class="text-2xl font-black text-amber-400"></p></div>
                         <div><p class="text-[9px] uppercase font-black text-red-400 mb-2">Total Owed</p><p id="uLoanOut" class="text-2xl font-black text-red-400"></p></div>
                     </div>
-                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -295,12 +295,20 @@
         let mode = 'member';
         function openLogin(m) { mode = m; document.getElementById('loginSub').innerText = m === 'leader' ? 'ADMIN ACCESS' : 'MEMBER LEDGER'; document.getElementById('loginPanel').classList.remove('hidden'); }
         function closeLogin() { document.getElementById('loginPanel').classList.add('hidden'); }
+        
         function processLogin() {
             const e = document.getElementById('email').value.toLowerCase().trim();
             const p = document.getElementById('password').value;
             const u = db.find(x => x.email === e && x.pass === p);
+            
             if(!u) { alert("Error: Credentials fail."); return; }
-            if(mode === 'leader' && u.role !== 'Admin') { alert("Error: No admin rights."); return; }
+            
+            // CORRECTED ACCESS LOGIC: Check if role includes 'Admin'
+            if(mode === 'leader' && !u.role.includes('Admin')) { 
+                alert("Error: Access Denied. Leader credentials required."); 
+                return; 
+            }
+            
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPanel').classList.add('hidden');
             if(mode === 'leader') renderLeader(); else renderMember(u);
@@ -316,15 +324,32 @@
             document.getElementById('uLoanOut').innerText = u.loanOut.toLocaleString() + " RWF";
             document.getElementById('uLoanReq').innerText = u.loanReq.toLocaleString() + " RWF";
             document.getElementById('uInterest').innerText = u.interest.toLocaleString() + " RWF";
+
+            // LEDGER TARGET TRACKER (1,000,000 RWF)
+            const target = 1000000;
+            const targetPerc = Math.min(100, (u.shares / target) * 100);
+            const shareCard = document.getElementById('shareSummaryCard');
+            shareCard.innerHTML += `
+                <div class="mt-6 pt-6 border-t border-slate-100">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[9px] font-bold text-slate-400 uppercase">Target: 1M RWF</span>
+                        <span class="text-[11px] font-black text-emerald-600">${targetPerc.toFixed(1)}%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div class="bg-emerald-500 h-full rounded-full" style="width: ${targetPerc}%"></div>
+                    </div>
+                </div>
+            `;
+
             const c = document.getElementById('uPenaltyCard');
             c.className = u.penalty > 0 ? "p-10 rounded-[2.5rem] border-2 border-red-500 bg-red-50 text-red-600 shadow-lg" : "p-10 rounded-[2.5rem] border-2 border-emerald-100 bg-white text-emerald-800";
+            
             const ms = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
             document.getElementById('shareGrid').innerHTML = ms.map((m, i) => `<div class="p-4 rounded-2xl text-center border ${i < u.paidM ? 'bg-emerald-800 text-white' : 'bg-slate-50 text-slate-300'}"><p class="font-black text-[8px] mb-1">${m}</p><p class="font-black text-sm">${i < u.paidM ? '10,000' : '0'}</p></div>`).join('');
             
-            // LOGIC FOR LOAN SUMMARY & TABLE
+            // LOAN REPAYMENT SUMMARY
             if(u.loanReq > 0) {
                 const parent = document.getElementById('loanSummaryParent');
-                // We add the Summary Progress bar FIRST, then the Table below it
                 parent.innerHTML += createVisualSummary(u) + generateAmortizationTable(u.loanReq);
             }
 
@@ -335,7 +360,6 @@
             const total = u.loanReq + u.interest;
             const paid = total - u.loanOut;
             const perc = Math.min(100, Math.max(0, (paid / total) * 100));
-            
             return `
                 <div class="mt-10 pt-10 border-t border-emerald-800">
                     <div class="flex justify-between items-center mb-4">
@@ -351,9 +375,21 @@
                     <div class="w-full bg-emerald-900 h-4 rounded-full overflow-hidden border border-emerald-800">
                         <div class="bg-gradient-to-r from-emerald-500 to-amber-400 h-full rounded-full" style="width: ${perc}%"></div>
                     </div>
-                    <p class="text-[9px] mt-4 text-emerald-500/50 font-medium">* This includes original principal plus the declining interest calculation.</p>
-                </div>
-            `;
+                </div>`;
+        }
+
+        function generateAmortizationTable(principal, periods = 6) {
+            const monthlyRate = 0.02;
+            const installment = principal * (monthlyRate * Math.pow(1 + monthlyRate, periods)) / (Math.pow(1 + monthlyRate, periods) - 1);
+            let balance = principal;
+            let rows = '';
+            for (let i = 1; i <= periods; i++) {
+                const interestPaid = balance * monthlyRate;
+                const principalPaid = installment - interestPaid;
+                balance -= principalPaid;
+                rows += `<tr class="border-b border-white/10 text-[10px]"><td class="py-2 text-emerald-400">Mo. ${i}</td><td class="py-2">${Math.round(installment).toLocaleString()}</td><td class="py-2 text-amber-400">${Math.round(interestPaid).toLocaleString()}</td><td class="py-2 text-emerald-300">${Math.round(principalPaid).toLocaleString()}</td><td class="py-2 font-bold">${Math.max(0, Math.round(balance)).toLocaleString()}</td></tr>`;
+            }
+            return `<div class="mt-12"><h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-amber-400 mb-6">Standard Repayment Schedule</h4><table class="w-full text-left text-white/70"><thead><tr class="text-[8px] uppercase font-black text-emerald-500 border-b border-emerald-800"><th class="pb-3">Period</th><th class="pb-3">Payment</th><th class="pb-3">Interest</th><th class="pb-3">Principal</th><th class="pb-3">Balance</th></tr></thead><tbody class="divide-y divide-white/5">${rows}</tbody></table></div>`;
         }
 
         function renderLeader() {
@@ -369,42 +405,6 @@
         }
 
         function filterTable() { const q = document.getElementById('leaderSearch').value.toLowerCase(); updateTable(db.filter(x => x.name.toLowerCase().includes(q))); }
-
-        function generateAmortizationTable(principal, periods = 6) {
-            if (principal <= 0) return "";
-            const monthlyRate = 0.02;
-            const installment = principal * (monthlyRate * Math.pow(1 + monthlyRate, periods)) / (Math.pow(1 + monthlyRate, periods) - 1);
-            let balance = principal;
-            let rows = '';
-            for (let i = 1; i <= periods; i++) {
-                const interestPaid = balance * monthlyRate;
-                const principalPaid = installment - interestPaid;
-                balance -= principalPaid;
-                rows += `
-                    <tr class="border-b border-white/10 text-[10px]">
-                        <td class="py-2 text-emerald-400">Mo. ${i}</td>
-                        <td class="py-2">${Math.round(installment).toLocaleString()}</td>
-                        <td class="py-2 text-amber-400">${Math.round(interestPaid).toLocaleString()}</td>
-                        <td class="py-2 text-emerald-300">${Math.round(principalPaid).toLocaleString()}</td>
-                        <td class="py-2 font-bold">${Math.max(0, Math.round(balance)).toLocaleString()}</td>
-                    </tr>`;
-            }
-
-            return `
-                <div class="mt-12">
-                    <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-amber-400 mb-6">Standard Repayment Schedule</h4>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-white/70">
-                            <thead>
-                                <tr class="text-[8px] uppercase font-black text-emerald-500 border-b border-emerald-800">
-                                    <th class="pb-3">Period</th><th class="pb-3">Payment</th><th class="pb-3">Interest</th><th class="pb-3">Principal</th><th class="pb-3">Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-white/5">${rows}</tbody>
-                        </table>
-                    </div>
-                </div>`;
-        }
 
         lucide.createIcons();
     </script>
