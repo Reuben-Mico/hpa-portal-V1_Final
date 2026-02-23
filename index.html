@@ -11,21 +11,23 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; scroll-behavior: smooth; }
         .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
         .gold-glow { box-shadow: 0 0 40px rgba(251, 191, 36, 0.5); border: 4px solid #fbbf24 !important; background: linear-gradient(145deg, #ffffff, #fffbeb) !important; position: relative; overflow: hidden; }
-        .gold-glow::after { content: "GOLD STATUS"; position: absolute; top: 12px; right: -35px; background: #fbbf24; color: #000; font-size: 9px; font-weight: 900; padding: 5px 40px; transform: rotate(45deg); }
+        .gold-glow::after { content: "GOLD TARGET REACHED"; position: absolute; top: 10px; right: -30px; background: #fbbf24; color: #000; font-size: 8px; font-weight: 900; padding: 5px 40px; transform: rotate(45deg); }
+        .news-slide { animation: slide 25s linear infinite; }
+        @keyframes slide { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
         
         @media print {
             .no-print { display: none !important; }
             body { background: white; padding: 0; }
-            .print-cert { border: 2px solid #064e3b !important; padding: 40px !important; border-radius: 0 !important; box-shadow: none !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+            .print-cert { border: 2px solid #064e3b !important; padding: 40px !important; border-radius: 0 !important; box-shadow: none !important; margin: 0 !important; }
         }
     </style>
 </head>
 <body class="text-slate-900">
 
     <div class="bg-amber-400 py-3 overflow-hidden whitespace-nowrap border-b border-amber-500 no-print">
-        <div class="inline-block text-emerald-950 font-black text-[11px] uppercase tracking-widest px-10">
-            <i data-lucide="info" class="inline-block mr-2" size="14"></i> 
-            For Repayment Support: Contact Reuben S. (+250 782 307 562). Deadline: 30th of every month. 5% Late Penalty Applies.
+        <div class="inline-block news-slide text-emerald-950 font-black text-[11px] uppercase tracking-widest">
+            <i data-lucide="megaphone" class="inline-block mr-2" size="14"></i> 
+            Member Alert: Contact Reuben S. (+250 782 307 562) for repayment issues. Late payments attract a 5% penalty.
         </div>
     </div>
 
@@ -35,219 +37,221 @@
                 <div class="bg-emerald-900 p-2 rounded-xl text-amber-400"><i data-lucide="heart-pulse"></i></div>
                 <div>
                     <span class="font-black text-xl tracking-tighter text-emerald-950 block">HPA-AGUKA</span>
-                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Savings & Credit Coop</span>
+                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Healthcare Professionals Hub</span>
                 </div>
             </div>
-            <button onclick="openLogin()" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl font-black text-[11px] uppercase tracking-widest">Member Portal</button>
+            <button onclick="openLogin('member')" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl font-black text-[11px] uppercase tracking-widest active:scale-95 transition">Portal Login</button>
         </div>
     </nav>
 
     <div id="homePage">
-        <header class="hero-gradient text-white py-24 px-6 text-center relative overflow-hidden">
+        <header class="hero-gradient text-white py-24 px-6 text-center relative">
             <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tighter">Save to <span class="text-amber-400">Prosper.</span></h1>
+            
             <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4 mt-12 mb-12">
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
                     <p class="text-[10px] font-black uppercase text-amber-400">Total Assets</p>
-                    <h4 class="text-2xl font-black">7.3M+ RWF</h4>
+                    <h4 class="text-2xl font-black">7,340,000 RWF</h4>
                 </div>
                 <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-                    <p class="text-[10px] font-black uppercase text-amber-400">Total Members</p>
-                    <h4 class="text-2xl font-black">20 Professionals</h4>
+                    <p class="text-[10px] font-black uppercase text-amber-400">Active Members</p>
+                    <h4 class="text-2xl font-black">20 Members</h4>
                 </div>
                 <div class="hidden md:block bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-                    <p class="text-[10px] font-black uppercase text-amber-400">Repayment Goal</p>
-                    <h4 class="text-2xl font-black">100% Monthly</h4>
+                    <p class="text-[10px] font-black uppercase text-amber-400">Goal Progress</p>
+                    <h4 class="text-2xl font-black">Annual Cycle</h4>
                 </div>
             </div>
-            <button onclick="openLogin()" class="bg-white text-emerald-950 px-12 py-5 rounded-2xl font-black text-xl shadow-2xl transition hover:scale-105 active:scale-95">Access Portal</button>
+
+            <div class="flex justify-center gap-4">
+                <button onclick="openLogin('member')" class="bg-white text-emerald-950 px-10 py-5 rounded-2xl font-black text-lg shadow-xl">Member Access</button>
+                <button onclick="openLogin('leader')" class="bg-amber-400 text-emerald-950 px-10 py-5 rounded-2xl font-black text-lg shadow-xl border-b-4 border-amber-600">Leader Console</button>
+            </div>
         </header>
 
         <section class="py-16 max-w-4xl mx-auto px-6">
-            <h3 class="text-center font-black text-xl mb-8 flex items-center justify-center gap-2"><i data-lucide="award" class="text-amber-500"></i> Top 5 Savers</h3>
+            <h3 class="text-center font-black text-xl mb-8 flex items-center justify-center gap-2">
+                <i data-lucide="trophy" class="text-amber-500"></i> Savings Leaderboard
+            </h3>
             <div id="topSaversList" class="space-y-3"></div>
+        </section>
+
+        <section class="py-20 bg-slate-50 border-t">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+                <div><h4 class="font-black text-emerald-900 text-xl mb-2">Our Mission</h4><p class="text-sm text-slate-500">To build financial resilience for health workers.</p></div>
+                <div><h4 class="font-black text-emerald-900 text-xl mb-2">Our Vision</h4><p class="text-sm text-slate-500">A prosperous and debt-free health community.</p></div>
+                <div><h4 class="font-black text-emerald-900 text-xl mb-2">Socials</h4><p class="text-sm text-slate-500">Follow us @HPA_Aguka</p></div>
+            </div>
         </section>
     </div>
 
-    <div id="loginPanel" class="hidden fixed inset-0 z-[60] bg-emerald-950/95 flex items-center justify-center p-6">
+    <div id="loginPanel" class="hidden fixed inset-0 z-[60] bg-emerald-950/95 backdrop-blur-md flex items-center justify-center p-6">
         <div class="bg-white p-10 rounded-[3rem] w-full max-w-md relative shadow-2xl">
-            <h2 class="text-3xl font-black mb-8 text-center tracking-tighter">Portal Access</h2>
+            <h2 class="text-3xl font-black tracking-tighter mb-8 text-center">Portal Sign In</h2>
             <div class="space-y-4">
                 <input type="email" id="email" placeholder="Email" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
                 <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
-                <button onclick="processLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg">Login</button>
+                <button onclick="processLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg">Access My Data</button>
             </div>
         </div>
     </div>
 
-    <div id="memberDashboard" class="hidden min-h-screen bg-slate-50 py-10 px-6">
-        <div class="max-w-5xl mx-auto bg-white rounded-[3rem] shadow-2xl border print-cert overflow-hidden">
-            <div class="bg-emerald-950 text-white p-12 flex justify-between items-start">
-                <div>
-                    <h2 id="uName" class="text-4xl font-black tracking-tighter"></h2>
-                    <p class="text-emerald-400 font-bold uppercase text-[10px] mt-2">Certified Member Ledger • HPA-AGUKA Official Record</p>
+    <div id="memberDashboard" class="hidden min-h-screen bg-slate-100">
+        <main class="max-w-5xl mx-auto py-10 px-6">
+            <div class="bg-white rounded-[3rem] shadow-2xl print-cert overflow-hidden border">
+                <div class="bg-emerald-950 text-white p-12 flex justify-between items-start">
+                    <div>
+                        <h2 id="uName" class="text-4xl font-black tracking-tighter"></h2>
+                        <p class="text-emerald-400 font-bold uppercase text-[10px] mt-2">Certified Member Ledger • 2026</p>
+                    </div>
+                    <div class="text-right no-print">
+                        <button onclick="window.print()" class="bg-amber-400 text-emerald-950 px-6 py-3 rounded-xl font-black text-xs uppercase mb-2">Print Record</button><br>
+                        <button onclick="location.reload()" class="text-white opacity-50 font-black text-[10px] uppercase">Logout</button>
+                    </div>
                 </div>
-                <div class="no-print text-right">
-                    <button onclick="window.print()" class="bg-white text-emerald-950 px-6 py-3 rounded-xl font-black text-xs uppercase mb-2">Download Record</button><br>
-                    <button onclick="location.reload()" class="text-white opacity-40 font-bold text-[10px]">Logout</button>
+
+                <div class="p-12 space-y-10">
+                    <div>
+                        <h3 class="font-black text-lg mb-4">Monthly Shares Pledger</h3>
+                        <div id="shareGrid" class="grid grid-cols-4 md:grid-cols-6 gap-3"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div id="mainShareCard" class="p-8 rounded-[2rem] border bg-slate-50">
+                            <p class="text-[10px] font-black text-emerald-600 uppercase mb-1">Total Savings</p>
+                            <h3 id="uShares" class="text-4xl font-black"></h3>
+                            <div id="profitChip"></div>
+                        </div>
+                        <div class="p-8 rounded-[2rem] border bg-emerald-50 border-emerald-100">
+                            <h4 class="font-black text-emerald-900 text-sm mb-2">Repayment Policy</h4>
+                            <p class="text-xs text-emerald-800 leading-relaxed font-medium">Contact **Reuben S.** (+250 782 307 562) if you cannot meet the deadline. Note that a **5% penalty** is applied automatically on any balance remaining after the 30th of each month.</p>
+                        </div>
+                    </div>
+
+                    <div id="scheduleSection" class="hidden">
+                        <h3 class="font-black text-lg mb-4">Upcoming Repayment Schedule</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-50 font-black uppercase text-slate-400 border-b">
+                                    <tr><th class="p-4">Month</th><th class="p-4">Installment</th><th class="p-4">Late Penalty (5%)</th><th class="p-4">Status</th></tr>
+                                </thead>
+                                <tbody id="repayTableBody" class="font-bold"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="pt-8 border-t">
+                        <h3 class="font-black text-lg mb-6">Financial Summary</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div><p class="text-[9px] uppercase font-black text-slate-400">Total Requested</p><p id="uLoanReq" class="text-xl font-black"></p></div>
+                            <div><p class="text-[9px] uppercase font-black text-slate-400">Interest Accrued</p><p id="uInterest" class="text-xl font-black text-emerald-600"></p></div>
+                            <div><p class="text-[9px] uppercase font-black text-red-500">Remaining Debt</p><p id="uLoanOut" class="text-xl font-black text-red-600"></p></div>
+                            <div><p class="text-[9px] uppercase font-black text-slate-400">Payment Due</p><p class="text-xl font-black">Monthly 30th</p></div>
+                        </div>
+                    </div>
+
+                    <div class="no-print bg-slate-900 text-white p-10 rounded-[2rem] mt-10">
+                        <h3 class="font-black text-xl mb-4">New Loan Application</h3>
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <input type="number" id="loanAmount" placeholder="Enter Amount RWF" class="flex-1 p-4 rounded-xl bg-white/10 border border-white/20 font-bold outline-none">
+                            <button onclick="sendLoanRequest()" class="bg-amber-400 text-emerald-950 px-10 py-4 rounded-xl font-black uppercase text-xs">Apply via Email</button>
+                        </div>
+                        <p class="text-[10px] mt-4 opacity-50 italic">Calculated against your collateral: <span id="collateralVal"></span> RWF</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="p-12 space-y-12">
-                <div>
-                    <h3 class="font-black text-lg mb-6 flex items-center gap-2"><i data-lucide="calendar" class="text-emerald-600" size="20"></i> Monthly Shares Pledger</h3>
-                    <div id="shareGrid" class="grid grid-cols-4 md:grid-cols-6 gap-3"></div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div id="mainShareCard" class="p-8 rounded-[2.5rem] border bg-slate-50">
-                        <p class="text-[10px] font-black text-emerald-600 uppercase mb-1">Total Net Savings</p>
-                        <h3 id="uShares" class="text-4xl font-black"></h3>
-                        <div id="profitChip"></div>
-                    </div>
-                    <div class="p-8 rounded-[2.5rem] border bg-emerald-50/50">
-                        <h4 class="font-black text-emerald-900 text-sm mb-2">Loan Repayment Notice</h4>
-                        <p class="text-xs text-slate-600 font-medium leading-relaxed">Please contact **Reuben S.** at +250 782 307 562 for any payment challenges. Balances after the 30th attract an automated **5% interest penalty**.</p>
-                    </div>
-                </div>
-
-                <div id="scheduleSection" class="hidden">
-                    <h3 class="font-black text-lg mb-6">Upcoming Repayment Schedule</h3>
-                    <div class="overflow-hidden border rounded-2xl">
-                        <table class="w-full text-left text-xs">
-                            <thead class="bg-slate-50 font-black uppercase text-slate-400 border-b">
-                                <tr><th class="p-4">Month</th><th class="p-4">Installment</th><th class="p-4">Penalty If Late</th><th class="p-4">Status</th></tr>
-                            </thead>
-                            <tbody id="repayTableBody" class="font-bold"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="historySection" class="hidden pt-8 border-t">
-                    <h3 class="font-black text-lg mb-6">Loan Payment History</h3>
-                    <div class="overflow-hidden border rounded-2xl">
-                        <table class="w-full text-left text-xs">
-                            <thead class="bg-emerald-50 text-emerald-800 font-black uppercase border-b">
-                                <tr><th class="p-4">Reference</th><th class="p-4">Amount</th><th class="p-4">Type</th><th class="p-4">Status</th></tr>
-                            </thead>
-                            <tbody id="historyTableBody" class="font-bold"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="pt-10 border-t">
-                    <h3 class="font-black text-lg mb-6">Financial Summary</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div><p class="text-[9px] uppercase font-black text-slate-400 mb-1">Total Requested</p><p id="uLoanReq" class="text-xl font-black"></p></div>
-                        <div><p class="text-[9px] uppercase font-black text-slate-400 mb-1">Interest Accrued</p><p id="uInterest" class="text-xl font-black text-emerald-600"></p></div>
-                        <div><p class="text-[9px] uppercase font-black text-red-500 mb-1">Remaining Debt</p><p id="uLoanOut" class="text-xl font-black text-red-600"></p></div>
-                        <div><p class="text-[9px] uppercase font-black text-slate-400 mb-1">Deadline</p><p class="text-xl font-black">Monthly 30th</p></div>
-                    </div>
-                </div>
-
-                <div class="no-print bg-slate-900 text-white p-12 rounded-[3rem] mt-12">
-                    <h3 class="text-xl font-black mb-4">Request New Loan</h3>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <input type="number" id="loanAmt" placeholder="Amount (RWF)" class="flex-1 p-5 rounded-2xl bg-white/10 border border-white/20 font-bold outline-none">
-                        <button onclick="sendAppEmail()" class="bg-amber-400 text-emerald-950 px-10 py-5 rounded-2xl font-black uppercase text-sm">Send Request</button>
-                    </div>
-                    <p class="text-[10px] mt-4 text-white/50 italic">Note: Max loan depends on your current collateral of <span id="collateralText"></span> RWF.</p>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
 
     <script>
         const db = [
-            { id: 1, name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin", shares: 1050000, paidM: 12, loanOut: 40880, loanReq: 250000, interest: 30539, history: [{ref: "HPA-001", amt: 150000, type: "Emergency"}] },
-            { id: 2, name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 555000, loanReq: 600000, interest: 49200, history: [] },
-            { id: 3, name: "Reuben SINDAYIHEBA", email: "sireuben007@gmail.com", pass: "leader123", role: "Admin", shares: 330000, paidM: 10, loanOut: 585000, loanReq: 700000, interest: 96070, history: [{ref: "HPA-009", amt: 200000, type: "Personal"}] },
-            { id: 4, name: "Eliab MWISENEZA", email: "eliab@hpaaguka.com", pass: "leader123", role: "Admin", shares: 1100000, paidM: 10, loanOut: 0, loanReq: 0, interest: 112412, history: [{ref: "HPA-012", amt: 500000, type: "Investment"}] },
-            { id: 20, name: "NIYOMUFASHA Gentille", email: "gentille@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 700000, loanReq: 700000, interest: 59634, history: [] }
+            { id: 1, name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin", shares: 1050000, paidM: 12, loanOut: 40880, loanReq: 250000, interest: 30539 },
+            { id: 2, name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 555000, loanReq: 600000, interest: 49200 },
+            { id: 3, name: "Reuben SINDAYIHEBA", email: "sireuben007@gmail.com", pass: "leader123", role: "Admin", shares: 330000, paidM: 10, loanOut: 585000, loanReq: 700000, interest: 96070 },
+            { id: 4, name: "Eliab MWISENEZA", email: "eliab@hpaaguka.com", pass: "leader123", role: "Admin", shares: 1100000, paidM: 10, loanOut: 0, loanReq: 0, interest: 112412 },
+            { id: 5, name: "KAYITESI Isabelle", email: "kayitesi@hpaaguka.com", pass: "1234", role: "Member", shares: 380000, paidM: 11, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 6, name: "Jocelyne UWAMBAJIMANA", email: "jocelyne@hpaaguka.com", pass: "1234", role: "Member", shares: 340000, paidM: 11, loanOut: 484529, loanReq: 600000, interest: 0 },
+            { id: 7, name: "Odile NTAKINANIRIMANA", email: "odile@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, paidM: 12, loanOut: 0, loanReq: 0, interest: 20200 },
+            { id: 8, name: "Gisèle UYISENGA", email: "gisele@hpaaguka.com", pass: "1234", role: "Member", shares: 310000, paidM: 8, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 9, name: "Patrick UWIDUHAYE", email: "patrick@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 0, loanReq: 264500, interest: 8000 },
+            { id: 10, name: "Theonille MUKABAGORORA", email: "theonille@hpaaguka.com", pass: "1234", role: "Member", shares: 300000, paidM: 7, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 11, name: "Mireille UMWALI", email: "mireille@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, paidM: 12, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 12, name: "Gabriel ISHIMWE", email: "gabriel@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 72000, loanReq: 150000, interest: 38758 },
+            { id: 13, name: "IGIHOZO Chancelline", email: "igihozo@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 136630, loanReq: 300000, interest: 0 },
+            { id: 14, name: "Maurice TUYISENGE", email: "maurice@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 15, name: "Adrien TUYIZERE", email: "adrien@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 120000, loanReq: 120000, interest: 11681 },
+            { id: 16, name: "Stanisilas TUYISENGE", email: "stan@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 410700, loanReq: 500000, interest: 50000 },
+            { id: 17, name: "MUGABWAMBERE J. Dieu", email: "jdd@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 18, name: "UWAMAHORO Josiane", email: "josiane@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 0, loanReq: 500000, interest: 27050 },
+            { id: 19, name: "UMUHOZA Alliance", email: "alliance@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 0, loanReq: 0, interest: 0 },
+            { id: 20, name: "NIYOMUFASHA Gentille", email: "gentille@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 700000, loanReq: 700000, interest: 59634 }
         ];
 
-        let curU = null;
+        let currentUser = null;
 
         function openLogin() { document.getElementById('loginPanel').classList.remove('hidden'); }
 
         function processLogin() {
             const e = document.getElementById('email').value.toLowerCase().trim();
             const p = document.getElementById('password').value;
-            curU = db.find(x => x.email === e && x.pass === p);
-            if(!curU) return alert("Account not recognized.");
+            currentUser = db.find(x => x.email === e && x.pass === p);
+            if(!currentUser) return alert("Credentials not found.");
+            
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPanel').classList.add('hidden');
-            renderDash(curU);
+            renderMember(currentUser);
         }
 
-        function renderDash(u) {
+        function renderMember(u) {
             document.getElementById('memberDashboard').classList.remove('hidden');
             document.getElementById('uName').innerText = u.name;
             document.getElementById('uShares').innerText = u.shares.toLocaleString() + " RWF";
             document.getElementById('uLoanReq').innerText = u.loanReq.toLocaleString() + " RWF";
             document.getElementById('uInterest').innerText = u.interest.toLocaleString() + " RWF";
             document.getElementById('uLoanOut').innerText = u.loanOut.toLocaleString() + " RWF";
-            document.getElementById('collateralText').innerText = u.shares.toLocaleString();
+            document.getElementById('collateralVal').innerText = u.shares.toLocaleString();
 
-            // Pledger Grid
             const ms = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
             document.getElementById('shareGrid').innerHTML = ms.map((m, i) => `
                 <div class="p-4 rounded-xl text-center border ${i < u.paidM ? 'bg-emerald-950 text-white' : 'bg-slate-50 text-slate-300'}">
                     <p class="font-black text-[7px] uppercase">${m}</p>
-                    <p class="font-black text-[10px]">${i < u.paidM ? '10,000' : '0'}</p>
+                    <p class="font-black text-[10px]">${i < u.paidM ? '10k' : '0'}</p>
                 </div>`).join('');
 
-            // Gold Status
-            if(u.shares >= 1000000) document.getElementById('mainShareCard').classList.add('gold-glow');
+            // Gold Status Check
+            if(u.shares >= 1000000) document.getElementById('mainShareCard').className = 'p-8 rounded-[2rem] border gold-glow';
 
-            // Repayment Schedule
+            // Repayment Schedule Calculation
             if(u.loanOut > 0) {
                 document.getElementById('scheduleSection').classList.remove('hidden');
                 const monthly = u.loanOut / 6;
-                const months = ["March", "April", "May", "June", "July", "August"];
-                document.getElementById('repayTableBody').innerHTML = months.map(mo => `
+                const rows = ["March", "April", "May", "June", "July", "August"].map(mo => `
                     <tr class="border-b">
                         <td class="p-4">${mo} 30th</td>
-                        <td class="p-4 font-black">${Math.round(monthly).toLocaleString()} RWF</td>
+                        <td class="p-4">${Math.round(monthly).toLocaleString()} RWF</td>
                         <td class="p-4 text-red-500">${Math.round(monthly * 0.05).toLocaleString()} RWF</td>
-                        <td class="p-4"><span class="px-2 py-1 bg-amber-100 text-amber-600 rounded text-[9px]">DUE</span></td>
+                        <td class="p-4"><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded text-[10px]">PENDING</span></td>
                     </tr>`).join('');
+                document.getElementById('repayTableBody').innerHTML = rows;
             }
-
-            // Loan History
-            if(u.history && u.history.length > 0) {
-                document.getElementById('historySection').classList.remove('hidden');
-                document.getElementById('historyTableBody').innerHTML = u.history.map(h => `
-                    <tr class="border-b">
-                        <td class="p-4">${h.ref}</td>
-                        <td class="p-4">${h.amt.toLocaleString()} RWF</td>
-                        <td class="p-4">${h.type}</td>
-                        <td class="p-4 text-emerald-600">FULLY PAID</td>
-                    </tr>`).join('');
-            }
-
-            // Interest Sharing Logic
-            const totS = db.reduce((a,b) => a + b.shares, 0);
-            const totI = db.reduce((a,b) => a + b.interest, 0);
-            const share = Math.round((u.shares / totS) * totI);
-            document.getElementById('profitChip').innerHTML = `<div class="mt-4 p-4 bg-white rounded-2xl border shadow-sm"><p class="text-[8px] font-black text-emerald-800 uppercase">Interest Sharing</p><h4 class="text-xl font-black text-emerald-700">+ ${share.toLocaleString()} RWF</h4></div>`;
 
             lucide.createIcons();
         }
 
-        function sendAppEmail() {
-            const amt = document.getElementById('loanAmt').value;
-            if(!amt || amt <= 0) return alert("Enter amount.");
-            const body = `HPA-Aguka Loan Application\nMember: ${curU.name}\nNet Shares: ${curU.shares.toLocaleString()} RWF\nRequested: ${amt} RWF\n\nI confirm review of the 5% late penalty policy.`;
-            window.location.href = `mailto:healthassociation.project2023@gmail.com?subject=Loan_App_${curU.name}&body=${encodeURIComponent(body)}`;
+        function sendLoanRequest() {
+            const amt = document.getElementById('loanAmount').value;
+            if(!amt || amt <= 0) return alert("Please specify an amount.");
+            const body = `HPA-Aguka Loan Application\nMember: ${currentUser.name}\nNet Shares: ${currentUser.shares.toLocaleString()} RWF\nRequested Amount: ${amt} RWF\n\nI agree to the repayment terms and the 5% late penalty.`;
+            window.location.href = `mailto:healthassociation.project2023@gmail.com?subject=Loan_Application_${currentUser.name}&body=${encodeURIComponent(body)}`;
         }
 
-        // Leaderboard
+        // Leaderboard Logic
         const top5 = [...db].sort((a,b) => b.shares - a.shares).slice(0, 5);
         document.getElementById('topSaversList').innerHTML = top5.map((s, i) => `
             <div class="flex items-center justify-between bg-white p-4 rounded-2xl border shadow-sm">
-                <span class="font-black text-slate-300">#${i+1}</span>
+                <span class="font-black text-slate-400">#${i+1}</span>
                 <span class="font-bold text-slate-800">${s.name.split(' ')[0]} ${s.name.split(' ')[1][0]}.</span>
-                <span class="font-black text-emerald-600">${s.shares.toLocaleString()} RWF</span>
+                <span class="font-black ${s.shares >= 1000000 ? 'text-amber-500' : 'text-emerald-600'}">${s.shares.toLocaleString()} RWF</span>
             </div>`).join('');
 
         lucide.createIcons();
