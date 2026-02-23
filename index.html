@@ -3,216 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPA-Aguka | Wealth & Prosperity Hub</title>
+    <title>HPA-Aguka | Executive Management Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; scroll-behavior: smooth; }
         .hero-gradient { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
-        .gold-glow { box-shadow: 0 0 25px rgba(251, 191, 36, 0.4); border: 2px solid #fbbf24 !important; }
+        .gold-glow { box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
         .news-slide { animation: slide 25s linear infinite; }
         @keyframes slide { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
         
         @media print {
             .no-print { display: none !important; }
             body { background: white; }
+            .print-container { padding: 0 !important; margin: 0 !important; box-shadow: none !important; border: none !important; }
+            .bg-emerald-950 { background-color: #064e3b !important; -webkit-print-color-adjust: exact; }
+            .bg-amber-400 { background-color: #fbbf24 !important; -webkit-print-color-adjust: exact; }
         }
     </style>
 </head>
 <body class="text-slate-900">
 
     <div class="bg-amber-400 py-3 overflow-hidden whitespace-nowrap border-b border-amber-500 no-print">
-        <div class="inline-block news-slide text-emerald-950 font-black text-[11px] uppercase tracking-widest">
-            <i data-lucide="award" class="inline-block mr-2" size="14"></i> 
-            Top Savers: Innocent T., Eliab M., Odile N. — Congratulations!
-            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-            <i data-lucide="info" class="inline-block mr-2" size="14"></i> 
-            All loan repayments due by the 30th to avoid 5% penalty.
+        <div class="inline-block news-slide">
+            <span class="font-black text-[11px] uppercase tracking-widest text-emerald-950 px-10">
+                <i data-lucide="megaphone" class="inline-block mr-2" size="14"></i> 
+                HPA-Aguka Reminder: All loan repayments must be made before the 30th of each month to avoid the 5% penalty.
+                &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                Contact Reuben S. (+250 782 307 562) for ledger discrepancies.
+            </span>
         </div>
     </div>
 
     <nav class="bg-white border-b sticky top-0 z-50 no-print">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-4">
-                <div class="bg-emerald-900 p-2 rounded-xl text-amber-400"><i data-lucide="heart-pulse"></i></div>
+                <div class="bg-emerald-900 p-2 rounded-xl text-amber-400">
+                    <i data-lucide="heart-pulse"></i>
+                </div>
                 <div>
                     <span class="font-black text-xl tracking-tighter text-emerald-950 block">HPA-AGUKA</span>
-                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Healthcare Professionals Hub</span>
+                    <span class="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Healthcare Professionals Cooperative</span>
                 </div>
             </div>
-            <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                <a href="#vision" class="hover:text-emerald-950">Mission</a>
-                <a href="#leaders" class="hover:text-emerald-950">Management</a>
-                <a href="#contact" class="hover:text-emerald-950">Contact</a>
-            </div>
-            <button onclick="openLogin('member')" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl font-black text-[11px] uppercase tracking-widest active:scale-95 transition">Login</button>
+            <button onclick="openLogin('member')" class="bg-emerald-950 text-white px-6 py-2.5 rounded-xl font-black text-[11px] uppercase tracking-widest active:scale-95 transition">Access Portal</button>
         </div>
     </nav>
 
-    <div id="homePage">
-        <header class="hero-gradient text-white py-32 px-6 text-center relative">
+    <div id="homePage" class="no-print">
+        <header class="hero-gradient text-white py-24 px-6 text-center relative overflow-hidden">
             <div class="absolute inset-0 opacity-20 pointer-events-none">
-                <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&q=80&w=2000" alt="Wealth Growth" class="w-full h-full object-cover">
             </div>
             <div class="relative z-10">
-                <h1 class="text-6xl md:text-9xl font-extrabold mb-8 tracking-tighter leading-tight">Save to <br><span class="text-amber-400">Prosper.</span></h1>
-                <div class="flex flex-wrap justify-center gap-6 mt-12">
-                    <button onclick="openLogin('member')" class="bg-white text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl transition hover:-translate-y-1">Member Access</button>
-                    <button onclick="openLogin('leader')" class="bg-amber-400 text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl transition hover:-translate-y-1 border-b-4 border-amber-600">Leader Portal</button>
+                <div class="mb-8 inline-block bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20">
+                    <p class="text-[10px] font-black tracking-[0.3em] uppercase">Trusted Financial Security</p>
+                </div>
+                <h1 class="text-6xl md:text-9xl font-extrabold mb-8 tracking-tighter leading-[0.85]">
+                    Save to <br><span class="text-amber-400">Invest.</span>
+                </h1>
+                <p class="max-w-xl mx-auto text-emerald-100 font-bold mb-12 text-lg">Building health and prosperity for Rwandan healthcare professionals through smart cooperative savings.</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <button onclick="openLogin('member')" class="bg-white text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl hover:-translate-y-1 transition-all">Member Login</button>
+                    <button onclick="openLogin('leader')" class="bg-amber-400 text-emerald-950 px-12 py-6 rounded-[2rem] font-black text-xl shadow-2xl hover:-translate-y-1 transition-all border-b-4 border-amber-600">Leader Portal</button>
                 </div>
             </div>
         </header>
-
-        <section id="vision" class="py-24 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-            <div class="bg-white p-12 rounded-[3rem] border shadow-sm">
-                <h3 class="text-3xl font-black mb-4">Our Mission</h3>
-                <p class="text-slate-600 font-medium">To empower Rwandan healthcare professionals through sustainable savings and accessible financial credit systems.</p>
-            </div>
-            <div class="bg-white p-12 rounded-[3rem] border shadow-sm">
-                <h3 class="text-3xl font-black mb-4">Our Vision</h3>
-                <p class="text-slate-600 font-medium">To be the primary engine of wealth creation and financial security for the health sector in Rwanda.</p>
-            </div>
-        </section>
-
-        <section id="leaders" class="bg-slate-50 py-24 px-6">
-            <div class="max-w-7xl mx-auto text-center mb-16">
-                <h2 class="text-4xl font-black tracking-tighter">Cooperative Leaders</h2>
-            </div>
-            <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center"><div class="w-24 h-24 bg-emerald-900 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-black">IT</div><h4 class="font-black">Innocent T.</h4><p class="text-[9px] uppercase font-bold opacity-50">Chairman</p></div>
-                <div class="text-center"><div class="w-24 h-24 bg-emerald-900 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-black">RS</div><h4 class="font-black">Reuben S.</h4><p class="text-[9px] uppercase font-bold opacity-50">Finance/Advisor</p></div>
-                <div class="text-center"><div class="w-24 h-24 bg-emerald-900 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-black">EM</div><h4 class="font-black">Eliab M.</h4><p class="text-[9px] uppercase font-bold opacity-50">Administrator</p></div>
-                <div class="text-center"><div class="w-24 h-24 bg-emerald-900 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-black">JG</div><h4 class="font-black">Jane G.</h4><p class="text-[9px] uppercase font-bold opacity-50">Treasurer</p></div>
-            </div>
-        </section>
-
-        <footer id="contact" class="bg-emerald-950 text-white py-20 px-6">
-            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-                <div><h3 class="text-2xl font-black mb-4">HPA-AGUKA</h3><p class="opacity-50">Kigali, Rwanda | healthassociation.project2023@gmail.com</p></div>
-                <div class="flex gap-4 md:justify-end"><i data-lucide="facebook"></i><i data-lucide="instagram"></i><i data-lucide="twitter"></i></div>
-            </div>
-        </footer>
     </div>
 
     <div id="loginPanel" class="hidden fixed inset-0 z-[60] bg-emerald-950/95 backdrop-blur-md flex items-center justify-center p-6 no-print">
-        <div class="bg-white p-10 rounded-[3rem] w-full max-w-md relative shadow-2xl text-center">
+        <div class="bg-white p-10 rounded-[3rem] w-full max-w-md relative shadow-2xl text-center text-slate-900">
             <button onclick="closeLogin()" class="absolute top-6 right-6 text-slate-300 hover:text-slate-900 transition"><i data-lucide="x"></i></button>
-            <h2 class="text-3xl font-black tracking-tighter mb-10">Secure Access</h2>
+            <h2 class="text-3xl font-black tracking-tighter mb-2">Portal Access</h2>
+            <p id="loginSub" class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-10"></p>
             <div class="space-y-4">
-                <input type="email" id="email" placeholder="Email" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
+                <input type="email" id="email" placeholder="Email Address" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
                 <input type="password" id="password" placeholder="Password" class="w-full p-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
-                <button onclick="processLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg">Sign In</button>
+                <button onclick="processLogin()" class="w-full bg-emerald-950 text-white p-5 rounded-2xl font-black text-lg hover:bg-emerald-900 active:scale-95 transition">Sign In</button>
             </div>
         </div>
-    </div>
-
-    <div id="memberDashboard" class="hidden min-h-screen pb-32">
-        <header class="bg-emerald-950 text-white pt-24 pb-20 px-6">
-            <div class="max-w-7xl mx-auto flex justify-between items-end">
-                <div><h2 id="uName" class="text-4xl md:text-6xl font-black tracking-tighter"></h2><p class="mt-4 text-emerald-400 font-black uppercase text-[10px] tracking-widest">Active Ledger 2026</p></div>
-                <button onclick="location.reload()" class="bg-red-500/10 text-red-400 border border-red-500/20 px-8 py-4 rounded-2xl font-black text-xs uppercase">Logout</button>
-            </div>
-        </header>
-
-        <main class="max-w-7xl mx-auto px-6 -mt-10 space-y-8">
-            <div class="bg-white p-10 rounded-[3rem] shadow-xl border">
-                <div class="flex justify-between items-center mb-10">
-                    <h3 class="font-black text-xl flex items-center gap-2"><i data-lucide="calendar" class="text-emerald-600"></i> Monthly Shares Pledger</h3>
-                    <span class="text-[10px] font-black bg-emerald-100 text-emerald-600 px-4 py-1 rounded-full uppercase">Goal: 10,000 RWF / Mo</span>
-                </div>
-                <div id="shareGrid" class="grid grid-cols-2 md:grid-cols-6 gap-4"></div>
-            </div>
-
-            <div class="grid lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-4 space-y-6">
-                    <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border" id="mainShareCard">
-                        <p class="text-[10px] font-black text-emerald-600 uppercase mb-4 tracking-widest">Total Net Savings</p>
-                        <h3 id="uShares" class="text-4xl font-black text-emerald-950"></h3>
-                    </div>
-                    <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border">
-                        <p class="text-[10px] font-black text-emerald-600 uppercase mb-4 tracking-widest">Life Fund</p>
-                        <div class="space-y-2 text-xs font-bold">
-                            <div class="flex justify-between"><span>Paid:</span><span id="uLifePaid"></span></div>
-                            <div class="flex justify-between text-slate-400"><span>Target:</span><span id="uLifeReq"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-8">
-                    <div class="bg-emerald-950 text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
-                        <h3 class="text-xl font-black mb-10">Loan Summary</h3>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Requested</p><p id="uLoanReq" class="text-2xl font-black"></p></div>
-                            <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Interest</p><p id="uInterest" class="text-2xl font-black text-amber-400"></p></div>
-                            <div><p class="text-[9px] uppercase font-black text-red-400 mb-2">Balance</p><p id="uLoanOut" class="text-2xl font-black text-red-400"></p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
     </div>
 
     <div id="leaderDashboard" class="hidden min-h-screen pb-32">
         <header class="bg-emerald-950 text-white pt-20 pb-20 px-6">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <h2 class="text-4xl font-black tracking-tighter">Leader Console</h2>
-                <button onclick="location.reload()" class="bg-white/10 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase">Logout</button>
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tighter">Leader Console</h2>
+                    <p class="mt-2 text-amber-400 font-black uppercase text-[10px] tracking-widest">Global Cooperative Analytics</p>
+                </div>
+                <button onclick="location.reload()" class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-2xl font-black text-xs uppercase">Logout</button>
             </div>
         </header>
+
         <main class="max-w-7xl mx-auto px-6 -mt-10">
-            <div class="bg-white rounded-[3rem] shadow-xl border overflow-hidden">
-                <table class="w-full text-left">
-                    <thead class="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b">
-                        <tr><th class="p-6">Member Name</th><th class="p-6">Shares</th><th class="p-6">Loan Balance</th><th class="p-6">Status</th></tr>
-                    </thead>
-                    <tbody id="leaderTableBody" class="font-bold text-sm text-slate-700"></tbody>
-                </table>
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                    <p class="text-[10px] font-black text-emerald-600 uppercase mb-2">Total Pool Liquidity</p>
+                    <h3 id="lTotalFund" class="text-3xl font-black text-emerald-950">0 RWF</h3>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                    <p class="text-[10px] font-black text-emerald-600 uppercase mb-2">Total Outstanding Debt</p>
+                    <h3 id="lTotalLoans" class="text-3xl font-black text-red-600">0 RWF</h3>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100">
+                    <p class="text-[10px] font-black text-emerald-600 uppercase mb-2">Verified Members</p>
+                    <h3 id="lTotalMembers" class="text-3xl font-black text-emerald-950">20</h3>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden">
+                <div class="p-8 border-b flex justify-between items-center">
+                    <h3 class="font-black text-xl">Member Oversight Registry</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase">Click any member to manage status</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-slate-50 text-[10px] font-black uppercase text-slate-400 tracking-widest border-b">
+                                <th class="p-6">Member Name</th>
+                                <th class="p-6">Shares</th>
+                                <th class="p-6">Loan Balance</th>
+                                <th class="p-6">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderTableBody" class="font-bold text-sm text-slate-700">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <div id="statusModal" class="hidden fixed inset-0 z-[70] bg-emerald-950/90 backdrop-blur-sm flex items-center justify-center p-6">
+            <div class="bg-white p-10 rounded-[2.5rem] w-full max-w-md shadow-2xl relative">
+                <h3 id="modalMemberName" class="text-2xl font-black mb-1">Update Member</h3>
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-8">Loan Management Tools</p>
+                <div class="space-y-4">
+                    <button onclick="updateLoanStatus('Clear Balance')" class="w-full p-5 bg-emerald-50 text-emerald-700 rounded-2xl font-black text-xs uppercase hover:bg-emerald-100 transition flex items-center justify-between">
+                        Mark Loan as Paid <i data-lucide="check-circle"></i>
+                    </button>
+                    <button onclick="updateLoanStatus('Apply Penalty')" class="w-full p-5 bg-red-50 text-red-700 rounded-2xl font-black text-xs uppercase hover:bg-red-100 transition flex items-center justify-between">
+                        Apply 5% Penalty <i data-lucide="alert-triangle"></i>
+                    </button>
+                    <button onclick="closeModal()" class="w-full p-5 bg-slate-100 text-slate-500 rounded-2xl font-black text-xs uppercase hover:bg-slate-200 transition">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="memberDashboard" class="hidden min-h-screen pb-32 print-container">
+        <header class="bg-emerald-950 text-white pt-24 pb-20 px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end">
+                <div>
+                    <h2 id="uName" class="text-4xl md:text-6xl font-black tracking-tighter"></h2>
+                    <p class="mt-4 text-emerald-400 font-black uppercase text-[10px] tracking-widest">Member Ledger • Fiscal Year 2026</p>
+                </div>
+                <div class="flex gap-3 no-print mt-8 md:mt-0">
+                    <button onclick="window.print()" class="bg-white text-emerald-950 px-6 py-4 rounded-2xl font-black text-xs uppercase flex items-center gap-2 shadow-xl hover:scale-105 transition">
+                        <i data-lucide="download" size="14"></i> Download Statement
+                    </button>
+                    <button onclick="location.reload()" class="bg-red-500/10 text-red-400 border border-red-500/20 px-8 py-4 rounded-2xl font-black text-xs uppercase">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-6 -mt-10 grid lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-100" id="shareSummaryCard">
+                    <p class="text-[10px] font-black text-emerald-600 uppercase mb-4 tracking-[0.2em]">Net Savings & Profits</p>
+                    <h3 id="uShares" class="text-4xl font-black text-emerald-950"></h3>
+                    <div id="profitChip"></div>
+                </div>
+
+                <div id="uPenaltyCard" class="p-10 rounded-[2.5rem] border-2 shadow-sm bg-white">
+                    <p class="text-[10px] font-black uppercase mb-2">Compliance</p>
+                    <h3 id="uPenalty" class="text-4xl font-black text-slate-900"></h3>
+                    <p id="penaltyWarning" class="text-[10px] mt-4 font-bold text-red-500 hidden italic">Delay Penalty Applied (5%).</p>
+                </div>
+
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-emerald-100">
+                    <h4 class="text-[10px] font-black text-emerald-800 uppercase mb-6 flex items-center gap-2"><i data-lucide="shield-check" size="14"></i> Life Fund</h4>
+                    <div class="space-y-4 text-xs font-bold">
+                        <div class="flex justify-between border-b pb-2"><span>Paid</span><span id="uLifePaid"></span></div>
+                        <div class="flex justify-between border-b pb-2"><span>Target</span><span id="uLifeReq"></span></div>
+                        <div class="flex justify-between text-red-500"><span>Fees</span><span id="uLifeFees"></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 space-y-8">
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-xl overflow-hidden no-print">
+                    <h3 class="font-black text-xl mb-6 flex items-center gap-3 text-slate-900"><i data-lucide="bell" class="text-emerald-600"></i> Board Feed</h3>
+                    <div class="p-6 bg-slate-50 rounded-2xl border-l-4 border-amber-400 text-xs font-bold text-slate-700">
+                        Reminder: General Assembly on March 15th at the Kigali Hub.
+                    </div>
+                </div>
+
+                <div class="bg-emerald-950 text-white p-10 rounded-[3rem] shadow-2xl" id="loanSummaryParent">
+                    <h3 class="text-xl font-black mb-10 flex items-center gap-3 text-white"><i data-lucide="landmark" class="text-amber-400"></i> Loan Portfolio</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Requested</p><p id="uLoanReq" class="text-2xl font-black"></p></div>
+                        <div><p class="text-[9px] uppercase font-black text-emerald-400 mb-2">Total Interest</p><p id="uInterest" class="text-2xl font-black text-amber-400"></p></div>
+                        <div><p class="text-[9px] uppercase font-black text-red-400 mb-2">To Repay</p><p id="uLoanOut" class="text-2xl font-black text-red-400"></p></div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-xl no-print">
+                    <h3 class="font-black text-xl mb-6 text-slate-900">Loan Application</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <input type="number" id="loanAmt" oninput="calcLoan()" placeholder="Amount (RWF)" class="w-full p-4 bg-slate-50 rounded-xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
+                            <select id="loanPeriod" onchange="calcLoan()" class="w-full p-4 bg-slate-50 rounded-xl border-2 border-transparent focus:border-emerald-600 outline-none font-bold">
+                                <option value="6">6 Months</option><option value="12">12 Months</option>
+                            </select>
+                            <button onclick="submitLoanRequest()" class="w-full bg-emerald-950 text-white p-4 rounded-xl font-black text-[10px] uppercase">Send to HPA Board</button>
+                        </div>
+                        <div class="bg-emerald-50 rounded-2xl p-6 border border-emerald-100 text-xs">
+                            <div class="flex justify-between mb-2 text-slate-600"><span>Monthly Repayment:</span><span id="calcMonthly" class="font-black text-emerald-900">0 RWF</span></div>
+                            <div class="flex justify-between font-black text-red-600"><span>If delayed (5%):</span><span id="calcPenalty">0 RWF</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
     <script>
         const db = [
-            { id: 1, name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 1050000, paidM: 12, loanOut: 40880, loanReq: 250000, interest: 30539, lifeReq: 1184000, lifePaid: 1173659 },
-            { id: 2, name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 555000, loanReq: 600000, interest: 49200, lifeReq: 1200000, lifePaid: 694200 },
-            { id: 3, name: "Reuben SINDAYIHEBA", email: "sireuben007@gmail.com", pass: "leader123", role: "Admin/Member", shares: 330000, paidM: 10, loanOut: 585000, loanReq: 700000, interest: 96070, lifeReq: 2188000, lifePaid: 1699070 },
-            { id: 4, name: "Eliab MWISENEZA", email: "eliab@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 1100000, paidM: 10, loanOut: 0, loanReq: 0, interest: 112412, lifeReq: 1872000, lifePaid: 1984412 },
-            { id: 5, name: "KAYITESI Isabelle", email: "kayitesi@hpaaguka.com", pass: "1234", role: "Member", shares: 380000, paidM: 11, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 1200000 },
-            { id: 6, name: "Jocelyne UWAMBAJIMANA", email: "jocelyne@hpaaguka.com", pass: "1234", role: "Member", shares: 340000, paidM: 11, loanOut: 484529, loanReq: 600000, interest: 0, lifeReq: 1200000, lifePaid: 1200000 },
-            { id: 7, name: "Odile NTAKINANIRIMANA", email: "odile@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, paidM: 12, loanOut: 0, loanReq: 0, interest: 20200, lifeReq: 1200000, lifePaid: 1200000 },
-            { id: 8, name: "Gisèle UYISENGA", email: "gisele@hpaaguka.com", pass: "1234", role: "Member", shares: 310000, paidM: 8, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 800000 },
-            { id: 9, name: "Patrick UWIDUHAYE", email: "patrick@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 0, loanReq: 264500, interest: 8000, lifeReq: 1200000, lifePaid: 900000 },
-            { id: 10, name: "Theonille MUKABAGORORA", email: "theonille@hpaaguka.com", pass: "1234", role: "Member", shares: 300000, paidM: 7, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 700000 },
-            { id: 11, name: "Mireille UMWALI", email: "mireille@hpaaguka.com", pass: "1234", role: "Member", shares: 350000, paidM: 12, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 1200000 },
-            { id: 12, name: "Gabriel ISHIMWE", email: "gabriel@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 72000, loanReq: 150000, interest: 38758, lifeReq: 1200000, lifePaid: 900000 },
-            { id: 13, name: "IGIHOZO Chancelline", email: "igihozo@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 136630, loanReq: 300000, interest: 0, lifeReq: 1200000, lifePaid: 1000000 },
-            { id: 14, name: "Maurice TUYISENGE", email: "maurice@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 900000 },
-            { id: 15, name: "Adrien TUYIZERE", email: "adrien@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 120000, loanReq: 120000, interest: 11681, lifeReq: 1200000, lifePaid: 1000000 },
-            { id: 16, name: "Stanisilas TUYISENGE", email: "stan@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 410700, loanReq: 500000, interest: 50000, lifeReq: 1200000, lifePaid: 1000000 },
-            { id: 17, name: "MUGABWAMBERE J. Dieu", email: "jdd@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 1000000 },
-            { id: 18, name: "UWAMAHORO Josiane", email: "josiane@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, paidM: 9, loanOut: 0, loanReq: 500000, interest: 27050, lifeReq: 1200000, lifePaid: 900000 },
-            { id: 19, name: "UMUHOZA Alliance", email: "alliance@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 1000000 },
-            { id: 20, name: "NIYOMUFASHA Gentille", email: "gentille@hpaaguka.com", pass: "1234", role: "Member", shares: 330000, paidM: 10, loanOut: 700000, loanReq: 700000, interest: 59634, lifeReq: 1200000, lifePaid: 1000000 }
+            { id: 1, name: "Innocent TURIKUMWE", email: "innocent@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 1050000, prev: 240000, op: 10000, paidM: 12, penalty: 0, loanOut: 40880, loanReq: 250000, interest: 30539, lifeReq: 1184000, lifePaid: 1173659, lifeFees: 4000 },
+            { id: 2, name: "KAGABO Emmanuel", email: "kagabo@hpaaguka.com", pass: "1234", role: "Member", shares: 320000, prev: 240000, op: 10000, paidM: 9, penalty: 500, loanOut: 555000, loanReq: 600000, interest: 49200, lifeReq: 1200000, lifePaid: 694200, lifeFees: 3000 },
+            { id: 3, name: "Reuben SINDAYIHEBA", email: "sireuben007@gmail.com", pass: "leader123", role: "Admin/Member", shares: 330000, prev: 240000, op: 10000, paidM: 10, penalty: 0, loanOut: 585000, loanReq: 700000, interest: 96070, lifeReq: 2188000, lifePaid: 1699070, lifeFees: 4000 },
+            { id: 4, name: "Eliab MWISENEZA", email: "eliab@hpaaguka.com", pass: "leader123", role: "Admin/Member", shares: 1100000, prev: 240000, op: 10000, paidM: 10, penalty: 0, loanOut: 0, loanReq: 0, interest: 112412, lifeReq: 1872000, lifePaid: 1984412, lifeFees: 4000 },
+            { id: 5, name: "KAYITESI Isabelle", email: "kayitesi@hpaaguka.com", pass: "1234", role: "Member", shares: 380000, prev: 240000, op: 15000, paidM: 11, penalty: 0, loanOut: 0, loanReq: 0, interest: 0, lifeReq: 1200000, lifePaid: 1200000, lifeFees: 4000 }
         ];
 
-        let mode = 'member';
-        function openLogin(m) { mode = m; document.getElementById('loginPanel').classList.remove('hidden'); }
+        let currentAdmin = null;
+        let activeMemberId = null;
+
+        function openLogin(m) { mode = m; document.getElementById('loginSub').innerText = m === 'leader' ? 'ADMIN CONSOLE' : 'MEMBER PORTAL'; document.getElementById('loginPanel').classList.remove('hidden'); }
         function closeLogin() { document.getElementById('loginPanel').classList.add('hidden'); }
 
         function processLogin() {
             const e = document.getElementById('email').value.toLowerCase().trim();
             const p = document.getElementById('password').value;
             const u = db.find(x => x.email === e && x.pass === p);
-            if(!u) return alert("Invalid credentials.");
-            
+            if(!u) { alert("Invalid Credentials."); return; }
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('loginPanel').classList.add('hidden');
-            
-            if(mode === 'leader' && u.role.includes('Admin')) {
-                renderLeader();
-            } else {
-                renderMember(u);
-            }
+            if(mode === 'leader' && u.role.includes('Admin')) { renderLeader(); } else { renderMember(u); }
+        }
+
+        function renderLeader() {
+            document.getElementById('leaderDashboard').classList.remove('hidden');
+            const totalFund = db.reduce((a, b) => a + b.shares, 0);
+            const totalLoans = db.reduce((a, b) => a + b.loanOut, 0);
+            document.getElementById('lTotalFund').innerText = totalFund.toLocaleString() + " RWF";
+            document.getElementById('lTotalLoans').innerText = totalLoans.toLocaleString() + " RWF";
+
+            const table = document.getElementById('leaderTableBody');
+            table.innerHTML = db.map(m => `
+                <tr class="border-b hover:bg-slate-50 transition cursor-pointer" onclick="openModal(${m.id})">
+                    <td class="p-6">${m.name}</td>
+                    <td class="p-6 font-black">${m.shares.toLocaleString()}</td>
+                    <td class="p-6 text-red-600">${m.loanOut.toLocaleString()}</td>
+                    <td class="p-6 text-xs uppercase font-black ${m.loanOut > 0 ? 'text-amber-500' : 'text-emerald-500'}">${m.loanOut > 0 ? 'Active Loan' : 'Cleared'}</td>
+                </tr>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function openModal(id) { activeMemberId = id; const u = db.find(x => x.id === id); document.getElementById('modalMemberName').innerText = u.name; document.getElementById('statusModal').classList.remove('hidden'); }
+        function closeModal() { document.getElementById('statusModal').classList.add('hidden'); }
+
+        function updateLoanStatus(action) {
+            const u = db.find(x => x.id === activeMemberId);
+            if(action === 'Clear Balance') { u.loanOut = 0; alert(`${u.name}'s loan cleared.`); }
+            if(action === 'Apply Penalty') { u.penalty += 5000; alert(`5,000 RWF penalty added to ${u.name}.`); }
+            closeModal();
+            renderLeader();
         }
 
         function renderMember(u) {
@@ -221,35 +289,32 @@
             document.getElementById('uShares').innerText = u.shares.toLocaleString() + " RWF";
             document.getElementById('uLifePaid').innerText = u.lifePaid.toLocaleString() + " RWF";
             document.getElementById('uLifeReq').innerText = u.lifeReq.toLocaleString() + " RWF";
+            document.getElementById('uLifeFees').innerText = "-" + u.lifeFees.toLocaleString() + " RWF";
+            document.getElementById('uPenalty').innerText = u.penalty.toLocaleString() + " RWF";
             document.getElementById('uLoanReq').innerText = u.loanReq.toLocaleString() + " RWF";
             document.getElementById('uInterest').innerText = u.interest.toLocaleString() + " RWF";
             document.getElementById('uLoanOut').innerText = u.loanOut.toLocaleString() + " RWF";
-
-            const ms = ["May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"];
-            document.getElementById('shareGrid').innerHTML = ms.map((m, i) => `
-                <div class="p-4 rounded-2xl text-center border ${i < u.paidM ? 'bg-emerald-950 text-white shadow-lg' : 'bg-slate-50 text-slate-300'}">
-                    <p class="font-black text-[8px] uppercase mb-1">${m}</p>
-                    <p class="font-black text-xs">${i < u.paidM ? '10k' : '0'}</p>
-                </div>`).join('');
-
-            if(u.shares >= 1000000) {
-                document.getElementById('mainShareCard').classList.add('gold-glow');
-            }
+            
+            const totS = db.reduce((a,b) => a + b.shares, 0);
+            const totI = db.reduce((a,b) => a + b.interest, 0);
+            const share = Math.round((u.shares / totS) * totI);
+            document.getElementById('profitChip').innerHTML = `<div class="mt-4 p-4 bg-emerald-50 rounded-2xl border border-emerald-100"><p class="text-[9px] font-black text-emerald-800 uppercase">Interest Earned</p><h4 class="text-xl font-black text-emerald-700">+ ${share.toLocaleString()} RWF</h4></div>`;
+            
+            if(u.penalty > 0) document.getElementById('penaltyWarning').classList.remove('hidden');
             lucide.createIcons();
         }
 
-        function renderLeader() {
-            document.getElementById('leaderDashboard').classList.remove('hidden');
-            const table = document.getElementById('leaderTableBody');
-            table.innerHTML = db.map(m => `
-                <tr class="border-b hover:bg-slate-50 transition">
-                    <td class="p-6">${m.name}</td>
-                    <td class="p-6 font-black">${m.shares.toLocaleString()}</td>
-                    <td class="p-6 text-red-600">${m.loanOut.toLocaleString()}</td>
-                    <td class="p-6"><span class="text-[10px] font-black uppercase text-emerald-600">Update</span></td>
-                </tr>
-            `).join('');
-            lucide.createIcons();
+        function calcLoan() {
+            const p = parseFloat(document.getElementById('loanAmt').value) || 0;
+            const n = parseInt(document.getElementById('loanPeriod').value);
+            const installment = p * (0.02 * Math.pow(1.02, n)) / (Math.pow(1.02, n) - 1);
+            document.getElementById('calcMonthly').innerText = Math.round(installment || 0).toLocaleString() + " RWF";
+            document.getElementById('calcPenalty').innerText = Math.round(installment * 0.05 || 0).toLocaleString() + " RWF";
+        }
+
+        function submitLoanRequest() {
+            const amt = document.getElementById('loanAmt').value;
+            window.location.href = `mailto:healthassociation.project2023@gmail.com?subject=Loan Request&body=Amount: ${amt} RWF`;
         }
 
         lucide.createIcons();
